@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Silicon Archive: Apple Macintosh 128K</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0d1c32",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#55637d",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "outline-variant": "#c3c5d9",
+                        "tertiary": "#3e5356",
+                        "error": "#ba1a1a",
+                        "surface": "#f7f9fb",
+                        "primary-fixed": "#dce1ff",
+                        "surface-container": "#eceef0",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#434656",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-primary-fixed-variant": "#0039b3",
+                        "inverse-primary": "#b6c4ff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-container": "#e3e6ff",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "surface-tint": "#004dea",
+                        "on-tertiary-fixed-variant": "#364a4d",
+                        "on-tertiary-fixed": "#091f21",
+                        "tertiary-fixed": "#d0e7ea",
+                        "tertiary-container": "#566b6e",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-container": "#d4ebee",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "primary-container": "#0055ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#b4cbce",
+                        "surface-dim": "#d8dadc",
+                        "outline": "#737688",
+                        "surface-container-low": "#f2f4f6",
+                        "primary": "#0041c8",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#001551",
+                        "error-container": "#ffdad6",
+                        "secondary": "#515f78",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "secondary-container": "#d2e0fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "base": "4px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "gutter": "20px",
+                        "sm": "16px",
+                        "lg": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-tech": ["JetBrains Mono"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {
+                            "lineHeight": "1.3",
+                            "fontWeight": "600"
+                        }],
+                        "body-md": ["16px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }],
+                        "label-sm": ["12px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg-mobile": ["32px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "700"
+                        }],
+                        "headline-lg": ["48px", {
+                            "lineHeight": "1.1",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "label-tech": ["14px", {
+                            "lineHeight": "1.4",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "500"
+                        }],
+                        "body-lg": ["18px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-overlay {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-body-md overflow-x-hidden pb-32">
+    <!-- TopAppBar -->
+    <header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_10px_30px_rgba(0,85,255,0.05)]">
+        <div class="flex items-center justify-between px-sm h-16 w-full max-w-container-max mx-auto">
+            <div class="flex items-center gap-sm">
+                <button class="active:scale-95 duration-200 hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+                <h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">AngoTech Museu</h1>
+            </div>
+            <div class="flex items-center gap-xs">
+                <button class="active:scale-95 duration-200 hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary">search</span>
+</button>
+                <button class="active:scale-95 duration-200 hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary">share</span>
+</button>
+            </div>
+        </div>
+    </header>
+    <main class="mt-16 max-w-container-max mx-auto px-sm md:px-lg">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:grid md:grid-cols-12 gap-lg pt-lg items-center">
+            <div class="md:col-span-7 w-full aspect-square md:aspect-video relative group">
+                <div class="absolute inset-0 bg-primary-container/5 rounded-xl -rotate-1 group-hover:rotate-0 transition-transform duration-500"></div>
+                <div class="relative w-full h-full rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,85,255,0.1)]">
+                    <img class="w-full h-full object-cover" data-alt="A pristine, museum-grade Apple Macintosh 128K computer from 1984, photographed in a high-key, minimalist white gallery setting with soft blue ambient shadows. The beige plastic casing of the computer glows under cinematic studio lighting, emphasizing its iconic all-in-one vertical design, small screen, and floppy disk drive. The mood is respectful and historical, evoking a sense of technological legacy in a modern, clean environment."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiVI8oLYjBuIq_jnEgMYrMuDlyGsCu-2Z9UiQxYmNiLcgo2oPlsOSAFccEeVI93i9yJQsWunOJ2YKXPwOQpXfCu7OiVo0Cl-0aBXXaCnIt_401X7eCjuRcmseX7lMXijryWYGMAWkgeSp5ZMMi1NZ-z0Tyxq7juiIZw7C9_2ho8yAoV2usuua5UdxEyzKL2KAegpHEkJbbzOdiC_It2tnB7NYWbAgQAtFdm59IJTvOfHThR1ymqJ3Z3SvSqeL8wenYLrqYz0H-CLoI">
+                    <!-- Interactive Hotspot -->
+                    <div class="absolute top-1/4 right-1/4 animate-pulse">
+                        <button class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white shadow-lg ring-4 ring-primary/20">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">info</span>
+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-5 flex flex-col items-start gap-md">
+                <div>
+                    <span class="font-label-tech text-label-tech text-primary bg-primary-container/10 px-3 py-1 rounded-full uppercase tracking-widest">Era: Computing Pessoal</span>
+                    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mt-base">Apple Macintosh 128K</h2>
+                    <p class="font-label-tech text-label-tech text-secondary mt-xs">LANÇADO EM: 24 DE JANEIRO DE 1984</p>
+                </div>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-prose">
+                    O computador que mudou tudo. Introduzido com o famoso comercial "1984" durante o Super Bowl, o Macintosh foi o primeiro computador pessoal de sucesso a usar uma interface gráfica de usuário (GUI) e um mouse.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-sm w-full">
+                    <button class="flex-1 bg-primary text-white font-label-tech text-label-tech py-4 px-lg rounded-xl hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">view_in_ar</span>
+                        VER EM REALIDADE AUMENTADA
+                    </button>
+                    <button class="flex-1 border border-outline text-on-surface font-label-tech text-label-tech py-4 px-lg rounded-xl hover:bg-surface-container transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">photo_library</span>
+                        GALERIA DE FOTOS
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Bento Grid Specs & History -->
+        <section class="mt-xl grid grid-cols-1 md:grid-cols-12 gap-md">
+            <!-- History Section -->
+            <div class="md:col-span-8 bg-white p-lg rounded-xl shadow-[0_10px_30px_rgba(0,85,255,0.05)] border border-neutral/10">
+                <h3 class="font-headline-md text-headline-md mb-md flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-primary">history_edu</span> História do Ícone
+                </h3>
+                <div class="space-y-sm text-on-surface-variant font-body-md text-body-md leading-relaxed">
+                    <p class="">
+                        Desenvolvido por uma equipe liderada inicialmente por Jef Raskin e depois por Steve Jobs, o Macintosh 128K não era apenas uma máquina, mas uma declaração de design e acessibilidade. Antes dele, operar um computador exigia o aprendizado de comandos de
+                        texto complexos. Com o "Mac", a interação tornou-se visual e intuitiva.
+                    </p>
+                    <p class="">
+                        Seu gabinete compacto "bege" abrigava uma tela monocromática de 9 polegadas, uma unidade de disquete de 3,5 polegadas e, o mais importante, vinha com o MacWrite e o MacPaint, demonstrando imediatamente o potencial da computação gráfica para usuários comuns
+                        e profissionais criativos.
+                    </p>
+                    <p class="">
+                        Apesar do alto preço inicial de US$ 2.495 e de algumas limitações técnicas (como a falta de ventilador para resfriamento silencioso e a memória fixa), ele estabeleceu o padrão para o que um computador moderno deveria ser.
+                    </p>
+                </div>
+            </div>
+            <!-- Specs Table -->
+            <div class="md:col-span-4 bg-surface-container-low p-md rounded-xl flex flex-col">
+                <h3 class="font-headline-md text-headline-md mb-md flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-primary">analytics</span> Especificações
+                </h3>
+                <div class="flex-grow">
+                    <table class="w-full font-label-sm text-label-sm">
+                        <tbody class="divide-y divide-outline-variant/30">
+                            <tr>
+                                <td class="py-md text-secondary font-bold uppercase tracking-tighter">Processador</td>
+                                <td class="py-md text-on-surface text-right">Motorola 68000 @ 8 MHz</td>
+                            </tr>
+                            <tr class="bg-white/40">
+                                <td class="py-md text-secondary font-bold uppercase tracking-tighter">RAM</td>
+                                <td class="py-md text-on-surface text-right">128 KB (Integrada)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-md text-secondary font-bold uppercase tracking-tighter">Armazenamento</td>
+                                <td class="py-md text-on-surface text-right">Drive Disquete 400 KB</td>
+                            </tr>
+                            <tr class="bg-white/40">
+                                <td class="py-md text-secondary font-bold uppercase tracking-tighter">Resolução</td>
+                                <td class="py-md text-on-surface text-right">512 x 342 Monocromático</td>
+                            </tr>
+                            <tr>
+                                <td class="py-md text-secondary font-bold uppercase tracking-tighter">Preço Lançamento</td>
+                                <td class="py-md text-primary font-bold text-right">$2,495.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!-- Fun Facts Section -->
+        <section class="mt-xl">
+            <h3 class="font-headline-md text-headline-md mb-lg text-center">Curiosidades</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+                <!-- Fact Card 1 -->
+                <div class="group bg-white p-md rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.02)] border border-neutral/5 hover:bg-primary-container/5 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center mb-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">signature</span>
+                    </div>
+                    <h4 class="font-headline-md text-[18px] mb-xs">Assinaturas Internas</h4>
+                    <p class="text-on-surface-variant text-body-md">O interior da carcaça plástica trazia as assinaturas gravadas de toda a equipe de desenvolvimento do Macintosh.</p>
+                </div>
+                <!-- Fact Card 2 -->
+                <div class="group bg-white p-md rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.02)] border border-neutral/5 hover:bg-primary-container/5 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center mb-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">toys</span>
+                    </div>
+                    <h4 class="font-headline-md text-[18px] mb-xs">Inspirado em Picasso</h4>
+                    <p class="text-on-surface-variant text-body-md">A identidade visual original e os ícones foram inspirados em um estilo de linha minimalista que lembrava a arte de Picasso.</p>
+                </div>
+                <!-- Fact Card 3 -->
+                <div class="group bg-white p-md rounded-xl shadow-[0_5px_15px_rgba(0,0,0,0.02)] border border-neutral/5 hover:bg-primary-container/5 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center mb-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">ac_unit</span>
+                    </div>
+                    <h4 class="font-headline-md text-[18px] mb-xs">Sem Ventoinha</h4>
+                    <p class="text-on-surface-variant text-body-md">Steve Jobs insistiu que a máquina não tivesse ventoinhas para ser silenciosa, o que causava problemas de superaquecimento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_-10px_30px_rgba(0,85,255,0.05)] rounded-t-full">
+        <div class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform">
+            <span class="material-symbols-outlined">history_edu</span>
+            <span class="font-label-tech text-[10px] uppercase">Timeline</span>
+        </div>
+        <div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-300 transition-transform">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">museum</span>
+            <span class="font-label-tech text-[10px] uppercase">Exhibits</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform">
+            <span class="material-symbols-outlined">search</span>
+            <span class="font-label-tech text-[10px] uppercase">Search</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-tech text-[10px] uppercase">Library</span>
+        </div>
+    </nav>
+    <script>
+        // Micro-interactions for hotspots and scrolling
+        document.addEventListener('DOMContentLoaded', () => {
+            const hotspot = document.querySelector('.animate-pulse');
+            hotspot?.addEventListener('click', () => {
+                alert('Detalhe Técnico: Drive de disquete Sony 3.5" de 400KB - Uma revolução para a época, substituindo os frágeis disquetes de 5.25".');
+            });
+
+            // Smooth parallax effect for the hero image on scroll
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroImage = document.querySelector('img');
+                if (heroImage) {
+                    heroImage.style.transform = `translateY(${scrolled * 0.05}px)`;
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

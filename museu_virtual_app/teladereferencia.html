@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Arquivo de Silício | Museu Virtual</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "on-primary-container": "#e3e6ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "tertiary-fixed-dim": "#b4cbce",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#566b6e",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-fixed": "#091f21",
+                        "inverse-primary": "#b6c4ff",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#d2e0fe",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-container": "#55637d",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "on-surface-variant": "#434656",
+                        "on-primary-fixed-variant": "#0039b3",
+                        "on-primary-fixed": "#001551",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#004dea",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c3c5d9",
+                        "surface-dim": "#d8dadc",
+                        "secondary": "#515f78",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d6e3ff",
+                        "primary-container": "#0055ff",
+                        "primary": "#0041c8",
+                        "surface-container": "#eceef0",
+                        "surface": "#f7f9fb",
+                        "tertiary-fixed": "#d0e7ea",
+                        "outline": "#737688",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-fixed": "#0d1c32",
+                        "on-tertiary-fixed-variant": "#364a4d",
+                        "tertiary": "#3e5356",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#d4ebee",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "gutter": "20px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-tech": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", {
+                            "lineHeight": "1.1",
+                            "letterSpacing": "-0.02em",
+                            "fontWeight": "700"
+                        }],
+                        "body-md": ["16px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }],
+                        "body-lg": ["18px", {
+                            "lineHeight": "1.6",
+                            "fontWeight": "400"
+                        }],
+                        "label-tech": ["14px", {
+                            "lineHeight": "1.4",
+                            "letterSpacing": "0.05em",
+                            "fontWeight": "500"
+                        }],
+                        "headline-md": ["24px", {
+                            "lineHeight": "1.3",
+                            "fontWeight": "600"
+                        }],
+                        "label-sm": ["12px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "400"
+                        }],
+                        "headline-lg-mobile": ["32px", {
+                            "lineHeight": "1.2",
+                            "fontWeight": "700"
+                        }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f7f9fb;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #0041c8 0%, #0041c8 50%, #dce1ff 100%);
+        }
+        
+        .hotspot-pulse::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #0041c8;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-surface">
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,85,255,0.05)] flex items-center justify-between px-sm h-16">
+        <div class="flex items-center gap-xs">
+            <button class="material-symbols-outlined text-primary p-2 hover:bg-primary-container/10 transition-colors active:scale-95 duration-200">menu</button>
+            <h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">AngoTech Museu</h1>
+        </div>
+        <div class="flex items-center gap-xs">
+            <button class="material-symbols-outlined text-primary p-2 hover:bg-primary-container/10 transition-colors active:scale-95 duration-200">search</button>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="pt-24 pb-32 px-sm md:px-lg max-w-container-max mx-auto relative overflow-hidden">
+        <!-- Hero Intro -->
+        <section class="mb-xl text-center md:text-left">
+            <span class="font-label-tech text-label-tech text-primary uppercase tracking-widest mb-base block">Jornada Evolutiva</span>
+            <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-md">Rastreando o Pulso do Silício</h2>
+            <p class="text-body-lg text-secondary max-w-2xl">Uma odisseia vertical curada pelas máquinas que definiram a capacidade humana. Role para atravessar décadas de inovação.</p>
+        </section>
+        <!-- Timeline Gallery -->
+        <div class="relative">
+            <!-- Continuous Timeline Line (Desktop only) -->
+            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant -translate-x-1/2"></div>
+            <!-- Era 1: Mainframes -->
+            <section class="relative mb-xl grid grid-cols-1 md:grid-cols-12 items-center gap-md md:gap-xl">
+                <div class="md:col-span-6 md:text-right">
+                    <span class="font-label-tech text-label-tech text-primary-container font-bold mb-xs block">Anos 40 — 1950</span>
+                    <h3 class="font-headline-md text-headline-md mb-xs">A Era dos Gigantes</h3>
+                    <p class="text-body-md text-secondary mb-md">Behemoths de tubos de vácuo do tamanho de salas que calcularam as primeiras trajetórias matemáticas complexas da era moderna.</p>
+                    <button class="px-md py-xs border border-primary text-primary font-label-tech text-label-tech hover:bg-primary/5 transition-colors">Explorar ENIAC</button>
+                </div>
+                <div class="md:col-span-6 relative">
+                    <div class="group relative overflow-hidden rounded-xl shadow-[0_10px_30px_rgba(0,85,255,0.05)] bg-surface-container-low aspect-video">
+                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="Uma fotografia cinematográfica de alta resolução do computador ENIAC em um laboratório minimalista de meados do século. Gabinetes pretos maciços cheios de tubos de vácuo brilhantes e fios emaranhados dominam o quadro. A iluminação é dramática e fria, mantendo uma estética de galeria de alta qualidade."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuByblnADO9XCv08fqBcipyEoB1Fa3k5qr8VuSeo_JCtI5VK0u5M-1F-tipRAaRCWOVfVIGSG5GfbgA7bTJCbQxkz5wMWA07BS4L1eVkkjqJmi8GQGCGK6VvCDeOYcwrPF6E0TeORJ9YqMO7BwtMdpl_1JvICsSA-GHfhghZ2lSIku1hF25kEp1lcrTMvgoufGu4lEuuDp37HBTQPn4uHgbRcqEwFqw8b2pfueVo46xidzPpcbcceG1qbmUWJj-bz-GXfonUxYK7K8dr">
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <!-- Hotspot -->
+                        <div class="absolute top-1/4 right-1/4 w-4 h-4 bg-primary rounded-full hotspot-pulse cursor-pointer"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Era 2: Personal Computing -->
+            <section class="relative mb-xl grid grid-cols-1 md:grid-cols-12 items-center gap-md md:gap-xl">
+                <div class="md:col-span-6 order-2 md:order-1 relative">
+                    <div class="group relative overflow-hidden rounded-xl shadow-[0_10px_30px_rgba(0,85,255,0.05)] bg-surface-container-low aspect-square md:aspect-video">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="Foto de estúdio profissional de um computador pessoal icônico dos anos 80, como um Macintosh ou PC IBM, contra um fundo de galeria imaculado. A iluminação é suave, destacando as texturas plásticas beges e o brilho da tela CRT."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7yr8FCSw1Z7-Q_Em9yH4ubbGXnnu8Ck0w05ME3UIK6TF00YK1zQ4i1H6iAZwHoRpv9G1whzIrUDFHH63C-bbr9o94DQzqvfKUKQC1wsdDjgyNXcTMUzDZv75XX55ottmWg_N6ZHbQtjHqRgo_T3_bl9gBRiMA7WHJ2rgK9vlm8Tpw-ZJJ33lz7KYicpbepztna8-TfTmEHCE02RJ4Ja0g6Ea9wqOEebMYFF9LUjIc9nFsNhZS9B9LofSeYMvlOvpJj_OEnKOwx0qM">
+                        <div class="absolute bottom-4 left-4 glass-nav p-xs rounded-lg border border-white/20">
+                            <span class="font-label-tech text-label-sm text-primary">Artefato #082: Macintosh 128K</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 order-1 md:order-2">
+                    <span class="font-label-tech text-label-tech text-primary-container font-bold mb-xs block">Anos 70 — 1980</span>
+                    <h3 class="font-headline-md text-headline-md mb-xs">Libertação Pessoal</h3>
+                    <p class="text-body-md text-secondary mb-md">Quando o terminal saiu do laboratório para a sala de estar. Uma revolução de interfaces acessíveis e gabinetes de plástico.</p>
+                    <button class="px-md py-xs bg-primary text-on-primary font-label-tech text-label-tech hover:opacity-90 transition-opacity active:scale-95 duration-200">Tour Virtual</button>
+                </div>
+            </section>
+            <!-- Era 3: The Supercomputer -->
+            <section class="relative mb-xl grid grid-cols-1 md:grid-cols-12 items-center gap-md md:gap-xl">
+                <div class="md:col-span-6 md:text-right">
+                    <span class="font-label-tech text-label-tech text-primary-container font-bold mb-xs block">Anos 90 — Presente</span>
+                    <h3 class="font-headline-md text-headline-md mb-xs">Lógica de Hiperscala</h3>
+                    <p class="text-body-md text-secondary mb-md">Processamento paralelo em escalas arquitetônicas. O design da velocidade e a estética do resfriamento de data centers.</p>
+                    <div class="mt-md inline-grid grid-cols-2 gap-xs text-left">
+                        <div class="p-xs bg-surface-container-low rounded-lg">
+                            <p class="font-label-sm text-label-sm text-secondary">Poder de Pico</p>
+                            <p class="font-label-tech text-primary font-bold">1.1 Exaflops</p>
+                        </div>
+                        <div class="p-xs bg-surface-container-low rounded-lg">
+                            <p class="font-label-sm text-label-sm text-secondary">Nós</p>
+                            <p class="font-label-tech text-primary font-bold">9.408</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-6 relative">
+                    <div class="group relative overflow-hidden rounded-xl shadow-[0_10px_30px_rgba(0,85,255,0.05)] bg-surface-container-low aspect-video">
+                        <img class="w-full h-full object-cover" data-alt="Uma visão arquitetônica abstrata de uma sala de servidores de supercomputador moderna. Fileiras de gabinetes pretos elegantes iluminados por tiras de LED azuis brilhantes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjmvntaV-qN1VGC68Ioa8QH31rNkRB1bQ5gE4JOt0MyKUE0DzwIF2HZe96eX2Xq3eHSjQhJq21n3yVW_RB3ouj20Iih-jibGC_GRlRPAh4VItUB5z5Y1GgsfkNgrKLSmpzW34ZvOWWSaUurjdFFi6GT_-ICFplGfUomV7S50PDBkpnjNJfSSdoFxd43lbLdFJuzEym-vNtZOQjg5cm7sdk2nzA5x6jIJjjtUYneEnqS-N45vltykz0j_cqFITcUKXlLBGSlWcOR0gB">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Decorative Background Element -->
+        <div class="fixed top-0 right-0 -z-10 w-1/3 h-full opacity-5 pointer-events-none">
+        </div>
+    </main>
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl flex justify-around items-center px-4 pb-4 pt-2 shadow-[0_-10px_30px_rgba(0,85,255,0.05)] rounded-t-full">
+        <!-- Active: Timeline -->
+        <a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-300 transition-transform" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+            <span class="font-label-tech text-label-tech">Linha do Tempo</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform" href="#">
+            <span class="material-symbols-outlined">museum</span>
+            <span class="font-label-tech text-label-tech">Exibições</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform" href="#">
+            <span class="material-symbols-outlined">search</span>
+            <span class="font-label-tech text-label-tech">Buscar</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-secondary hover:opacity-80 active:scale-90 duration-300 transition-transform" href="#">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="font-label-tech text-label-tech">Biblioteca</span>
+        </a>
+    </nav>
+    <!-- Interactive Micro-interaction Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hotspots = document.querySelectorAll('.hotspot-pulse');
+            hotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', () => {
+                    alert('Especificação Técnica: O ENIAC utilizava mais de 17.000 tubos de vácuo e ocupava cerca de 167 metros quadrados.');
+                });
+            });
+
+            // Subtle parallax for images
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const images = document.querySelectorAll('img');
+                images.forEach((img, index) => {
+                    const speed = 0.05 * (index + 1);
+                    img.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
