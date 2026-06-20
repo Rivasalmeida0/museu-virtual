@@ -1,0 +1,13 @@
+# Node / backend
+node_modules/
+**/node_modules/
+.env
+**/.env
+npm-debug.log
+
+# Flutter / app
+**/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml

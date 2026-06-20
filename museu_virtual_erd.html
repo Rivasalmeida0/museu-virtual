@@ -1,0 +1,193 @@
+
+<style>
+#erd { padding: 1rem 0; }
+#erd svg { width: 100%; }
+</style>
+<div id="erd"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Anthropic Sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '13px',
+    fontFamily: '"Anthropic Sans", sans-serif',
+    lineColor: dark ? '#9c9a92' : '#73726c',
+    textColor: dark ? '#c2c0b6' : '#3d3d3a',
+  },
+});
+
+const diagram = `erDiagram
+  UTILIZADORES {
+    uuid id PK
+    string nome
+    string email
+    string senha_hash
+    string papel
+    string avatar_url
+    timestamp criado_em
+    timestamp ultimo_acesso
+  }
+
+  SESSOES {
+    uuid id PK
+    uuid utilizador_id FK
+    string token
+    timestamp expira_em
+    string ip_origem
+  }
+
+  GALERIAS {
+    uuid id PK
+    string nome
+    string descricao
+    string tema
+    string imagem_capa_url
+    boolean ativa
+    timestamp criado_em
+  }
+
+  PECAS {
+    uuid id PK
+    uuid galeria_id FK
+    uuid criador_id FK
+    string titulo
+    string descricao
+    string tipo
+    string ficheiro_original
+    string ficheiro_comprimido
+    bigint tamanho_original
+    bigint tamanho_comprimido
+    string formato_compressao
+    float taxa_compressao
+    string url_streaming
+    boolean publicada
+    timestamp criado_em
+  }
+
+  FICHEIROS_MEDIA {
+    uuid id PK
+    uuid peca_id FK
+    string tipo_media
+    string url_original
+    string url_comprimida
+    string codec
+    bigint tamanho_bytes
+    int duracao_segundos
+    int largura
+    int altura
+    float taxa_compressao
+    int tempo_processamento_ms
+    timestamp processado_em
+  }
+
+  COMPRESSAO_LOG {
+    uuid id PK
+    uuid ficheiro_id FK
+    string algoritmo
+    bigint tamanho_antes
+    bigint tamanho_depois
+    float taxa_compressao
+    float qualidade_percebida
+    int tempo_ms
+    string estado
+    timestamp criado_em
+  }
+
+  STREAMING_SESSOES {
+    uuid id PK
+    uuid peca_id FK
+    uuid utilizador_id FK
+    string tipo
+    string protocolo
+    string estado
+    int posicao_segundos
+    string resolucao
+    int bitrate
+    timestamp iniciado_em
+    timestamp terminado_em
+  }
+
+  FAVORITOS {
+    uuid id PK
+    uuid utilizador_id FK
+    uuid peca_id FK
+    timestamp adicionado_em
+  }
+
+  COMENTARIOS {
+    uuid id PK
+    uuid utilizador_id FK
+    uuid peca_id FK
+    uuid pai_id FK
+    string conteudo
+    boolean aprovado
+    timestamp criado_em
+  }
+
+  DOWNLOADS {
+    uuid id PK
+    uuid utilizador_id FK
+    uuid peca_id FK
+    string ip_origem
+    timestamp baixado_em
+  }
+
+  LOGS_SISTEMA {
+    uuid id PK
+    uuid utilizador_id FK
+    string acao
+    string entidade
+    uuid entidade_id
+    string detalhes
+    string ip
+    timestamp criado_em
+  }
+
+  UTILIZADORES ||--o{ SESSOES : "autentica"
+  UTILIZADORES ||--o{ PECAS : "cria"
+  UTILIZADORES ||--o{ FAVORITOS : "guarda"
+  UTILIZADORES ||--o{ COMENTARIOS : "escreve"
+  UTILIZADORES ||--o{ DOWNLOADS : "descarrega"
+  UTILIZADORES ||--o{ STREAMING_SESSOES : "reproduz"
+  GALERIAS ||--o{ PECAS : "contém"
+  PECAS ||--o{ FICHEIROS_MEDIA : "tem"
+  PECAS ||--o{ FAVORITOS : "recebe"
+  PECAS ||--o{ COMENTARIOS : "recebe"
+  PECAS ||--o{ DOWNLOADS : "regista"
+  PECAS ||--o{ STREAMING_SESSOES : "é transmitida"
+  FICHEIROS_MEDIA ||--o{ COMPRESSAO_LOG : "regista"
+  COMENTARIOS ||--o{ COMENTARIOS : "responde"
+`;
+
+const { svg } = await mermaid.render('erd-svg', diagram);
+document.getElementById('erd').innerHTML = svg;
+
+document.querySelectorAll('#erd svg.erDiagram .node').forEach(node => {
+  const firstPath = node.querySelector('path[d]');
+  if (!firstPath) return;
+  const d = firstPath.getAttribute('d');
+  const nums = d.match(/-?[\d.]+/g)?.map(Number);
+  if (!nums || nums.length < 8) return;
+  const xs = [nums[0], nums[2], nums[4], nums[6]];
+  const ys = [nums[1], nums[3], nums[5], nums[7]];
+  const x = Math.min(...xs), y = Math.min(...ys);
+  const w = Math.max(...xs) - x, h = Math.max(...ys) - y;
+  const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', x); rect.setAttribute('y', y);
+  rect.setAttribute('width', w); rect.setAttribute('height', h);
+  rect.setAttribute('rx', '8');
+  for (const a of ['fill', 'stroke', 'stroke-width', 'class', 'style']) {
+    if (firstPath.hasAttribute(a)) rect.setAttribute(a, firstPath.getAttribute(a));
+  }
+  firstPath.replaceWith(rect);
+});
+
+document.querySelectorAll('#erd svg.erDiagram .row-rect-odd path, #erd svg.erDiagram .row-rect-even path').forEach(p => {
+  p.setAttribute('stroke', 'none');
+});
+</script>
