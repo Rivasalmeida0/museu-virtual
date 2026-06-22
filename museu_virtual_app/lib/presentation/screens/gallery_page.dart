@@ -10,7 +10,9 @@ import '../widgets/piece_card.dart';
 import 'piece_detail_page.dart';
 
 class GalleryPage extends ConsumerStatefulWidget {
-  const GalleryPage({super.key});
+  final int initialTab;
+
+  const GalleryPage({super.key, this.initialTab = 0});
 
   @override
   ConsumerState<GalleryPage> createState() => _GalleryPageState();
@@ -24,7 +26,7 @@ class _GalleryPageState extends ConsumerState<GalleryPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 3, vsync: this, initialIndex: widget.initialTab);
   }
 
   @override
@@ -141,7 +143,7 @@ class _PieceGrid extends StatelessWidget {
         child: LoadingGrid(),
       ),
       error: (err, stack) => ErrorDisplay(
-        message: err.toString(),
+        message: 'Erro ao carregar: ${err.toString().replaceAll("Exception: ", "")}',
         onRetry: () {},
       ),
       data: (list) {

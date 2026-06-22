@@ -15,11 +15,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final _pages = const [
-    _MuseumHomeContent(),
-    GalleryPage(),
-    StreamingPage(),
-  ];
+  late final List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      _MuseumHomeContent(onNavigate: _onNavigate),
+      GalleryPage(initialTab: 0),
+      StreamingPage(),
+    ];
+  }
+
+  void _onNavigate(int index) {
+    setState(() => _selectedIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: _BottomNavBar(
         selectedIndex: _selectedIndex,
-        onTap: (i) => setState(() => _selectedIndex = i),
+        onTap: _onNavigate,
       ),
     );
   }
@@ -107,7 +117,9 @@ class _TopIcon extends StatelessWidget {
 }
 
 class _MuseumHomeContent extends StatelessWidget {
-  const _MuseumHomeContent();
+  final void Function(int index) onNavigate;
+
+  const _MuseumHomeContent({required this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +137,7 @@ class _MuseumHomeContent extends StatelessWidget {
               children: [
                 _HeroSection(),
                 const SizedBox(height: 48),
-                _CategoryRow(isWide: isWide),
+                _CategoryRow(isWide: isWide, onNavigate: onNavigate),
                 const SizedBox(height: 48),
                 _AboutSection(),
               ],
@@ -182,13 +194,13 @@ class _HeroSection extends StatelessWidget {
           children: [
             _StatBadge(
               icon: Icons.computer,
-              value: '25+',
+              value: '16+',
               label: 'Peças',
             ),
             const SizedBox(width: 16),
             _StatBadge(
               icon: Icons.history,
-              value: '1941',
+              value: '1945',
               label: 'Ano mais antigo',
             ),
             const SizedBox(width: 16),
@@ -261,7 +273,9 @@ class _StatBadge extends StatelessWidget {
 
 class _CategoryRow extends StatelessWidget {
   final bool isWide;
-  const _CategoryRow({required this.isWide});
+  final void Function(int index) onNavigate;
+
+  const _CategoryRow({required this.isWide, required this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
@@ -283,9 +297,9 @@ class _CategoryRow extends StatelessWidget {
               Expanded(child: _CategoryCard(
                 icon: Icons.computer,
                 title: 'Computadores Históricos',
-                subtitle: 'Dos anos 40 aos 80',
+                subtitle: 'Dos anos 40 aos 90',
                 color: AppColors.primary,
-                onTap: () {},
+                onTap: () => onNavigate(1),
               )),
               const SizedBox(width: 16),
               Expanded(child: _CategoryCard(
@@ -293,7 +307,7 @@ class _CategoryRow extends StatelessWidget {
                 title: 'Supercomputadores',
                 subtitle: 'Poder exascale',
                 color: AppColors.angolaGold,
-                onTap: () {},
+                onTap: () => onNavigate(1),
               )),
               const SizedBox(width: 16),
               Expanded(child: _CategoryCard(
@@ -301,7 +315,7 @@ class _CategoryRow extends StatelessWidget {
                 title: 'Streaming ao Vivo',
                 subtitle: 'Visitas guiadas',
                 color: AppColors.angolaRed,
-                onTap: () {},
+                onTap: () => onNavigate(2),
               )),
             ],
           )
@@ -311,9 +325,9 @@ class _CategoryRow extends StatelessWidget {
               _CategoryCard(
                 icon: Icons.computer,
                 title: 'Computadores Históricos',
-                subtitle: 'Dos anos 40 aos 80',
+                subtitle: 'Dos anos 40 aos 90',
                 color: AppColors.primary,
-                onTap: () {},
+                onTap: () => onNavigate(1),
               ),
               const SizedBox(height: 12),
               _CategoryCard(
@@ -321,7 +335,7 @@ class _CategoryRow extends StatelessWidget {
                 title: 'Supercomputadores',
                 subtitle: 'Poder exascale',
                 color: AppColors.angolaGold,
-                onTap: () {},
+                onTap: () => onNavigate(1),
               ),
               const SizedBox(height: 12),
               _CategoryCard(
@@ -329,7 +343,7 @@ class _CategoryRow extends StatelessWidget {
                 title: 'Streaming ao Vivo',
                 subtitle: 'Visitas guiadas',
                 color: AppColors.angolaRed,
-                onTap: () {},
+                onTap: () => onNavigate(2),
               ),
             ],
           ),

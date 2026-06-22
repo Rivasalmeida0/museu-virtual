@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../core/constants/api_constants.dart';
 import '../../domain/entities/museum_piece.dart';
 
 class PieceSpecModel {
@@ -64,6 +65,14 @@ class MuseumPieceModel {
         } catch (_) {}
       }
     }
+
+    final rawImg = json['imagemUrl'] as String? ??
+        json['imagem_url'] as String? ??
+        '';
+    final parsedImg = rawImg.startsWith('/')
+        ? '${ApiConstants.baseUrl}$rawImg'
+        : rawImg;
+
     return MuseumPieceModel(
       id: json['id'] is int
           ? json['id'] as int
@@ -76,9 +85,7 @@ class MuseumPieceModel {
       categoria: json['categoria'] as String? ?? '',
       descricao: json['descricao'] as String? ?? '',
       curiosidade: json['curiosidade'] as String? ?? '',
-      imagemUrl: json['imagemUrl'] as String? ??
-          json['imagem_url'] as String? ??
-          '',
+      imagemUrl: parsedImg,
       wikipediaUrl: json['wikipediaUrl'] as String? ??
           json['wikipedia_url'] as String? ??
           '',

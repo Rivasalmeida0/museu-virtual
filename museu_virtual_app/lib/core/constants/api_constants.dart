@@ -1,7 +1,11 @@
 class ApiConstants {
   ApiConstants._();
 
-  static const String baseUrl = 'http://192.168.20.55:3000';
+  // Android emulator -> 10.0.2.2
+  // iOS simulator   -> localhost
+  // Dispositivo físico -> IP do teu computador (ex: 192.168.1.100)
+  // Web             -> localhost
+  static const String baseUrl = 'http://10.0.2.2:3000';
   static const String apiPrefix = '/api/v1';
 
   static const String computadores = '$apiPrefix/computadores';
