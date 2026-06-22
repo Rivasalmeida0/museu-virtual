@@ -11,3 +11,5 @@ npm-debug.log
 .flutter-plugins
 .flutter-plugins-dependencies
 *.iml
+.idea/
+**/.idea/

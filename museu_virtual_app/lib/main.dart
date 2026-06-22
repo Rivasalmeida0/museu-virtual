@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'screens/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/theme/app_theme.dart';
+import 'presentation/screens/home_page.dart';
 
 void main() {
-  runApp(const AngoTechMuseuApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    const ProviderScope(
+      child: AngoTechMuseuApp(),
+    ),
+  );
 }
 
 class AngoTechMuseuApp extends StatelessWidget {
@@ -11,16 +18,9 @@ class AngoTechMuseuApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AngoTech Museu',
+      title: 'Museu Virtual de Computadores',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0041C8),
-          brightness: Brightness.light,
-        ),
-        scaffoldBackgroundColor: const Color(0xFFF7F9FB),
-        fontFamily: 'Hanken Grotesk',
-      ),
+      theme: AppTheme.light,
       home: const HomePage(),
     );
   }

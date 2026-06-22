@@ -25,6 +25,8 @@ const pecaRoutes        = require('./src/routes/peca.rotas');
 const mediaRoutes       = require('./src/routes/media.rotas');
 const fluxoRoutes       = require('./src/routes/fluxo.rotas');
 const relatorioRoutes   = require('./src/routes/relatorio.rotas');
+const computadorRoutes  = require('./src/routes/computador.rotas');
+const streamingRoutes   = require('./src/routes/streaming.rotas');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -108,6 +110,8 @@ app.use(`${API}/pecas`,        pecaRoutes);        // /api/v1/pecas
 app.use(`${API}/media`,        mediaRoutes);       // /api/v1/media
 app.use(`${API}/fluxo`,        fluxoRoutes);       // /api/v1/fluxo
 app.use(`${API}/relatorios`,   relatorioRoutes);   // /api/v1/relatorios
+app.use(`${API}/computadores`, computadorRoutes);  // /api/v1/computadores
+app.use(`${API}/streaming`,    streamingRoutes);   // /api/v1/streaming
 
 // =============================================================
 //  ROTA NÃO ENCONTRADA (404)
