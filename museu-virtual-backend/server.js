@@ -18,13 +18,13 @@ const fs       = require('fs');
 const { connectDB } = require('./src/config/db');
 
 // ── Importar rotas ────────────────────────────────────────────
-const authRoutes     = require('./src/routes/auth.routes');
-const userRoutes     = require('./src/routes/user.routes');
-const exhibitRoutes  = require('./src/routes/exhibit.routes');
-const artifactRoutes = require('./src/routes/artifact.routes');
-const mediaRoutes    = require('./src/routes/media.routes');
-const streamRoutes   = require('./src/routes/stream.routes');
-const reportRoutes   = require('./src/routes/report.routes');
+const authRoutes        = require('./src/routes/autenticacao.rotas');
+const utilizadorRoutes  = require('./src/routes/utilizador.rotas');
+const exposicaoRoutes   = require('./src/routes/exposicao.rotas');
+const pecaRoutes        = require('./src/routes/peca.rotas');
+const mediaRoutes       = require('./src/routes/media.rotas');
+const fluxoRoutes       = require('./src/routes/fluxo.rotas');
+const relatorioRoutes   = require('./src/routes/relatorio.rotas');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -101,13 +101,13 @@ app.get('/health', (req, res) => {
 // =============================================================
 const API = '/api/v1';
 
-app.use(`${API}/auth`,      authRoutes);      // /api/v1/auth/login|register|refresh
-app.use(`${API}/users`,     userRoutes);      // /api/v1/users
-app.use(`${API}/exhibits`,  exhibitRoutes);   // /api/v1/exhibits
-app.use(`${API}/artifacts`, artifactRoutes);  // /api/v1/artifacts
-app.use(`${API}/media`,     mediaRoutes);     // /api/v1/media  (upload/download)
-app.use(`${API}/stream`,    streamRoutes);    // /api/v1/stream (VOD + live)
-app.use(`${API}/reports`,   reportRoutes);    // /api/v1/reports (compressão)
+app.use(`${API}/autenticacao`, authRoutes);       // /api/v1/autenticacao
+app.use(`${API}/utilizadores`, utilizadorRoutes);  // /api/v1/utilizadores
+app.use(`${API}/exposicoes`,   exposicaoRoutes);   // /api/v1/exposicoes
+app.use(`${API}/pecas`,        pecaRoutes);        // /api/v1/pecas
+app.use(`${API}/media`,        mediaRoutes);       // /api/v1/media
+app.use(`${API}/fluxo`,        fluxoRoutes);       // /api/v1/fluxo
+app.use(`${API}/relatorios`,   relatorioRoutes);   // /api/v1/relatorios
 
 // =============================================================
 //  ROTA NÃO ENCONTRADA (404)

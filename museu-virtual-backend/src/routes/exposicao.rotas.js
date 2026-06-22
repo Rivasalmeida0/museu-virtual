@@ -7,8 +7,8 @@ const { registarActividade }          = require('../middleware/registo.middlewar
 
 roteador.get('/',         verificarToken, Controlador.listar);
 roteador.get('/:id',      verificarToken, Controlador.obterPorId);
-roteador.post('/',        verificarToken, apenasAdmin, registarActividade('CRIAR_EXPOSICAO', 'exhibits'), Controlador.criar);
-roteador.put('/:id',      verificarToken, apenasAdmin, registarActividade('ACTUALIZAR_EXPOSICAO', 'exhibits'), Controlador.actualizar);
-roteador.delete('/:id',   verificarToken, apenasAdmin, registarActividade('REMOVER_EXPOSICAO',   'exhibits'), Controlador.desactivar);
+roteador.post('/',        verificarToken, apenasAdmin, registarActividade('CRIAR_EXPOSICAO', 'exposicoes'), Controlador.criar);
+roteador.put('/:id',      verificarToken, apenasAdmin, registarActividade('ACTUALIZAR_EXPOSICAO', 'exposicoes'), Controlador.actualizar);
+roteador.delete('/:id',   verificarToken, apenasAdmin, registarActividade('REMOVER_EXPOSICAO',   'exposicoes'), Controlador.desactivar);
 
 module.exports = roteador;

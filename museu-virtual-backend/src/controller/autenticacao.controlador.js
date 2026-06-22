@@ -28,15 +28,4 @@ async function entrar(req, res, next) {
   } catch (erro) { next(erro); }
 }
 
-async function renovarToken(req, res, next) {
-  try {
-    const { tokenRenovacao } = req.body;
-    if (!tokenRenovacao) {
-      return res.status(400).json({ sucesso: false, mensagem: 'Token de renovação não fornecido.' });
-    }
-    const tokens = await AutenticacaoServico.renovarToken(tokenRenovacao);
-    res.status(200).json({ sucesso: true, dados: tokens });
-  } catch (erro) { next(erro); }
-}
-
-module.exports = { registar, entrar, renovarToken };
+module.exports = { registar, entrar };

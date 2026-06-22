@@ -22,7 +22,7 @@ async function registar(nome, email, senha, funcao = 'visitante') {
   const idNovo     = await UtilizadorRepositorio.criar(nome, email, hashSenha, funcao);
   const utilizador = await UtilizadorRepositorio.buscarPorId(idNovo);
 
-  return { utilizador, tokens: _gerarTokens(utilizador) };
+  return { utilizador, token: _gerarToken(utilizador) };
 }
 
 async function entrar(email, senha) {
@@ -48,29 +48,10 @@ async function entrar(email, senha) {
   }
 
   const utilizador = await UtilizadorRepositorio.buscarPorId(registo.id);
-  return { utilizador, tokens: _gerarTokens(utilizador) };
+  return { utilizador, token: _gerarToken(utilizador) };
 }
 
-async function renovarToken(tokenRenovacao) {
-  try {
-    const dados      = jwt.verify(tokenRenovacao, process.env.JWT_REFRESH_SECRET);
-    const utilizador = await UtilizadorRepositorio.buscarPorId(dados.id);
-
-    if (!utilizador) {
-      const erro = new Error('Utilizador não encontrado.');
-      erro.statusCode = 401;
-      throw erro;
-    }
-
-    return _gerarTokens(utilizador);
-  } catch {
-    const erro = new Error('Token de renovação inválido ou expirado.');
-    erro.statusCode = 401;
-    throw erro;
-  }
-}
-
-function _gerarTokens(utilizador) {
+function _gerarToken(utilizador) {
   const carga = {
     id    : utilizador.id,
     nome  : utilizador.nome,
@@ -82,13 +63,7 @@ function _gerarTokens(utilizador) {
     expiresIn: process.env.JWT_EXPIRES_IN || '8h',
   });
 
-  const tokenRenovacao = jwt.sign(
-    { id: utilizador.id },
-    process.env.JWT_REFRESH_SECRET,
-    { expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d' }
-  );
-
-  return { tokenAcesso, tokenRenovacao };
+  return { tokenAcesso };
 }
 
-module.exports = { registar, entrar, renovarToken };
+module.exports = { registar, entrar };
