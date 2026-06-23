@@ -28,6 +28,9 @@ const relatorioRoutes   = require('./src/routes/relatorio.rotas');
 const computadorRoutes  = require('./src/routes/computador.rotas');
 const streamingRoutes   = require('./src/routes/streaming.rotas');
 
+const http   = require('http');
+const { Server } = require('socket.io');
+
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
@@ -155,19 +158,32 @@ app.use((err, req, res, next) => {
 });
 
 // =============================================================
-//  INICIAR SERVIDOR
+//  INICIAR SERVIDOR (HTTP + SOCKET.IO)
 // =============================================================
 async function bootstrap() {
   // 1. Conectar à base de dados
   await connectDB();
 
-  // 2. Iniciar o servidor HTTP
-  app.listen(PORT, () => {
+  // 2. Criar servidor HTTP e integrar Socket.IO
+  const server = http.createServer(app);
+  const io = new Server(server, {
+    cors: {
+      origin: process.env.CORS_ORIGIN || '*',
+      methods: ['GET', 'POST'],
+    },
+  });
+
+  const { configurarStreamingSocket } = require('./src/socket/streaming.socket');
+  configurarStreamingSocket(io);
+
+  // 3. Iniciar servidor
+  server.listen(PORT, () => {
     console.log('');
     console.log('🏛️   Museu Virtual Interativo — API');
     console.log(`🚀   Servidor a correr em http://localhost:${PORT}`);
     console.log(`🌍   Ambiente: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📡   Base da API: http://localhost:${PORT}${API}`);
+    console.log(`🔌   Socket.IO streaming: ws://localhost:${PORT}`);
     console.log(`❤️   Health check: http://localhost:${PORT}/health`);
     console.log('');
   });
