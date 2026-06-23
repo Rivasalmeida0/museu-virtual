@@ -26,6 +26,7 @@ const mediaRoutes       = require('./src/routes/media.rotas');
 const fluxoRoutes       = require('./src/routes/fluxo.rotas');
 const relatorioRoutes   = require('./src/routes/relatorio.rotas');
 const computadorRoutes  = require('./src/routes/computador.rotas');
+const conteudoRoutes   = require('./src/routes/conteudo.rotas');
 const streamingRoutes   = require('./src/routes/streaming.rotas');
 
 const http   = require('http');
@@ -114,6 +115,7 @@ app.use(`${API}/media`,        mediaRoutes);       // /api/v1/media
 app.use(`${API}/fluxo`,        fluxoRoutes);       // /api/v1/fluxo
 app.use(`${API}/relatorios`,   relatorioRoutes);   // /api/v1/relatorios
 app.use(`${API}/computadores`, computadorRoutes);  // /api/v1/computadores
+app.use(`${API}/conteudos`,    conteudoRoutes);    // /api/v1/conteudos
 app.use(`${API}/streaming`,    streamingRoutes);   // /api/v1/streaming
 
 // =============================================================

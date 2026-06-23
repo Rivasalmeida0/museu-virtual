@@ -21,8 +21,10 @@ const pastaUpload = path.join(__dirname, '../../..', process.env.UPLOAD_DIR || '
 // ── Destino e nome do ficheiro ────────────────────────────────
 const armazenamento = multer.diskStorage({
   destination(req, ficheiro, callback) {
+    const extensao = path.extname(ficheiro.originalname).toLowerCase();
+    const tiposImagem = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
     const subpasta =
-      ficheiro.mimetype.startsWith('image/') ? 'imagens'  :
+      ficheiro.mimetype.startsWith('image/') || tiposImagem.includes(extensao) ? 'imagens'  :
       ficheiro.mimetype.startsWith('audio/') ? 'audio'    :
       ficheiro.mimetype.startsWith('video/') ? 'video'    : 'originais';
 
@@ -39,6 +41,7 @@ const armazenamento = multer.diskStorage({
 // ── Filtro de tipos permitidos ────────────────────────────────
 const tiposPermitidos = [
   'image/jpeg', 'image/png', 'image/webp', 'image/gif',
+  'application/octet-stream', // navegadores enviam este tipo em uploads
   'audio/mpeg', 'audio/aac', 'audio/ogg', 'audio/wav',
   'video/mp4',  'video/webm', 'video/ogg', 'video/x-matroska',
 ];

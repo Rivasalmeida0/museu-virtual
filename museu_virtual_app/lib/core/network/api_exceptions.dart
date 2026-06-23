@@ -18,6 +18,11 @@ class NotFoundException extends ApiException {
       : super(message, statusCode: 404);
 }
 
+class UnauthorizedException extends ApiException {
+  const UnauthorizedException([String message = 'Sessão expirada. Faça login novamente.'])
+      : super(message, statusCode: 401);
+}
+
 class ServerException extends ApiException {
   const ServerException([String message = 'Erro interno do servidor.'])
       : super(message, statusCode: 500);

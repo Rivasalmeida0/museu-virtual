@@ -66,4 +66,8 @@ function _gerarToken(utilizador) {
   return { tokenAcesso };
 }
 
-module.exports = { registar, entrar };
+async function buscarPorId(id) {
+  return UtilizadorRepositorio.buscarPorId(id);
+}
+
+module.exports = { registar, entrar, buscarPorId };
