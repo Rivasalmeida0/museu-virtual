@@ -1,8 +1,14 @@
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_strings.dart';
+import '../../domain/entities/museum_piece.dart';
+import '../providers/piece_providers.dart';
 import 'gallery_page.dart';
+import 'piece_detail_page.dart';
 import 'streaming_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -116,13 +122,14 @@ class _TopIcon extends StatelessWidget {
   }
 }
 
-class _MuseumHomeContent extends StatelessWidget {
+class _MuseumHomeContent extends ConsumerWidget {
   final void Function(int index) onNavigate;
 
   const _MuseumHomeContent({required this.onNavigate});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final piecesAsync = ref.watch(allPiecesProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
         final isWide = constraints.maxWidth >= 768;
@@ -136,6 +143,8 @@ class _MuseumHomeContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _HeroSection(),
+                const SizedBox(height: 48),
+                _FeaturedSection(piecesAsync: piecesAsync),
                 const SizedBox(height: 48),
                 _CategoryRow(isWide: isWide, onNavigate: onNavigate),
                 const SizedBox(height: 48),
@@ -266,6 +275,193 @@ class _StatBadge extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _FeaturedSection extends StatelessWidget {
+  final AsyncValue<List<MuseumPiece>> piecesAsync;
+
+  const _FeaturedSection({required this.piecesAsync});
+
+  @override
+  Widget build(BuildContext context) {
+    return piecesAsync.when(
+      loading: () => _FeaturedLoading(),
+      error: (_, __) => const SizedBox.shrink(),
+      data: (pieces) {
+        final featured = pieces.take(6).toList();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Computadores em Destaque',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Ver todos',
+                    style: TextStyle(
+                      fontFamily: 'monospace',
+                      fontSize: 12,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              height: 220,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: featured.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 12),
+                itemBuilder: (context, index) {
+                  final piece = featured[index];
+                  return _FeaturedCard(piece: piece);
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _FeaturedLoading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Computadores em Destaque',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textPrimary,
+          ),
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 220,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: 4,
+            separatorBuilder: (_, __) => const SizedBox(width: 12),
+            itemBuilder: (_, __) => Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                width: 180,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _FeaturedCard extends StatelessWidget {
+  final MuseumPiece piece;
+
+  const _FeaturedCard({required this.piece});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => PieceDetailPage(piece: piece),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          width: 180,
+          decoration: BoxDecoration(
+            color: AppColors.cardBg,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primary.withValues(alpha: 0.05),
+                blurRadius: 20,
+                offset: const Offset(0, 5),
+              ),
+            ],
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AspectRatio(
+                aspectRatio: 16 / 10,
+                child: CachedNetworkImage(
+                  imageUrl: piece.imagemUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (_, __) => Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Container(color: Colors.white),
+                  ),
+                  errorWidget: (_, __, ___) => Container(
+                    color: AppColors.surface,
+                    child: const Icon(Icons.computer,
+                        size: 32, color: AppColors.textSecondary),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      piece.nome,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textPrimary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      '${piece.ano} · ${piece.fabricante}',
+                      style: const TextStyle(
+                        fontFamily: 'monospace',
+                        fontSize: 10,
+                        color: AppColors.textSecondary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

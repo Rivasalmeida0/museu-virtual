@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>O Museu Virtual precisa de acesso à câmara para transmitir vídeo ao vivo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>O Museu Virtual precisa de acesso ao microfone para transmitir áudio ao vivo</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
