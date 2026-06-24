@@ -12,6 +12,9 @@ const TABELA = 'computadores';
 const CAMPOS_PUBLICOS = `c.id, c.nome, c.ano, c.fabricante, c.categoria,
                          c.descricao, c.curiosidade,
                          c.imagem_url AS imagemUrl,
+                         c.audio_url AS audioUrl,
+                         c.video_url AS videoUrl,
+                         c.relatorio_compressao AS relatorioCompressao,
                          c.wikipedia_url AS wikipediaUrl,
                          c.criado_em AS criadoEm,
                          c.actualizado_em AS actualizadoEm`;
@@ -37,6 +40,12 @@ const QUERIES = {
                WHERE id = ?`,
 
   actualizarImagem: `UPDATE ${TABELA} SET imagem_url = ? WHERE id = ?`,
+
+  actualizarImagemComRelatorio: `UPDATE ${TABELA} SET imagem_url = ?, relatorio_compressao = ? WHERE id = ?`,
+
+  actualizarAudioComRelatorio: `UPDATE ${TABELA} SET audio_url = ?, relatorio_compressao = ? WHERE id = ?`,
+
+  actualizarVideoComRelatorio: `UPDATE ${TABELA} SET video_url = ?, relatorio_compressao = ? WHERE id = ?`,
 
   desactivar: `UPDATE ${TABELA} SET activa = 0 WHERE id = ?`,
 };

@@ -21,6 +21,7 @@ const { uploadUnico } = require('../middleware/upload.middleware');
 
 // Públicas
 roteador.get('/',        Controlador.listarTodos);
+roteador.get('/pesquisar', Controlador.pesquisar);
 roteador.get('/:id',     Controlador.obterPorId);
 
 // Protegidas — apenas gestores

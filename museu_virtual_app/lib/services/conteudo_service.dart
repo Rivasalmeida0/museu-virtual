@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
-import 'package:image_picker/image_picker.dart';
 import '../core/constants/api_constants.dart';
 import '../core/network/api_exceptions.dart';
 import 'auth_service.dart';
@@ -140,7 +139,7 @@ class ConteudoService {
     }
   }
 
-  Future<Map<String, dynamic>> uploadImagem(int id, XFile imagem) async {
+  Future<Map<String, dynamic>> uploadImagem(int id, Uint8List bytes, {String filename = 'imagem.jpg'}) async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/$id/imagem');
     try {
       final token = await _authService.getToken();
@@ -149,28 +148,117 @@ class ConteudoService {
         request.headers['Authorization'] = 'Bearer $token';
       }
 
-      if (kIsWeb) {
-        final bytes = await imagem.readAsBytes();
-        final extensao = imagem.name.split('.').last.toLowerCase();
-        final mimeType = _mimeType(extensao);
-        request.files.add(http.MultipartFile.fromBytes(
-          'ficheiro',
-          bytes,
-          filename: imagem.name,
-          contentType: mimeType,
-        ));
-      } else {
-        request.files.add(await http.MultipartFile.fromPath('ficheiro', imagem.path));
-      }
+      final extensao = filename.split('.').last.toLowerCase();
+      final mimeType = _mimeType(extensao);
+      request.files.add(http.MultipartFile.fromBytes(
+        'ficheiro',
+        bytes,
+        filename: filename,
+        contentType: mimeType,
+      ));
 
       final streamedResponse = await request.send().timeout(ApiConstants.timeout);
       final response = await http.Response.fromStream(streamedResponse);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
-        return body['dados'] as Map<String, dynamic>;
+        return body;
       }
       throw ApiException(
         body['mensagem'] as String? ?? 'Erro ao enviar imagem.',
+        statusCode: response.statusCode,
+      );
+    } on SocketException {
+      throw const NetworkException();
+    } on http.ClientException {
+      throw const NetworkException();
+    }
+  }
+
+  Future<Map<String, dynamic>> uploadAudio(int id, Uint8List bytes, {String filename = 'audio.mp3'}) async {
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/audio/$id');
+    try {
+      final token = await _authService.getToken();
+      final request = http.MultipartRequest('POST', uri);
+      if (token != null && token.isNotEmpty) {
+        request.headers['Authorization'] = 'Bearer $token';
+      }
+
+      final extensao = filename.split('.').last.toLowerCase();
+      final mimeType = _mimeType(extensao);
+      request.files.add(http.MultipartFile.fromBytes(
+        'ficheiro',
+        bytes,
+        filename: filename,
+        contentType: mimeType,
+      ));
+
+      final streamedResponse = await request.send().timeout(const Duration(minutes: 5));
+      final response = await http.Response.fromStream(streamedResponse);
+      final body = jsonDecode(response.body) as Map<String, dynamic>;
+      if (response.statusCode == 200 && body['sucesso'] == true) {
+        return body;
+      }
+      throw ApiException(
+        body['mensagem'] as String? ?? 'Erro ao enviar áudio.',
+        statusCode: response.statusCode,
+      );
+    } on SocketException {
+      throw const NetworkException();
+    } on http.ClientException {
+      throw const NetworkException();
+    }
+  }
+
+  Future<Map<String, dynamic>> uploadVideo(int id, Uint8List bytes, {String filename = 'video.mp4'}) async {
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/video/$id');
+    try {
+      final token = await _authService.getToken();
+      final request = http.MultipartRequest('POST', uri);
+      if (token != null && token.isNotEmpty) {
+        request.headers['Authorization'] = 'Bearer $token';
+      }
+
+      final extensao = filename.split('.').last.toLowerCase();
+      final mimeType = _mimeType(extensao);
+      request.files.add(http.MultipartFile.fromBytes(
+        'ficheiro',
+        bytes,
+        filename: filename,
+        contentType: mimeType,
+      ));
+
+      final streamedResponse = await request.send().timeout(const Duration(minutes: 30));
+      final response = await http.Response.fromStream(streamedResponse);
+      final body = jsonDecode(response.body) as Map<String, dynamic>;
+      if (response.statusCode == 200 && body['sucesso'] == true) {
+        return body;
+      }
+      throw ApiException(
+        body['mensagem'] as String? ?? 'Erro ao enviar vídeo.',
+        statusCode: response.statusCode,
+      );
+    } on SocketException {
+      throw const NetworkException();
+    } on http.ClientException {
+      throw const NetworkException();
+    }
+  }
+
+  Future<Map<String, dynamic>> obterRelatoriosCompressao() async {
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/relatorio');
+    try {
+      final token = await _authService.getToken();
+      final headers = <String, String>{'Accept': 'application/json'};
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $token';
+      }
+      final response = await http.get(uri, headers: headers).timeout(ApiConstants.timeout);
+      final body = jsonDecode(response.body) as Map<String, dynamic>;
+      if (response.statusCode == 200 && body['sucesso'] == true) {
+        return body;
+      }
+      throw ApiException(
+        body['mensagem'] as String? ?? 'Erro ao obter relatórios.',
         statusCode: response.statusCode,
       );
     } on SocketException {
@@ -189,6 +277,21 @@ class ConteudoService {
         return MediaType('image', 'png');
       case 'webp':
         return MediaType('image', 'webp');
+      case 'mp3':
+      case 'mpeg':
+        return MediaType('audio', 'mpeg');
+      case 'ogg':
+        return MediaType('audio', 'ogg');
+      case 'wav':
+        return MediaType('audio', 'wav');
+      case 'aac':
+        return MediaType('audio', 'aac');
+      case 'mp4':
+        return MediaType('video', 'mp4');
+      case 'webm':
+        return MediaType('video', 'webm');
+      case 'mov':
+        return MediaType('video', 'quicktime');
       default:
         return null;
     }

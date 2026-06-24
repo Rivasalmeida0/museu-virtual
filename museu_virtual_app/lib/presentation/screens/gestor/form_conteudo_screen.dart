@@ -8,6 +8,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../services/conteudo_service.dart';
 import '../../../services/auth_service.dart';
+import '../../widgets/upload_multimidia_widget.dart';
 
 class FormConteudoScreen extends StatefulWidget {
   final Map<String, dynamic>? conteudoExistente;
@@ -110,12 +111,15 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
         _conteudoId = resultado['id'] as int?;
       }
 
-      if (_imagemSelecionada != null && _conteudoId != null) {
-        await _service.uploadImagem(_conteudoId!, _imagemSelecionada!);
-      }
-
       if (mounted) {
-        Navigator.pop(context, true);
+        setState(() {});
+        if (!_isEditing) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Conteúdo criado! Faça upload da multimédia abaixo.'),
+            ),
+          );
+        }
       }
     } catch (e) {
       if (mounted) {
@@ -164,6 +168,16 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
               _buildImagemPicker(),
               const SizedBox(height: 32),
               _buildSubmitButton(),
+
+              if (_conteudoId != null) ...[
+                const SizedBox(height: 32),
+                const Divider(color: Colors.white12),
+                const SizedBox(height: 16),
+                UploadMultimidiaWidget(
+                  conteudoId: _conteudoId!,
+                  conteudo: widget.conteudoExistente,
+                ),
+              ],
               const SizedBox(height: 32),
             ],
           ),

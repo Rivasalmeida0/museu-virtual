@@ -9,7 +9,31 @@
 const { query, queryOne } = require('../config/db');
 const { QUERIES } = require('../model/conteudo.modelo');
 
-async function listarTodos() {
+async function listarTodos(pesquisa = null, categoria = null) {
+  if (pesquisa || categoria) {
+    let sql = `SELECT c.id, c.nome, c.ano, c.fabricante, c.categoria,
+               c.descricao, c.curiosidade,
+               c.imagem_url AS imagemUrl,
+               c.audio_url AS audioUrl,
+               c.video_url AS videoUrl,
+               c.relatorio_compressao AS relatorioCompressao,
+               c.wikipedia_url AS wikipediaUrl,
+               c.criado_em AS criadoEm,
+               c.actualizado_em AS actualizadoEm
+               FROM computadores c WHERE c.activa = 1`;
+    const params = [];
+    if (pesquisa) {
+      sql += ' AND (c.nome LIKE ? OR c.fabricante LIKE ? OR c.descricao LIKE ?)';
+      const termo = `%${pesquisa}%`;
+      params.push(termo, termo, termo);
+    }
+    if (categoria) {
+      sql += ' AND c.categoria = ?';
+      params.push(categoria);
+    }
+    sql += ' ORDER BY c.criado_em DESC';
+    return query(sql, params);
+  }
   return query(QUERIES.listarTodos);
 }
 
@@ -38,6 +62,18 @@ async function actualizarImagem(id, caminhoImagem) {
   return query(QUERIES.actualizarImagem, [caminhoImagem, id]);
 }
 
+async function actualizarImagemComRelatorio(id, url, relatorio) {
+  return query(QUERIES.actualizarImagemComRelatorio, [url, relatorio, id]);
+}
+
+async function actualizarAudioComRelatorio(id, url, relatorio) {
+  return query(QUERIES.actualizarAudioComRelatorio, [url, relatorio, id]);
+}
+
+async function actualizarVideoComRelatorio(id, url, relatorio) {
+  return query(QUERIES.actualizarVideoComRelatorio, [url, relatorio, id]);
+}
+
 async function desactivar(id) {
   return query(QUERIES.desactivar, [id]);
 }
@@ -48,5 +84,8 @@ module.exports = {
   criar,
   actualizar,
   actualizarImagem,
+  actualizarImagemComRelatorio,
+  actualizarAudioComRelatorio,
+  actualizarVideoComRelatorio,
   desactivar,
 };

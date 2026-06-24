@@ -4,8 +4,11 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../services/auth_service.dart';
 import '../../../services/conteudo_service.dart';
+import '../../../services/socket_service.dart';
 import '../../providers/auth_providers.dart';
 import 'form_conteudo_screen.dart';
+import 'relatorio_compressao_screen.dart';
+import 'controlo_streaming_screen.dart';
 
 class PainelGestorScreen extends ConsumerStatefulWidget {
   const PainelGestorScreen({super.key});
@@ -24,6 +27,43 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
   void initState() {
     super.initState();
     _carregar();
+    _iniciarSocket();
+  }
+
+  void _iniciarSocket() {
+    SocketService().iniciar(ApiConstants.baseUrl);
+
+    SocketService().ouvir('novo_conteudo', (data) {
+      if (!mounted) return;
+      setState(() {
+        _conteudos?.insert(0, data as dynamic);
+      });
+    });
+
+    SocketService().ouvir('conteudo_atualizado', (data) {
+      if (!mounted) return;
+      setState(() {
+        final idx = _conteudos?.indexWhere((c) => (c as Map)['id'] == data['id']);
+        if (idx != null && idx >= 0 && idx < (_conteudos?.length ?? 0)) {
+          _conteudos![idx] = data as dynamic;
+        }
+      });
+    });
+
+    SocketService().ouvir('conteudo_apagado', (data) {
+      if (!mounted) return;
+      setState(() {
+        _conteudos?.removeWhere((c) => (c as Map)['id'] == data['id']);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    SocketService().removerOuvinte('novo_conteudo');
+    SocketService().removerOuvinte('conteudo_atualizado');
+    SocketService().removerOuvinte('conteudo_apagado');
+    super.dispose();
   }
 
   Future<void> _carregar() async {
@@ -95,6 +135,28 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _carregar,
+          ),
+          IconButton(
+            icon: const Icon(Icons.compress),
+            tooltip: 'Relatório de Compressão',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => const RelatorioCompressaoScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.live_tv),
+            tooltip: 'Controlo de Streaming Ao Vivo',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => const ControloStreamingScreen()),
+              );
+            },
           ),
         ],
       ),

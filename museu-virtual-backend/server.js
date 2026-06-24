@@ -8,14 +8,17 @@
 // Carrega as variáveis de ambiente ANTES de qualquer outro import
 require('dotenv').config();
 
-const express  = require('express');
-const cors     = require('cors');
-const helmet   = require('helmet');
-const morgan   = require('morgan');
-const path     = require('path');
-const fs       = require('fs');
+const compression = require('compression');
+const express     = require('express');
+const cors        = require('cors');
+const helmet      = require('helmet');
+const morgan      = require('morgan');
+const path        = require('path');
+const fs          = require('fs');
 
 const { connectDB } = require('./src/config/db');
+const logger = require('./src/middleware/logger');
+const { limitadorGeral, limitadorAutenticacao, limitadorUpload } = require('./src/middleware/limitador');
 
 // ── Importar rotas ────────────────────────────────────────────
 const authRoutes        = require('./src/routes/autenticacao.rotas');
@@ -27,8 +30,12 @@ const fluxoRoutes       = require('./src/routes/fluxo.rotas');
 const relatorioRoutes   = require('./src/routes/relatorio.rotas');
 const computadorRoutes  = require('./src/routes/computador.rotas');
 const conteudoRoutes   = require('./src/routes/conteudo.rotas');
-const streamingRoutes   = require('./src/routes/streaming.rotas');
+const streamingRoutes  = require('./src/routes/streaming.rotas');
+const uploadRoutes     = require('./src/routes/uploads');
 
+const streamVodRoutes  = require('./src/routes/stream_vod.rotas');
+const streamingAoVivoRoutes  = require('./src/routes/streaming_ao_vivo.rotas');
+const downloadRoutes  = require('./src/routes/download.rotas');
 const http   = require('http');
 const { Server } = require('socket.io');
 
@@ -64,6 +71,18 @@ const morganFormat = process.env.NODE_ENV === 'production' ? 'combined' : 'dev';
 app.use(morgan(morganFormat));
 
 // =============================================================
+//  COMPRESSÃO GZIP — todas as respostas > 1KB
+// =============================================================
+app.use(compression({
+  level    : 6,
+  threshold: 1024,
+  filter   : (req, res) => {
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+  },
+}));
+
+// =============================================================
 //  PARSERS
 // =============================================================
 app.use(express.json({ limit: '10mb' }));
@@ -77,17 +96,19 @@ const uploadDir = path.join(__dirname, process.env.UPLOAD_DIR || 'uploads');
 // Cria a pasta de uploads se não existir
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
-  console.log(`📁  Pasta de uploads criada: ${uploadDir}`);
+  logger.info(`Pasta de uploads criada: ${uploadDir}`);
 }
 
-// Servir ficheiros originais
-app.use(
-  '/uploads',
-  express.static(uploadDir, {
-    maxAge: '1d',
-    etag  : true,
-  })
-);
+// Servir todos os uploads (originais e comprimidos)
+app.use('/uploads', express.static(uploadDir, { maxAge: '1d', etag: true }));
+
+// Servir cada subpasta individualmente para garantir acesso directo
+const subPastas = ['imagens', 'imagens_comp', 'audios', 'audios_comp', 'videos', 'videos_comp'];
+subPastas.forEach((sub) => {
+  const caminho = path.join(uploadDir, sub);
+  if (!fs.existsSync(caminho)) fs.mkdirSync(caminho, { recursive: true });
+  app.use(`/uploads/${sub}`, express.static(caminho, { maxAge: '1d', etag: true }));
+});
 
 // =============================================================
 //  ROTA DE SAÚDE (Health Check)
@@ -107,7 +128,9 @@ app.get('/health', (req, res) => {
 // =============================================================
 const API = '/api/v1';
 
-app.use(`${API}/autenticacao`, authRoutes);       // /api/v1/autenticacao
+app.use(`${API}`, limitadorGeral);
+
+app.use(`${API}/autenticacao`, limitadorAutenticacao, authRoutes);       // /api/v1/autenticacao
 app.use(`${API}/utilizadores`, utilizadorRoutes);  // /api/v1/utilizadores
 app.use(`${API}/exposicoes`,   exposicaoRoutes);   // /api/v1/exposicoes
 app.use(`${API}/pecas`,        pecaRoutes);        // /api/v1/pecas
@@ -117,6 +140,10 @@ app.use(`${API}/relatorios`,   relatorioRoutes);   // /api/v1/relatorios
 app.use(`${API}/computadores`, computadorRoutes);  // /api/v1/computadores
 app.use(`${API}/conteudos`,    conteudoRoutes);    // /api/v1/conteudos
 app.use(`${API}/streaming`,    streamingRoutes);   // /api/v1/streaming
+app.use(`${API}/uploads`,      uploadRoutes);      // /api/v1/uploads
+app.use(`${API}/stream`,      streamVodRoutes);    // /api/v1/stream/video/:filename
+app.use(`${API}/streaming-ao-vivo`, streamingAoVivoRoutes); // /api/v1/streaming-ao-vivo
+app.use(`${API}/download`,    downloadRoutes);     // /api/v1/download/video/:filename
 
 // =============================================================
 //  ROTA NÃO ENCONTRADA (404)
@@ -133,7 +160,7 @@ app.use((req, res) => {
 // =============================================================
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
-  console.error('💥  Erro não tratado:', err);
+  logger.error('Erro não tratado:', err);
 
   // Erros de validação do Multer (upload)
   if (err.code === 'LIMIT_FILE_SIZE') {
@@ -175,6 +202,9 @@ async function bootstrap() {
     },
   });
 
+  // Disponibilizar io para os controladores via app
+  app.set('io', io);
+
   const { configurarStreamingSocket } = require('./src/socket/streaming.socket');
   configurarStreamingSocket(io);
 
@@ -182,7 +212,7 @@ async function bootstrap() {
   server.listen(PORT, () => {
     console.log('');
     console.log('🏛️   Museu Virtual Interativo — API');
-    console.log(`🚀   Servidor a correr em http://localhost:${PORT}`);
+    logger.info(`Servidor a correr em http://localhost:${PORT}`);
     console.log(`🌍   Ambiente: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📡   Base da API: http://localhost:${PORT}${API}`);
     console.log(`🔌   Socket.IO streaming: ws://localhost:${PORT}`);

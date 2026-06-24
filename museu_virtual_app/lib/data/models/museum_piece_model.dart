@@ -27,6 +27,8 @@ class MuseumPieceModel {
   final String descricao;
   final String curiosidade;
   final String imagemUrl;
+  final String audioUrl;
+  final String videoUrl;
   final String wikipediaUrl;
   final List<PieceSpecModel> especificacoes;
 
@@ -39,6 +41,8 @@ class MuseumPieceModel {
     required this.descricao,
     required this.curiosidade,
     required this.imagemUrl,
+    this.audioUrl = '',
+    this.videoUrl = '',
     required this.wikipediaUrl,
     required this.especificacoes,
   });
@@ -66,6 +70,12 @@ class MuseumPieceModel {
       }
     }
 
+    String _parseUrl(dynamic val) {
+      if (val == null || val.toString().isEmpty) return '';
+      final raw = val.toString();
+      return raw.startsWith('/') ? '${ApiConstants.baseUrl}$raw' : raw;
+    }
+
     final rawImg = json['imagemUrl'] as String? ??
         json['imagem_url'] as String? ??
         '';
@@ -86,6 +96,8 @@ class MuseumPieceModel {
       descricao: json['descricao'] as String? ?? '',
       curiosidade: json['curiosidade'] as String? ?? '',
       imagemUrl: parsedImg,
+      audioUrl: _parseUrl(json['audioUrl'] ?? json['audio_url']),
+      videoUrl: _parseUrl(json['videoUrl'] ?? json['video_url']),
       wikipediaUrl: json['wikipediaUrl'] as String? ??
           json['wikipedia_url'] as String? ??
           '',
@@ -102,6 +114,8 @@ class MuseumPieceModel {
         descricao: descricao,
         curiosidade: curiosidade,
         imagemUrl: imagemUrl,
+        audioUrl: audioUrl,
+        videoUrl: videoUrl,
         wikipediaUrl: wikipediaUrl,
         especificacoes: especificacoes
             .map((s) => PieceSpec(label: s.label, value: s.value))

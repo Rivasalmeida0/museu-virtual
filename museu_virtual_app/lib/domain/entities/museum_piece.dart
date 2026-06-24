@@ -7,6 +7,8 @@ class MuseumPiece {
   final String descricao;
   final String curiosidade;
   final String imagemUrl;
+  final String audioUrl;
+  final String videoUrl;
   final String wikipediaUrl;
   final List<PieceSpec> especificacoes;
 
@@ -19,6 +21,8 @@ class MuseumPiece {
     required this.descricao,
     required this.curiosidade,
     required this.imagemUrl,
+    this.audioUrl = '',
+    this.videoUrl = '',
     required this.wikipediaUrl,
     required this.especificacoes,
   });

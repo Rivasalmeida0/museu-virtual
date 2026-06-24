@@ -44,6 +44,13 @@ dependencies:
   permission_handler: ^11.3.1
   shared_preferences: ^2.3.4
   image_picker: ^1.1.2
+  flutter_image_compress: ^2.0.0
+  file_picker: ^6.1.0
+  video_player: ^2.8.0
+  chewie: ^1.7.0
+  just_audio: ^0.9.36
+  youtube_player_flutter: ^8.1.2
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,15 +1,22 @@
+import 'dart:convert';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_strings.dart';
+import '../../core/constants/api_constants.dart';
 import '../../domain/entities/museum_piece.dart';
+import '../../data/models/museum_piece_model.dart';
 import '../providers/piece_providers.dart';
 import 'gallery_page.dart';
 import 'piece_detail_page.dart';
 import 'streaming_page.dart';
+import 'streaming_ao_vivo_screen.dart';
+import 'perfil_screen.dart';
+import '../../services/socket_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,6 +37,7 @@ class _HomePageState extends State<HomePage> {
       _MuseumHomeContent(onNavigate: _onNavigate),
       GalleryPage(initialTab: 0),
       StreamingPage(),
+      const StreamingAoVivoScreen(),
     ];
   }
 
@@ -89,7 +97,20 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const Spacer(),
-                    _TopIcon(icon: Icons.search),
+                    _TopIcon(
+                      icon: Icons.search,
+                      onTap: () {
+                        showSearch(context: context, delegate: _PesquisaDelegate());
+                      },
+                    ),
+                    const SizedBox(width: 4),
+                    _TopIcon(
+                      icon: Icons.person_outline,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const PerfilScreen()),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -103,7 +124,8 @@ class _HomePageState extends State<HomePage> {
 
 class _TopIcon extends StatelessWidget {
   final IconData icon;
-  const _TopIcon({required this.icon});
+  final VoidCallback? onTap;
+  const _TopIcon({required this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +133,7 @@ class _TopIcon extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(28),
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: const BoxDecoration(shape: BoxShape.circle),
@@ -147,6 +169,8 @@ class _MuseumHomeContent extends ConsumerWidget {
                 _FeaturedSection(piecesAsync: piecesAsync),
                 const SizedBox(height: 48),
                 _CategoryRow(isWide: isWide, onNavigate: onNavigate),
+                const SizedBox(height: 48),
+                _LiveStreamBanner(onNavigate: onNavigate),
                 const SizedBox(height: 48),
                 _AboutSection(),
               ],
@@ -744,10 +768,16 @@ class _BottomNavBar extends StatelessWidget {
                     onTap: () => onTap(1),
                   ),
                   _NavItem(
-                    icon: Icons.live_tv,
+                    icon: Icons.videocam,
                     label: 'Streaming',
                     isSelected: selectedIndex == 2,
                     onTap: () => onTap(2),
+                  ),
+                  _NavItem(
+                    icon: Icons.live_tv,
+                    label: 'Ao Vivo',
+                    isSelected: selectedIndex == 3,
+                    onTap: () => onTap(3),
                   ),
                 ],
               ),
@@ -813,5 +843,264 @@ class _NavItem extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _LiveStreamBanner extends StatefulWidget {
+  final void Function(int index) onNavigate;
+  const _LiveStreamBanner({required this.onNavigate});
+
+  @override
+  State<_LiveStreamBanner> createState() => _LiveStreamBannerState();
+}
+
+class _LiveStreamBannerState extends State<_LiveStreamBanner> {
+  bool _streamAtivo = false;
+  String? _titulo;
+
+  @override
+  void initState() {
+    super.initState();
+    _verificar();
+    SocketService().iniciar(ApiConstants.baseUrl);
+    SocketService().ouvir('stream_iniciado', (data) {
+      if (!mounted) return;
+      setState(() {
+        _streamAtivo = true;
+        _titulo = data['titulo'] as String?;
+      });
+    });
+    SocketService().ouvir('stream_terminado', (_) {
+      if (!mounted) return;
+      setState(() { _streamAtivo = false; _titulo = null; });
+    });
+  }
+
+  @override
+  void dispose() {
+    SocketService().removerOuvinte('stream_iniciado');
+    SocketService().removerOuvinte('stream_terminado');
+    super.dispose();
+  }
+
+  Future<void> _verificar() async {
+    try {
+      final resp = await http.get(
+        Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo'),
+      ).timeout(ApiConstants.timeout);
+      if (resp.statusCode != 200) return;
+      final body = jsonDecode(resp.body) as Map<String, dynamic>;
+      if (body['ativo'] == true && mounted) {
+        setState(() {
+          _streamAtivo = true;
+          _titulo = (body['dados'] as Map?)?['titulo'] as String?;
+        });
+      }
+    } catch (_) {}
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => widget.onNavigate(3),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: _streamAtivo
+                ? [AppColors.angolaRed.withValues(alpha: 0.15), const Color(0xFF1A1A2E)]
+                : [AppColors.primary.withValues(alpha: 0.08), const Color(0xFF1A1A2E)],
+          ),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: _streamAtivo
+                ? AppColors.angolaRed.withValues(alpha: 0.3)
+                : AppColors.primary.withValues(alpha: 0.15),
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48, height: 48,
+              decoration: BoxDecoration(
+                color: _streamAtivo
+                    ? AppColors.angolaRed.withValues(alpha: 0.2)
+                    : AppColors.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(
+                _streamAtivo ? Icons.live_tv : Icons.live_tv_outlined,
+                color: _streamAtivo ? AppColors.angolaRed : AppColors.primary,
+                size: 24,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      if (_streamAtivo) ...[
+                        Container(
+                          width: 8, height: 8,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.angolaRed,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+                      Text(
+                        _streamAtivo ? 'AO VIVO' : 'Visita Guiada',
+                        style: TextStyle(
+                          fontFamily: 'monospace',
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.5,
+                          color: _streamAtivo ? AppColors.angolaRed : AppColors.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    _streamAtivo ? (_titulo ?? 'Assistir Visita Guiada') : 'Acompanhe visitas guiadas ao vivo',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: AppColors.primary.withValues(alpha: 0.5),
+              size: 16,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PesquisaDelegate extends SearchDelegate<MuseumPiece?> {
+  @override
+  String get searchFieldLabel => 'Pesquisar peças...';
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context).copyWith(
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.background,
+        iconTheme: IconThemeData(color: AppColors.primary),
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        hintStyle: TextStyle(color: AppColors.textSecondary),
+        border: InputBorder.none,
+      ),
+    );
+  }
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      if (query.isNotEmpty)
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () => query = '',
+        ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () => close(context, null),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) => _buildLista(context);
+
+  @override
+  Widget buildSuggestions(BuildContext context) => _buildLista(context);
+
+  Widget _buildLista(BuildContext context) {
+    if (query.length < 2) {
+      return const Center(
+        child: Text(
+          'Digite pelo menos 2 caracteres',
+          style: TextStyle(color: AppColors.textSecondary),
+        ),
+      );
+    }
+
+    return FutureBuilder<List<MuseumPiece>>(
+      future: _pesquisar(query),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return Center(child: Text('Erro: ${snapshot.error}'));
+        }
+        final itens = snapshot.data ?? [];
+        if (itens.isEmpty) {
+          return const Center(
+            child: Text(
+              'Nenhum resultado encontrado.',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
+          );
+        }
+        return ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemCount: itens.length,
+          separatorBuilder: (_, __) => const Divider(),
+          itemBuilder: (context, index) {
+            final peca = itens[index];
+            return ListTile(
+              leading: peca.imagemUrl != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        '${ApiConstants.baseUrl}/uploads/${peca.imagemUrl}',
+                        width: 48, height: 48, fit: BoxFit.cover,
+                      ),
+                    )
+                  : const Icon(Icons.image, color: AppColors.primary),
+              title: Text(peca.nome, style: const TextStyle(color: Colors.white)),
+              subtitle: Text(peca.fabricante ?? '',
+                  style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+              onTap: () {
+                close(context, null);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => PieceDetailPage(piece: peca),
+                  ),
+                );
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<List<MuseumPiece>> _pesquisar(String q) async {
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/pesquisar')
+        .replace(queryParameters: {'q': q});
+    final resp = await http.get(uri);
+    if (resp.statusCode != 200) return [];
+    final json = jsonDecode(resp.body) as Map<String, dynamic>;
+    final lista = json['dados'] as List? ?? [];
+    return lista.map((e) => MuseumPieceModel.fromJson(e as Map<String, dynamic>).toEntity()).toList();
   }
 }

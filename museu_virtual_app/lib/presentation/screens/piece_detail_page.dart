@@ -3,12 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/constants/api_constants.dart';
 import '../../domain/entities/museum_piece.dart';
+import '../../services/auth_service.dart';
+import 'player_video_screen.dart';
+import 'player_audio_screen.dart';
 
 class PieceDetailPage extends StatelessWidget {
   final MuseumPiece piece;
 
   const PieceDetailPage({super.key, required this.piece});
+
+  Future<void> _descarregar(String filename, String nomeFicheiro) async {
+    final tipo = filename.endsWith('.mp4') ? 'video' : 'audio';
+    final token = await AuthService().getToken();
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/download/$tipo/$filename')
+        .replace(queryParameters: {'token': token});
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +62,58 @@ class PieceDetailPage extends StatelessWidget {
                   _SpecsSection(specs: piece.especificacoes),
                   const SizedBox(height: 24),
                   _WikipediaButton(url: piece.wikipediaUrl),
+                  if (piece.videoUrl.isNotEmpty) ...[
+                    const SizedBox(height: 12),
+                    _MultimediaButton(
+                      icon: Icons.play_circle_filled,
+                      label: 'Ver Vídeo Documentário',
+                      color: Colors.purple,
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => PlayerVideoScreen(
+                            videoUrl: piece.videoUrl,
+                            titulo: piece.nome,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                  if (piece.audioUrl.isNotEmpty) ...[
+                    const SizedBox(height: 12),
+                    _MultimediaButton(
+                      icon: Icons.headphones,
+                      label: 'Ouvir Narração (Áudio-Guia)',
+                      color: Colors.orange,
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => PlayerAudioScreen(
+                            audioUrl: piece.audioUrl,
+                            titulo: piece.nome,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                  if (piece.videoUrl.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    _MultimediaButton(
+                      icon: Icons.download,
+                      label: 'Descarregar Vídeo',
+                      color: Colors.teal,
+                      onPressed: () => _descarregar(piece.videoUrl, '${piece.nome}.mp4'),
+                    ),
+                  ],
+                  if (piece.audioUrl.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    _MultimediaButton(
+                      icon: Icons.download,
+                      label: 'Descarregar Áudio',
+                      color: Colors.teal,
+                      onPressed: () => _descarregar(piece.audioUrl, '${piece.nome}.mp3'),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -301,6 +367,40 @@ class _SpecsSection extends StatelessWidget {
                 ),
               )),
         ],
+      ),
+    );
+  }
+}
+
+class _MultimediaButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onPressed;
+
+  const _MultimediaButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: Icon(icon, size: 22),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: color,
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
       ),
     );
   }
