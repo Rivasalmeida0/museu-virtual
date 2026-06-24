@@ -77,7 +77,7 @@ class _AuthGateState extends ConsumerState<AuthGate> {
   }
 
   Widget _paginaPorRole(AuthState state) {
-    final funcao = state.utilizador?['funcao'] as String? ?? '';
+    final funcao = (state.utilizador?['funcao'] as String? ?? '').toLowerCase();
     if (funcao == 'gestor' || funcao == 'admin') {
       return const PainelGestorScreen();
     }

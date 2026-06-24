@@ -49,7 +49,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     ref.listen<AuthState>(authProvider, (prev, next) {
       if (next.status == AuthStatus.authenticated) {
-        final funcao = next.utilizador?['funcao'] as String? ?? '';
+        final funcao = (next.utilizador?['funcao'] as String? ?? '').toLowerCase();
         if (funcao == 'gestor' || funcao == 'admin') {
           Navigator.of(context).pushReplacementNamed('/gestor');
         } else {

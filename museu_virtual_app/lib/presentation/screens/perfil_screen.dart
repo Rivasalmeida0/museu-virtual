@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import '../../core/constants/api_constants.dart';
 import '../../core/constants/app_colors.dart';
 import '../../services/auth_service.dart';
+import 'gestor/painel_gestor_screen.dart';
 
 class PerfilScreen extends StatefulWidget {
   const PerfilScreen({super.key});
@@ -206,6 +207,10 @@ class _PerfilScreenState extends State<PerfilScreen> {
           _buildAvatar(),
           const SizedBox(height: 32),
           _buildInfoCard(),
+          if (_isGestor()) ...[
+            const SizedBox(height: 24),
+            _buildGestorButton(),
+          ],
           const SizedBox(height: 24),
           _buildNomeForm(),
           const SizedBox(height: 24),
@@ -220,7 +225,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
 
   Widget _buildAvatar() {
     final nome = _utilizador?['nome'] as String? ?? 'U';
-    final funcao = _utilizador?['funcao'] as String? ?? 'utilizador';
+    final funcao = (_utilizador?['funcao'] as String? ?? 'utilizador').toLowerCase();
     final isGestor = funcao == 'gestor' || funcao == 'admin';
     final primeiraLetra = nome.isNotEmpty ? nome[0].toUpperCase() : 'U';
 
@@ -440,6 +445,69 @@ class _PerfilScreenState extends State<PerfilScreen> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
         child: const Text('Sair da Conta', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+      ),
+    );
+  }
+
+  bool _isGestor() {
+    final funcao = (_utilizador?['funcao'] as String? ?? '').toLowerCase();
+    return funcao == 'gestor' || funcao == 'admin';
+  }
+
+  Widget _buildGestorButton() {
+    return Card(
+      color: const Color(0xFF1A1A2E),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const PainelGestorScreen()),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: AppColors.angolaGold.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.admin_panel_settings,
+                  color: AppColors.angolaGold,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Painel de Gestão',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    const Text(
+                      'Gerir conteúdos, streaming e multimédia',
+                      style: TextStyle(color: Colors.white38, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.arrow_forward_ios, color: Colors.white24, size: 14),
+            ],
+          ),
+        ),
       ),
     );
   }

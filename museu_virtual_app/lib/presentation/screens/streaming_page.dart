@@ -5,6 +5,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_strings.dart';
 import '../../data/models/streaming_models.dart';
 import '../providers/streaming_providers.dart';
+import '../providers/auth_providers.dart';
 import 'streaming_room_page.dart';
 
 class StreamingPage extends ConsumerWidget {
@@ -17,7 +18,7 @@ class StreamingPage extends ConsumerWidget {
     return salasAsync.when(
       loading: () => _buildLoading(),
       error: (err, _) => _buildError(ref, err),
-      data: (salas) => _buildContent(context, salas),
+      data: (salas) => _buildContent(context, ref, salas),
     );
   }
 
@@ -98,7 +99,7 @@ class StreamingPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context, List<StreamingSala> salas) {
+  Widget _buildContent(BuildContext context, WidgetRef ref, List<StreamingSala> salas) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -187,7 +188,7 @@ class StreamingPage extends ConsumerWidget {
                 child: _StreamingRoomCard(
                   sala: sala,
                   onTap: sala.activa
-                      ? () => _showRoleDialog(context, sala)
+                      ? () => _showRoleDialog(context, ref, sala)
                       : null,
                 ),
               )),
@@ -196,7 +197,11 @@ class StreamingPage extends ConsumerWidget {
     );
   }
 
-  void _showRoleDialog(BuildContext context, StreamingSala sala) {
+  void _showRoleDialog(BuildContext context, WidgetRef ref, StreamingSala sala) {
+    final authState = ref.read(authProvider);
+    final funcao = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase();
+    final isGestor = funcao == 'gestor' || funcao == 'admin';
+
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -209,7 +214,6 @@ class StreamingPage extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Handle bar
             Container(
               width: 40,
               height: 4,
@@ -238,20 +242,20 @@ class StreamingPage extends ConsumerWidget {
             ),
             const SizedBox(height: 24),
 
-            // Botão Transmitir (Anfitrião)
-            _RoleOption(
-              icon: Icons.videocam,
-              title: 'Transmitir',
-              subtitle: 'Partilha câmera, mic ou ecrã',
-              color: AppColors.angolaRed,
-              onTap: () {
-                Navigator.pop(ctx);
-                _enterRoom(context, sala, 'anfitriao');
-              },
-            ),
-            const SizedBox(height: 12),
+            if (isGestor) ...[
+              _RoleOption(
+                icon: Icons.videocam,
+                title: 'Transmitir',
+                subtitle: 'Partilha câmera, mic ou ecrã',
+                color: AppColors.angolaRed,
+                onTap: () {
+                  Navigator.pop(ctx);
+                  _enterRoom(context, sala, 'anfitriao');
+                },
+              ),
+              const SizedBox(height: 12),
+            ],
 
-            // Botão Assistir (Viewer)
             _RoleOption(
               icon: Icons.visibility,
               title: 'Assistir',

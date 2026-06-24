@@ -16,6 +16,8 @@ import 'piece_detail_page.dart';
 import 'streaming_page.dart';
 import 'streaming_ao_vivo_screen.dart';
 import 'perfil_screen.dart';
+import 'gestor/painel_gestor_screen.dart';
+import '../providers/auth_providers.dart';
 import '../../services/socket_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
     return PreferredSize(
       preferredSize: const Size.fromHeight(64),
       child: ClipRect(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
@@ -101,6 +104,22 @@ class _HomePageState extends State<HomePage> {
                       icon: Icons.search,
                       onTap: () {
                         showSearch(context: context, delegate: _PesquisaDelegate());
+                      },
+                    ),
+                    const SizedBox(width: 4),
+                    Consumer(
+                      builder: (context, ref, _) {
+                        final authState = ref.watch(authProvider);
+                        final funcao = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase();
+                        final isGestor = funcao == 'gestor' || funcao == 'admin';
+                        if (!isGestor) return const SizedBox.shrink();
+                        return _TopIcon(
+                          icon: Icons.admin_panel_settings,
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const PainelGestorScreen()),
+                          ),
+                        );
                       },
                     ),
                     const SizedBox(width: 4),
@@ -735,6 +754,7 @@ class _BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: Container(

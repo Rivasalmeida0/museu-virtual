@@ -119,7 +119,7 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
-    final funcao = authState.utilizador?['funcao'] as String? ?? '';
+    final funcao = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase();
     final isGestor = funcao == 'gestor' || funcao == 'admin';
 
     return Scaffold(

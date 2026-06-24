@@ -5,12 +5,12 @@ class ApiConstants {
 
   static String get baseUrl {
     if (kIsWeb) return 'http://localhost:3000';
-    return 'http://10.0.2.2:3000';
+    return 'http://192.168.1.207:3000';
   }
 
   static String get socketUrl {
     if (kIsWeb) return 'http://localhost:3000';
-    return 'http://10.0.2.2:3000';
+    return 'http://192.168.1.207:3000';
   }
 
   static const String apiPrefix = '/api/v1';

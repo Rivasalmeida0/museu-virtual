@@ -34,7 +34,7 @@ class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
   void dispose() {
     SocketService().removerOuvinte('stream_iniciado');
     SocketService().removerOuvinte('stream_terminado');
-    _controller?.dispose();
+    _controller?.close();
     super.dispose();
   }
 
@@ -57,7 +57,7 @@ class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
         _streamAtivo = false;
         _videoId = null;
         _titulo = null;
-        _controller?.dispose();
+        _controller?.close();
         _controller = null;
       });
     });
@@ -98,13 +98,13 @@ class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
 
   void _inicializarPlayer() {
     if (_videoId == null || _videoId!.isEmpty) return;
-    _controller?.dispose();
-    _controller = YoutubePlayerController(
-      initialVideoId: _videoId!,
-      flags: const YoutubePlayerFlags(
-        autoPlay: true,
+    _controller?.close();
+    _controller = YoutubePlayerController.fromVideoId(
+      videoId: _videoId!,
+      autoPlay: true,
+      params: const YoutubePlayerParams(
         mute: false,
-        hideControls: false,
+        showControls: true,
       ),
     );
   }
@@ -223,10 +223,7 @@ class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
           ),
         Expanded(
           child: _controller != null
-              ? YoutubePlayerBuilder(
-                  player: YoutubePlayer(controller: _controller!),
-                  builder: (context, player) => player,
-                )
+              ? YoutubePlayer(controller: _controller!)
               : const Center(child: CircularProgressIndicator()),
         ),
       ],
