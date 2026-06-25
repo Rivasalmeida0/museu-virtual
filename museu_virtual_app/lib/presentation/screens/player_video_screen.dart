@@ -20,6 +20,7 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
   late VideoPlayerController _videoController;
   ChewieController? _chewieController;
   bool _isLoading = true;
+  bool _mostrarControlos = false;
   String? _erro;
 
   @override
@@ -60,6 +61,21 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
     }
   }
 
+  void _retroceder() {
+    final pos = _videoController.value.position;
+    _videoController.seek(Duration(seconds: pos.inSeconds - 10));
+  }
+
+  void _avancar() {
+    final pos = _videoController.value.position;
+    _videoController.seek(Duration(seconds: pos.inSeconds + 10));
+  }
+
+  void _parar() {
+    _videoController.pause();
+    _videoController.seek(Duration.zero);
+  }
+
   @override
   void dispose() {
     _videoController.dispose();
@@ -81,7 +97,61 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
           : _erro != null
               ? Center(child: Text(_erro!,
                   style: const TextStyle(color: Colors.white)))
-              : Center(child: Chewie(controller: _chewieController!)),
+              : Column(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => setState(() => _mostrarControlos = !_mostrarControlos),
+                        child: Chewie(controller: _chewieController!),
+                      ),
+                    ),
+                    AnimatedCrossFade(
+                      firstChild: const SizedBox.shrink(),
+                      secondChild: Container(
+                        color: Colors.black87,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.replay_10, color: Colors.white, size: 36),
+                              onPressed: _retroceder,
+                            ),
+                            const SizedBox(width: 16),
+                            StreamBuilder<VideoPlayerValue>(
+                              stream: _videoController.valueStream,
+                              builder: (context, snapshot) {
+                                final playing = snapshot.data?.isPlaying ?? false;
+                                return IconButton(
+                                  icon: Icon(
+                                    playing ? Icons.pause_circle : Icons.play_circle,
+                                    color: Colors.white, size: 52,
+                                  ),
+                                  onPressed: () => playing ? _videoController.pause() : _videoController.play(),
+                                );
+                              },
+                            ),
+                            const SizedBox(width: 16),
+                            IconButton(
+                              icon: const Icon(Icons.forward_10, color: Colors.white, size: 36),
+                              onPressed: _avancar,
+                            ),
+                            const SizedBox(width: 24),
+                            TextButton.icon(
+                              onPressed: _parar,
+                              icon: const Icon(Icons.stop, color: Colors.grey),
+                              label: const Text('Stop', style: TextStyle(color: Colors.grey)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      crossFadeState: _mostrarControlos
+                          ? CrossFadeState.showSecond
+                          : CrossFadeState.showFirst,
+                      duration: const Duration(milliseconds: 200),
+                    ),
+                  ],
+                ),
     );
   }
 }

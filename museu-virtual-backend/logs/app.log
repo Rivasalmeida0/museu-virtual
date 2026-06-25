@@ -359,3 +359,114 @@ Error: Table 'museuvirtual.streaming' doesn't exist
 2026-06-25 04:08:35 [INFO] Servidor a correr em http://localhost:3000
 2026-06-25 04:12:43 [INFO] Servidor a correr em http://localhost:3000
 2026-06-25 04:25:10 [INFO] Servidor a correr em http://localhost:3000
+2026-06-25 19:13:07 [INFO] Servidor a correr em http://localhost:3000
+2026-06-25 19:25:15 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 19:25:15 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 19:27:00 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 19:27:00 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 19:41:23 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 19:53:09 [INFO] Servidor a correr em http://localhost:3000
+2026-06-25 20:32:02 [INFO] Servidor a correr em http://localhost:3000
+2026-06-25 20:32:22 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 20:32:22 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
+Error: Table 'museuvirtual.streaming' doesn't exist
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 20:34:54 [ERROR] Erro não tratado: Unknown column 'c.audio_url' in 'field list'
+Error: Unknown column 'c.audio_url' in 'field list'
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at Object.listarTodos (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\repository\conteudo.repositorio.js:35:12)
+    at pesquisar (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\controller\conteudo.controlador.js:26:45)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-25 20:34:56 [ERROR] Erro não tratado: Unknown column 'c.audio_url' in 'field list'
+Error: Unknown column 'c.audio_url' in 'field list'
+    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
+    at Object.listarTodos (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\repository\conteudo.repositorio.js:35:12)
+    at pesquisar (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\controller\conteudo.controlador.js:26:45)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)

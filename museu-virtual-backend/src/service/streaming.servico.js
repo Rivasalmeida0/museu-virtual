@@ -26,8 +26,28 @@ function servirStreamVOD(caminhoFicheiro, tipoMime, req, res) {
   }
 
   const partes      = cabecalhoRange.replace(/bytes=/, '').split('-');
-  const inicio      = parseInt(partes[0], 10);
-  const fim         = partes[1] ? parseInt(partes[1], 10) : tamanhoTotal - 1;
+
+  let inicio, fim;
+  if (partes[0] === '') {
+    const suffix = parseInt(partes[1], 10);
+    inicio = Math.max(0, tamanhoTotal - suffix);
+    fim = tamanhoTotal - 1;
+  } else {
+    inicio = parseInt(partes[0], 10);
+    fim = partes[1] !== undefined && partes[1] !== ''
+      ? parseInt(partes[1], 10)
+      : tamanhoTotal - 1;
+  }
+
+  if (isNaN(inicio) || isNaN(fim) || inicio >= tamanhoTotal || inicio > fim) {
+    res.writeHead(416, {
+      'Content-Range': `bytes */${tamanhoTotal}`,
+    });
+    return res.end();
+  }
+
+  if (fim >= tamanhoTotal) fim = tamanhoTotal - 1;
+
   const tamanhoChunk = fim - inicio + 1;
 
   res.writeHead(206, {

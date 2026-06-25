@@ -169,6 +169,186 @@ function comprimirVideo(caminhoOriginal, nomeBase) {
 }
 
 // ─────────────────────────────────────────────────────────────
+//  4. COMPRESSÃO DE VÍDEO (ffmpeg → H.265/HEVC)
+// ─────────────────────────────────────────────────────────────
+function comprimirVideoHevc(caminhoOriginal, nomeBase) {
+  return new Promise((resolve, reject) => {
+    const tempoInicio  = Date.now();
+    const tamanhoOriginal = fs.statSync(caminhoOriginal).size;
+    const formatoOriginal  = path.extname(caminhoOriginal).replace('.', '').toUpperCase();
+
+    const nomeFinal   = `${nomeBase}_comp_hevc.mp4`;
+    const caminhoFinal = path.join('uploads', 'videos_comp', nomeFinal);
+
+    ffmpeg(caminhoOriginal)
+      .videoCodec('libx265')
+      .audioCodec('aac')
+      .videoBitrate('600k')
+      .audioBitrate('96k')
+      .size('1280x?')
+      .autopad()
+      .outputOptions([
+        '-crf 28',
+        '-preset fast',
+        '-movflags +faststart',
+        '-tag:v hvc1',
+      ])
+      .output(caminhoFinal)
+      .on('progress', (progress) => {
+        if (progress.percent) {
+          console.log(`[COMPRESSÃO HEVC] ${progress.percent.toFixed(0)}%`);
+        }
+      })
+      .on('end', () => {
+        const tamanhoComprimido = fs.statSync(caminhoFinal).size;
+        const tempoProcessamento = Date.now() - tempoInicio;
+        const taxaCompressao = ((1 - tamanhoComprimido / tamanhoOriginal) * 100).toFixed(2);
+
+        fs.unlinkSync(caminhoOriginal);
+
+        const relatorio = {
+          tipo: 'video',
+          codec: 'H.265/HEVC',
+          formato_original: formatoOriginal,
+          formato_final: 'H.265/MP4 (AAC audio)',
+          tamanho_original_bytes: tamanhoOriginal,
+          tamanho_original_legivel: formatarBytes(tamanhoOriginal),
+          tamanho_comprimido_bytes: tamanhoComprimido,
+          tamanho_comprimido_legivel: formatarBytes(tamanhoComprimido),
+          taxa_compressao: `${taxaCompressao}%`,
+          qualidade_percebida: 'Alta (H.265 CRF 28, 600kbps, 1280px)',
+          tempo_processamento_ms: tempoProcessamento,
+          ficheiro_final: nomeFinal,
+          caminho_final: caminhoFinal,
+        };
+
+        registarLog(relatorio);
+        resolve(relatorio);
+      })
+      .on('error', (err) => {
+        reject(new Error(`Erro ao comprimir vídeo HEVC: ${err.message}`));
+      })
+      .run();
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+//  5. COMPRESSÃO DE VÍDEO (ffmpeg → VP9/WebM)
+// ─────────────────────────────────────────────────────────────
+function comprimirVideoVp9(caminhoOriginal, nomeBase) {
+  return new Promise((resolve, reject) => {
+    const tempoInicio  = Date.now();
+    const tamanhoOriginal = fs.statSync(caminhoOriginal).size;
+    const formatoOriginal  = path.extname(caminhoOriginal).replace('.', '').toUpperCase();
+
+    const nomeFinal   = `${nomeBase}_comp_vp9.webm`;
+    const caminhoFinal = path.join('uploads', 'videos_comp', nomeFinal);
+
+    ffmpeg(caminhoOriginal)
+      .videoCodec('libvpx-vp9')
+      .audioCodec('libopus')
+      .videoBitrate('500k')
+      .audioBitrate('96k')
+      .size('1280x?')
+      .autopad()
+      .outputOptions([
+        '-crf 30',
+        '-b:v 0',
+        '-deadline good',
+        '-cpu-used 2',
+        '-row-mt 1',
+      ])
+      .output(caminhoFinal)
+      .on('progress', (progress) => {
+        if (progress.percent) {
+          console.log(`[COMPRESSÃO VP9] ${progress.percent.toFixed(0)}%`);
+        }
+      })
+      .on('end', () => {
+        const tamanhoComprimido = fs.statSync(caminhoFinal).size;
+        const tempoProcessamento = Date.now() - tempoInicio;
+        const taxaCompressao = ((1 - tamanhoComprimido / tamanhoOriginal) * 100).toFixed(2);
+
+        fs.unlinkSync(caminhoOriginal);
+
+        const relatorio = {
+          tipo: 'video',
+          codec: 'VP9',
+          formato_original: formatoOriginal,
+          formato_final: 'VP9/WebM (Opus audio)',
+          tamanho_original_bytes: tamanhoOriginal,
+          tamanho_original_legivel: formatarBytes(tamanhoOriginal),
+          tamanho_comprimido_bytes: tamanhoComprimido,
+          tamanho_comprimido_legivel: formatarBytes(tamanhoComprimido),
+          taxa_compressao: `${taxaCompressao}%`,
+          qualidade_percebida: 'Alta (VP9 CRF 30, 500kbps, 1280px)',
+          tempo_processamento_ms: tempoProcessamento,
+          ficheiro_final: nomeFinal,
+          caminho_final: caminhoFinal,
+        };
+
+        registarLog(relatorio);
+        resolve(relatorio);
+      })
+      .on('error', (err) => {
+        reject(new Error(`Erro ao comprimir vídeo VP9: ${err.message}`));
+      })
+      .run();
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+//  6. COMPRESSÃO DE ÁUDIO (ffmpeg → OGG Vorbis)
+// ─────────────────────────────────────────────────────────────
+function comprimirAudioOgg(caminhoOriginal, nomeBase) {
+  return new Promise((resolve, reject) => {
+    const tempoInicio  = Date.now();
+    const tamanhoOriginal = fs.statSync(caminhoOriginal).size;
+    const formatoOriginal  = path.extname(caminhoOriginal).replace('.', '').toUpperCase();
+
+    const nomeFinal   = `${nomeBase}_comp.ogg`;
+    const caminhoFinal = path.join('uploads', 'audios_comp', nomeFinal);
+
+    ffmpeg(caminhoOriginal)
+      .audioCodec('libvorbis')
+      .audioBitrate('96k')
+      .audioFrequency(44100)
+      .audioChannels(2)
+      .output(caminhoFinal)
+      .on('end', () => {
+        const tamanhoComprimido = fs.statSync(caminhoFinal).size;
+        const tempoProcessamento = Date.now() - tempoInicio;
+        const taxaCompressao = ((1 - tamanhoComprimido / tamanhoOriginal) * 100).toFixed(2);
+
+        fs.unlinkSync(caminhoOriginal);
+
+        const relatorio = {
+          tipo: 'audio',
+          codec: 'Vorbis',
+          formato_original: formatoOriginal,
+          formato_final: 'OGG Vorbis 96kbps',
+          tamanho_original_bytes: tamanhoOriginal,
+          tamanho_original_legivel: formatarBytes(tamanhoOriginal),
+          tamanho_comprimido_bytes: tamanhoComprimido,
+          tamanho_comprimido_legivel: formatarBytes(tamanhoComprimido),
+          taxa_compressao: `${taxaCompressao}%`,
+          qualidade_percebida: 'Boa (OGG Vorbis, 96kbps, 44.1kHz, estéreo)',
+          tempo_processamento_ms: tempoProcessamento,
+          ficheiro_final: nomeFinal,
+          caminho_final: caminhoFinal,
+        };
+
+        registarLog(relatorio);
+        resolve(relatorio);
+      })
+      .on('error', (err) => {
+        reject(new Error(`Erro ao comprimir áudio OGG: ${err.message}`));
+      })
+      .run();
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
 //  UTILITÁRIOS
 // ─────────────────────────────────────────────────────────────
 function formatarBytes(bytes) {
@@ -200,4 +380,11 @@ function registarLog(relatorio) {
   );
 }
 
-module.exports = { comprimirImagem, comprimirAudio, comprimirVideo };
+module.exports = {
+  comprimirImagem,
+  comprimirAudio,
+  comprimirVideo,
+  comprimirVideoHevc,
+  comprimirVideoVp9,
+  comprimirAudioOgg,
+};

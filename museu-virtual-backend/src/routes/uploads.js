@@ -19,6 +19,9 @@ const {
   comprimirImagem,
   comprimirAudio,
   comprimirVideo,
+  comprimirVideoHevc,
+  comprimirVideoVp9,
+  comprimirAudioOgg,
 } = require('../middleware/compressao.middleware');
 
 const ConteudoRepositorio = require('../repository/conteudo.repositorio');
@@ -172,6 +175,111 @@ roteador.post('/video/:conteudo_id',
       res.json({
         sucesso: true,
         mensagem: 'Vídeo enviado e comprimido.',
+        dados: actualizado,
+        relatorio_compressao: relatorio,
+      });
+    } catch (erro) { next(erro); }
+  }
+);
+
+// ─── POST /uploads/video/hevc/:conteudo_id ──────────────────────
+roteador.post('/video/hevc/:conteudo_id',
+  upload.single('ficheiro'),
+  async (req, res, next) => {
+    try {
+      if (!req.file) return res.status(400).json({ sucesso: false, mensagem: 'Nenhum ficheiro enviado.' });
+
+      const conteudo = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+      if (!conteudo) return res.status(404).json({ sucesso: false, mensagem: 'Conteúdo não encontrado.' });
+
+      const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
+      const relatorio = await comprimirVideoHevc(req.file.path, nomeBase);
+
+      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+      const videoUrl = `${baseUrl}/uploads/videos_comp/${relatorio.ficheiro_final}`;
+
+      await ConteudoRepositorio.actualizarVideoComRelatorio(
+        req.params.conteudo_id, videoUrl, JSON.stringify(relatorio)
+      );
+
+      const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+
+      const io = req.app.get('io');
+      if (io) io.emit('conteudo_atualizado', actualizado);
+
+      res.json({
+        sucesso: true,
+        mensagem: 'Vídeo enviado e comprimido (H.265/HEVC).',
+        dados: actualizado,
+        relatorio_compressao: relatorio,
+      });
+    } catch (erro) { next(erro); }
+  }
+);
+
+// ─── POST /uploads/video/vp9/:conteudo_id ──────────────────────
+roteador.post('/video/vp9/:conteudo_id',
+  upload.single('ficheiro'),
+  async (req, res, next) => {
+    try {
+      if (!req.file) return res.status(400).json({ sucesso: false, mensagem: 'Nenhum ficheiro enviado.' });
+
+      const conteudo = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+      if (!conteudo) return res.status(404).json({ sucesso: false, mensagem: 'Conteúdo não encontrado.' });
+
+      const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
+      const relatorio = await comprimirVideoVp9(req.file.path, nomeBase);
+
+      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+      const videoUrl = `${baseUrl}/uploads/videos_comp/${relatorio.ficheiro_final}`;
+
+      await ConteudoRepositorio.actualizarVideoComRelatorio(
+        req.params.conteudo_id, videoUrl, JSON.stringify(relatorio)
+      );
+
+      const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+
+      const io = req.app.get('io');
+      if (io) io.emit('conteudo_atualizado', actualizado);
+
+      res.json({
+        sucesso: true,
+        mensagem: 'Vídeo enviado e comprimido (VP9/WebM).',
+        dados: actualizado,
+        relatorio_compressao: relatorio,
+      });
+    } catch (erro) { next(erro); }
+  }
+);
+
+// ─── POST /uploads/audio/ogg/:conteudo_id ──────────────────────
+roteador.post('/audio/ogg/:conteudo_id',
+  upload.single('ficheiro'),
+  async (req, res, next) => {
+    try {
+      if (!req.file) return res.status(400).json({ sucesso: false, mensagem: 'Nenhum ficheiro enviado.' });
+
+      const conteudo = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+      if (!conteudo) return res.status(404).json({ sucesso: false, mensagem: 'Conteúdo não encontrado.' });
+
+      const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
+      const relatorio = await comprimirAudioOgg(req.file.path, nomeBase);
+
+      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+      const audioUrl = `${baseUrl}/uploads/audios_comp/${relatorio.ficheiro_final}`;
+
+      await ConteudoRepositorio.actualizarAudioComRelatorio(
+        req.params.conteudo_id, audioUrl, JSON.stringify(relatorio)
+      );
+
+      const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+
+      const io = req.app.get('io');
+      if (io) io.emit('conteudo_atualizado', actualizado);
+
+      res.json({
+        sucesso: true,
+        mensagem: 'Áudio enviado e comprimido (OGG Vorbis).',
         dados: actualizado,
         relatorio_compressao: relatorio,
       });

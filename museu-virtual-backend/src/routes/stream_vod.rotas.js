@@ -19,8 +19,31 @@ function servirFicheiro(req, res, pasta, tipoMime) {
 
   if (range) {
     const parts = range.replace(/bytes=/, '').split('-');
-    const start = parseInt(parts[0], 10);
-    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+
+    // Suporta suffix range: "bytes=-500" (últimos 500 bytes)
+    let start, end;
+    if (parts[0] === '') {
+      const suffix = parseInt(parts[1], 10);
+      start = Math.max(0, fileSize - suffix);
+      end = fileSize - 1;
+    } else {
+      start = parseInt(parts[0], 10);
+      end = parts[1] !== undefined && parts[1] !== ''
+        ? parseInt(parts[1], 10)
+        : fileSize - 1;
+    }
+
+    // Validação: start ou end inválidos
+    if (isNaN(start) || isNaN(end) || start >= fileSize || start > end) {
+      res.writeHead(416, {
+        'Content-Range': `bytes */${fileSize}`,
+      });
+      return res.end();
+    }
+
+    // Clamp end ao tamanho real
+    if (end >= fileSize) end = fileSize - 1;
+
     const chunkSize = end - start + 1;
     const file = fs.createReadStream(filePath, { start, end });
 
