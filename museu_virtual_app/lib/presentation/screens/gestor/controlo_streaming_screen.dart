@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../../core/constants/api_constants.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../services/auth_service.dart';
 
 class ControloStreamingScreen extends StatefulWidget {
   const ControloStreamingScreen({super.key});
@@ -13,7 +12,6 @@ class ControloStreamingScreen extends StatefulWidget {
 }
 
 class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
-  final _auth = AuthService();
   final _videoIdCtrl = TextEditingController();
   final _tituloCtrl = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -38,13 +36,9 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
   Future<void> _verificarEstado() async {
     setState(() { _erro = null; });
     try {
-      final token = await _auth.getToken();
       final response = await http.get(
         Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo'),
-        headers: {
-          'Content-Type': 'application/json',
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+        headers: {'Content-Type': 'application/json'},
       ).timeout(ApiConstants.timeout);
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
@@ -72,13 +66,9 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
 
     setState(() { _loading = true; _erro = null; });
     try {
-      final token = await _auth.getToken();
       final response = await http.post(
         Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/iniciar'),
-        headers: {
-          'Content-Type': 'application/json',
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+        headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'video_id': _videoIdCtrl.text.trim(),
           'titulo': _tituloCtrl.text.trim(),
@@ -145,13 +135,9 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
 
     setState(() { _loading = true; _erro = null; });
     try {
-      final token = await _auth.getToken();
       final response = await http.post(
         Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/terminar'),
-        headers: {
-          'Content-Type': 'application/json',
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+        headers: {'Content-Type': 'application/json'},
       ).timeout(ApiConstants.timeout);
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;

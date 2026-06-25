@@ -5,24 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import '../core/constants/api_constants.dart';
 import '../core/network/api_exceptions.dart';
-import 'auth_service.dart';
 
 class ConteudoService {
-  final AuthService _authService;
-
-  ConteudoService(this._authService);
-
-  Future<Map<String, String>> _headersComToken() async {
-    final headers = <String, String>{
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    };
-    final token = await _authService.getToken();
-    if (token != null && token.isNotEmpty) {
-      headers['Authorization'] = 'Bearer $token';
-    }
-    return headers;
-  }
+  ConteudoService();
 
   Future<List<dynamic>> listarTodos() async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos');
@@ -76,7 +61,7 @@ class ConteudoService {
     try {
       final response = await http.post(
         uri,
-        headers: await _headersComToken(),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: jsonEncode(dados),
       ).timeout(ApiConstants.timeout);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
@@ -99,7 +84,7 @@ class ConteudoService {
     try {
       final response = await http.put(
         uri,
-        headers: await _headersComToken(),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: jsonEncode(dados),
       ).timeout(ApiConstants.timeout);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
@@ -122,7 +107,7 @@ class ConteudoService {
     try {
       final response = await http.delete(
         uri,
-        headers: await _headersComToken(),
+        headers: {'Accept': 'application/json'},
       ).timeout(ApiConstants.timeout);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
@@ -142,11 +127,7 @@ class ConteudoService {
   Future<Map<String, dynamic>> uploadImagem(int id, Uint8List bytes, {String filename = 'imagem.jpg'}) async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/$id/imagem');
     try {
-      final token = await _authService.getToken();
       final request = http.MultipartRequest('POST', uri);
-      if (token != null && token.isNotEmpty) {
-        request.headers['Authorization'] = 'Bearer $token';
-      }
 
       final extensao = filename.split('.').last.toLowerCase();
       final mimeType = _mimeType(extensao);
@@ -177,11 +158,7 @@ class ConteudoService {
   Future<Map<String, dynamic>> uploadAudio(int id, Uint8List bytes, {String filename = 'audio.mp3'}) async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/audio/$id');
     try {
-      final token = await _authService.getToken();
       final request = http.MultipartRequest('POST', uri);
-      if (token != null && token.isNotEmpty) {
-        request.headers['Authorization'] = 'Bearer $token';
-      }
 
       final extensao = filename.split('.').last.toLowerCase();
       final mimeType = _mimeType(extensao);
@@ -212,11 +189,7 @@ class ConteudoService {
   Future<Map<String, dynamic>> uploadVideo(int id, Uint8List bytes, {String filename = 'video.mp4'}) async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/video/$id');
     try {
-      final token = await _authService.getToken();
       final request = http.MultipartRequest('POST', uri);
-      if (token != null && token.isNotEmpty) {
-        request.headers['Authorization'] = 'Bearer $token';
-      }
 
       final extensao = filename.split('.').last.toLowerCase();
       final mimeType = _mimeType(extensao);
@@ -247,11 +220,7 @@ class ConteudoService {
   Future<Map<String, dynamic>> obterRelatoriosCompressao() async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/relatorio');
     try {
-      final token = await _authService.getToken();
       final headers = <String, String>{'Accept': 'application/json'};
-      if (token != null && token.isNotEmpty) {
-        headers['Authorization'] = 'Bearer $token';
-      }
       final response = await http.get(uri, headers: headers).timeout(ApiConstants.timeout);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {

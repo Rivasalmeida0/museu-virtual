@@ -4,7 +4,6 @@ const express = require('express');
 const roteador = express.Router();
 const fs = require('fs');
 const path = require('path');
-const { verificarToken } = require('../middleware/autenticacao.middleware');
 
 function servirFicheiro(req, res, pasta, tipoMime) {
   const filename = req.params.filename;
@@ -43,12 +42,10 @@ function servirFicheiro(req, res, pasta, tipoMime) {
 }
 
 roteador.get('/video/:filename',
-  verificarToken,
   (req, res) => servirFicheiro(req, res, 'videos_comp', 'video/mp4')
 );
 
 roteador.get('/audio/:filename',
-  verificarToken,
   (req, res) => servirFicheiro(req, res, 'audios_comp', 'audio/mpeg')
 );
 

@@ -1,11 +1,6 @@
-// =============================================================
-//  src/service/autenticacao.servico.js
-//  Museu Virtual Interativo — ISPTEC 2026
-// =============================================================
 'use strict';
 
 const bcrypt                = require('bcryptjs');
-const jwt                   = require('jsonwebtoken');
 const UtilizadorRepositorio = require('../repository/utilizador.repositorio');
 
 const RONDAS_BCRYPT = 12;
@@ -22,7 +17,7 @@ async function registar(nome, email, senha, funcao = 'visitante') {
   const idNovo     = await UtilizadorRepositorio.criar(nome, email, hashSenha, funcao);
   const utilizador = await UtilizadorRepositorio.buscarPorId(idNovo);
 
-  return { utilizador, token: _gerarToken(utilizador) };
+  return { utilizador };
 }
 
 async function entrar(email, senha) {
@@ -48,22 +43,7 @@ async function entrar(email, senha) {
   }
 
   const utilizador = await UtilizadorRepositorio.buscarPorId(registo.id);
-  return { utilizador, token: _gerarToken(utilizador) };
-}
-
-function _gerarToken(utilizador) {
-  const carga = {
-    id    : utilizador.id,
-    nome  : utilizador.nome,
-    email : utilizador.email,
-    funcao: utilizador.funcao,
-  };
-
-  const tokenAcesso = jwt.sign(carga, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || '8h',
-  });
-
-  return { tokenAcesso };
+  return { utilizador };
 }
 
 async function buscarPorId(id) {

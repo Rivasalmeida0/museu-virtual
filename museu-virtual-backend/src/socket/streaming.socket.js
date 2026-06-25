@@ -1,6 +1,5 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
 const salasDisponiveis = ['visita-guiada', 'apresentacao-peca', 'evento-especial'];
 
 function configurarStreamingSocket(io) {
@@ -8,14 +7,6 @@ function configurarStreamingSocket(io) {
     let salaAtual = null;
     let identidadeAtual = null;
     let papelAtual = null;
-
-    let utilizadorAutenticado = null;
-    try {
-      const token = socket.handshake.auth?.token;
-      if (token) {
-        utilizadorAutenticado = jwt.verify(token, process.env.JWT_SECRET);
-      }
-    } catch (_) {}
 
     socket.on('join-room', ({ room, role, identity }) => {
       if (!salasDisponiveis.includes(room)) {
@@ -25,14 +16,6 @@ function configurarStreamingSocket(io) {
       if (!role || !identity) {
         socket.emit('error', { message: 'Papel e identidade são obrigatórios.' });
         return;
-      }
-
-      if (role === 'anfitriao') {
-        const funcao = utilizadorAutenticado?.funcao ?? '';
-        if (funcao !== 'gestor' && funcao !== 'admin') {
-          socket.emit('error', { message: 'Apenas gestores podem transmitir.' });
-          return;
-        }
       }
 
       salaAtual = room;

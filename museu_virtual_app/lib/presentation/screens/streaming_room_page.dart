@@ -5,7 +5,6 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/datasources/streaming_datasource.dart';
-import '../../services/auth_service.dart';
 import '../providers/streaming_providers.dart';
 
 class StreamingRoomPage extends ConsumerStatefulWidget {
@@ -91,11 +90,6 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
       }
 
       final ds = ref.read(streamingDatasourceProvider);
-
-      if (_isHost) {
-        final token = await AuthService().getToken();
-        ds.definirToken(token);
-      }
 
       ds.onError((msg) {
         if (mounted) {

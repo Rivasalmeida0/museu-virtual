@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/api_constants.dart';
 import '../../domain/entities/museum_piece.dart';
-import '../../services/auth_service.dart';
 import 'player_video_screen.dart';
 import 'player_audio_screen.dart';
 
@@ -16,9 +15,7 @@ class PieceDetailPage extends StatelessWidget {
 
   Future<void> _descarregar(String filename, String nomeFicheiro) async {
     final tipo = filename.endsWith('.mp4') ? 'video' : 'audio';
-    final token = await AuthService().getToken();
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/download/$tipo/$filename')
-        .replace(queryParameters: {'token': token});
+    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/download/$tipo/$filename');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }

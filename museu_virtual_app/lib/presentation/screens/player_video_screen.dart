@@ -1,7 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth_service.dart';
 
 class PlayerVideoScreen extends StatefulWidget {
   final String videoUrl;
@@ -18,7 +17,6 @@ class PlayerVideoScreen extends StatefulWidget {
 }
 
 class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
-  final _auth = AuthService();
   late VideoPlayerController _videoController;
   ChewieController? _chewieController;
   bool _isLoading = true;
@@ -32,15 +30,8 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
 
   Future<void> _inicializar() async {
     try {
-      final token = await _auth.getToken();
-      final headers = <String, String>{};
-      if (token != null && token.isNotEmpty) {
-        headers['Authorization'] = 'Bearer $token';
-      }
-
       _videoController = VideoPlayerController.networkUrl(
         Uri.parse(widget.videoUrl),
-        httpHeaders: headers,
       );
       await _videoController.initialize();
 

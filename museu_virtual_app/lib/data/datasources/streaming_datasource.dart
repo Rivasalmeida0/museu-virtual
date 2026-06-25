@@ -8,13 +8,8 @@ class StreamingRemoteDatasource {
   final ApiClient _client;
   IO.Socket? _socket;
   bool _connected = false;
-  String? _authToken;
 
   StreamingRemoteDatasource(this._client);
-
-  void definirToken(String? token) {
-    _authToken = token;
-  }
 
   Future<List<StreamingSala>> listarSalas() async {
     final data = await _client.get(ApiConstants.streamingSalas) as List;
@@ -34,9 +29,6 @@ class StreamingRemoteDatasource {
         .setReconnectionAttempts(5)
         .setReconnectionDelay(1000)
         .disableAutoConnect();
-    if (_authToken != null) {
-      opts.setAuth({'token': _authToken});
-    }
     final sock = IO.io(ApiConstants.socketUrl, opts.build());
     sock.onDisconnect((_) => _connected = false);
     sock.onConnect((_) => _connected = true);

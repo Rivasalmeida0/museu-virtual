@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/api_constants.dart';
-import '../../../services/auth_service.dart';
 import '../../../services/conteudo_service.dart';
 import '../../../services/socket_service.dart';
 import '../../providers/auth_providers.dart';
@@ -18,7 +17,7 @@ class PainelGestorScreen extends ConsumerStatefulWidget {
 }
 
 class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
-  final _service = ConteudoService(AuthService());
+  final _service = ConteudoService();
   List<dynamic>? _conteudos;
   bool _loading = true;
   String? _erro;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../services/conteudo_service.dart';
-import '../../../services/auth_service.dart';
 
 class RelatorioCompressaoScreen extends StatefulWidget {
   const RelatorioCompressaoScreen({super.key});
@@ -13,7 +12,7 @@ class RelatorioCompressaoScreen extends StatefulWidget {
 
 class _RelatorioCompressaoScreenState
     extends State<RelatorioCompressaoScreen> {
-  final _service = ConteudoService(AuthService());
+  final _service = ConteudoService();
   List<dynamic> _relatorios = [];
   bool _aCarregar = true;
   String? _erro;

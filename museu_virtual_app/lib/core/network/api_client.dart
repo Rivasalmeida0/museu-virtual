@@ -7,28 +7,18 @@ import 'api_exceptions.dart';
 class ApiClient {
   final http.Client _client;
   final String baseUrl;
-  final Future<String?> Function()? _tokenProvider;
 
   ApiClient({
     http.Client? client,
     String? baseUrl,
-    Future<String?> Function()? tokenProvider,
   })  : _client = client ?? http.Client(),
-        baseUrl = baseUrl ?? ApiConstants.baseUrl,
-        _tokenProvider = tokenProvider;
+        baseUrl = baseUrl ?? ApiConstants.baseUrl;
 
   Future<Map<String, String>> get _headers async {
-    final headers = <String, String>{
+    return <String, String>{
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
-    if (_tokenProvider != null) {
-      final token = await _tokenProvider();
-      if (token != null && token.isNotEmpty) {
-        headers['Authorization'] = 'Bearer $token';
-      }
-    }
-    return headers;
   }
 
   Future<dynamic> get(String endpoint,

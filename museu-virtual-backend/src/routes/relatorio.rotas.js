@@ -2,9 +2,7 @@
 const express    = require('express');
 const roteador   = express.Router();
 const Controlador = require('../controller/relatorio.controlador');
-const { verificarToken } = require('../middleware/autenticacao.middleware');
-const { checkRole } = require('../middleware/checkRole');
 
-roteador.get('/compressao', verificarToken, checkRole('gestor', 'admin'), Controlador.obterRelatorioCompressao);
+roteador.get('/compressao', Controlador.obterRelatorioCompressao);
 
 module.exports = roteador;

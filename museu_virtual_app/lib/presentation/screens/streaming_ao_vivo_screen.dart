@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../core/constants/api_constants.dart';
 import '../../core/constants/app_colors.dart';
-import '../../services/auth_service.dart';
 import '../../services/socket_service.dart';
 
 class StreamingAoVivoScreen extends StatefulWidget {
@@ -15,7 +14,6 @@ class StreamingAoVivoScreen extends StatefulWidget {
 }
 
 class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
-  final _auth = AuthService();
   bool _loading = true;
   bool _streamAtivo = false;
   String? _videoId;
@@ -66,13 +64,9 @@ class _StreamingAoVivoScreenState extends State<StreamingAoVivoScreen> {
   Future<void> _verificarStream() async {
     setState(() { _loading = true; _erro = null; });
     try {
-      final token = await _auth.getToken();
       final response = await http.get(
         Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo'),
-        headers: {
-          'Content-Type': 'application/json',
-          if (token != null) 'Authorization': 'Bearer $token',
-        },
+        headers: {'Content-Type': 'application/json'},
       ).timeout(ApiConstants.timeout);
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;

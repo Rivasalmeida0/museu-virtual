@@ -4,13 +4,9 @@ import '../../data/datasources/piece_remote_datasource.dart';
 import '../../data/repositories/piece_repository_impl.dart';
 import '../../domain/entities/museum_piece.dart';
 import '../../domain/repositories/piece_repository.dart';
-import 'auth_providers.dart';
 
 final apiClientProvider = Provider<ApiClient>((ref) {
-  final authService = ref.watch(authServiceProvider);
-  final client = ApiClient(
-    tokenProvider: () => authService.getToken(),
-  );
+  final client = ApiClient();
   ref.onDispose(() => client.dispose());
   return client;
 });

@@ -37,16 +37,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier(this._authService) : super(const AuthState());
 
   Future<void> checkAuth() async {
-    final loggedIn = await _authService.isLoggedIn();
-    if (loggedIn) {
-      final user = await _authService.getUtilizadorAutenticado();
-      if (user != null) {
-        state = AuthState(
-          status: AuthStatus.authenticated,
-          utilizador: user,
-        );
-        return;
-      }
+    final user = await _authService.getUtilizadorAutenticado();
+    if (user != null) {
+      state = AuthState(
+        status: AuthStatus.authenticated,
+        utilizador: user,
+      );
+      return;
     }
     state = AuthState(status: AuthStatus.unauthenticated);
   }

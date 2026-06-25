@@ -1,6 +1,5 @@
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth_service.dart';
 
 class PlayerAudioScreen extends StatefulWidget {
   final String audioUrl;
@@ -18,7 +17,6 @@ class PlayerAudioScreen extends StatefulWidget {
 
 class _PlayerAudioScreenState extends State<PlayerAudioScreen> {
   final AudioPlayer _player = AudioPlayer();
-  final AuthService _auth = AuthService();
   bool _isLoading = true;
 
   @override
@@ -29,12 +27,7 @@ class _PlayerAudioScreenState extends State<PlayerAudioScreen> {
 
   Future<void> _inicializar() async {
     try {
-      final token = await _auth.getToken();
-      final headers = <String, String>{};
-      if (token != null && token.isNotEmpty) {
-        headers['Authorization'] = 'Bearer $token';
-      }
-      await _player.setUrl(widget.audioUrl, headers: headers);
+      await _player.setUrl(widget.audioUrl);
       if (mounted) setState(() => _isLoading = false);
     } catch (_) {
       if (mounted) setState(() => _isLoading = false);

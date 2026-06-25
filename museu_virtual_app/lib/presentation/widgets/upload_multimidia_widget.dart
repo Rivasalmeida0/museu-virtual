@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import '../../core/constants/app_colors.dart';
 import '../../services/conteudo_service.dart';
-import '../../services/auth_service.dart';
 
 class UploadMultimidiaWidget extends StatefulWidget {
   final int conteudoId;
@@ -20,7 +19,7 @@ class UploadMultimidiaWidget extends StatefulWidget {
 }
 
 class _UploadMultimidiaWidgetState extends State<UploadMultimidiaWidget> {
-  final _service = ConteudoService(AuthService());
+  final _service = ConteudoService();
 
   bool _aCarregar = false;
   String? _tipoCarregando;

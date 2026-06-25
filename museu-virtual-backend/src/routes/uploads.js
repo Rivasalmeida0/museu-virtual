@@ -21,8 +21,6 @@ const {
   comprimirVideo,
 } = require('../middleware/compressao.middleware');
 
-const { verificarToken } = require('../middleware/autenticacao.middleware');
-const { checkRole } = require('../middleware/checkRole');
 const ConteudoRepositorio = require('../repository/conteudo.repositorio');
 
 // ── Configuração do multer ──────────────────────────────────
@@ -63,8 +61,6 @@ const upload = multer({
 
 // ─── POST /uploads/imagem/:conteudo_id ──────────────────────
 roteador.post('/imagem/:conteudo_id',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   upload.single('ficheiro'),
   async (req, res, next) => {
     try {
@@ -105,8 +101,6 @@ roteador.post('/imagem/:conteudo_id',
 
 // ─── POST /uploads/audio/:conteudo_id ───────────────────────
 roteador.post('/audio/:conteudo_id',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   upload.single('ficheiro'),
   async (req, res, next) => {
     try {
@@ -147,8 +141,6 @@ roteador.post('/audio/:conteudo_id',
 
 // ─── POST /uploads/video/:conteudo_id ───────────────────────
 roteador.post('/video/:conteudo_id',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   upload.single('ficheiro'),
   async (req, res, next) => {
     try {
@@ -190,8 +182,6 @@ roteador.post('/video/:conteudo_id',
 // ─── GET /uploads/relatorio ─────────────────────────────────────
 // Retorna o histórico de todas as compressões (para demonstrar ao professor)
 roteador.get('/relatorio',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   (req, res, next) => {
     try {
       const logPath = path.join(__dirname, '..', '..', 'logs', 'compressao.log');

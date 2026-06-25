@@ -3,8 +3,6 @@
 const express = require('express');
 const roteador = express.Router();
 const { query, queryOne } = require('../config/db');
-const { verificarToken } = require('../middleware/autenticacao.middleware');
-const { checkRole } = require('../middleware/checkRole');
 
 roteador.get('/ativo', async (req, res, next) => {
   try {
@@ -29,8 +27,6 @@ roteador.get('/historico', async (req, res, next) => {
 });
 
 roteador.post('/iniciar',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   async (req, res, next) => {
     try {
       const { video_id, titulo } = req.body;
@@ -58,8 +54,6 @@ roteador.post('/iniciar',
 );
 
 roteador.post('/terminar',
-  verificarToken,
-  checkRole('gestor', 'admin'),
   async (req, res, next) => {
     try {
       await query(

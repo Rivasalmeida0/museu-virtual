@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../services/conteudo_service.dart';
-import '../../../services/auth_service.dart';
 import '../../widgets/upload_multimidia_widget.dart';
 
 class FormConteudoScreen extends StatefulWidget {
@@ -21,7 +20,7 @@ class FormConteudoScreen extends StatefulWidget {
 
 class _FormConteudoScreenState extends State<FormConteudoScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _service = ConteudoService(AuthService());
+  final _service = ConteudoService();
 
   late final TextEditingController _nomeCtrl;
   late final TextEditingController _anoCtrl;
