@@ -1,21 +1,21 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import '../core/constants/api_constants.dart';
 import '../core/network/api_exceptions.dart';
+import 'http_seguro_service.dart';
 
 class ConteudoService {
   ConteudoService();
 
   Future<List<dynamic>> listarTodos() async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos');
+    final uri = '${ApiConstants.baseUrl}/api/v1/conteudos';
     try {
-      final response = await http.get(
+      final response = await HttpSeguroService.get(
         uri,
         headers: {'Accept': 'application/json'},
-      ).timeout(ApiConstants.timeout);
+      );
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
         return body['dados'] as List<dynamic>;
@@ -24,20 +24,18 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao listar conteúdos.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<Map<String, dynamic>> obterPorId(int id) async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/$id');
+    final uri = '${ApiConstants.baseUrl}/api/v1/conteudos/$id';
     try {
-      final response = await http.get(
+      final response = await HttpSeguroService.get(
         uri,
         headers: {'Accept': 'application/json'},
-      ).timeout(ApiConstants.timeout);
+      );
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
         return body['dados'] as Map<String, dynamic>;
@@ -49,21 +47,19 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao obter conteúdo.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<Map<String, dynamic>> criar(Map<String, dynamic> dados) async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos');
+    final uri = '${ApiConstants.baseUrl}/api/v1/conteudos';
     try {
-      final response = await http.post(
+      final response = await HttpSeguroService.post(
         uri,
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: jsonEncode(dados),
-      ).timeout(ApiConstants.timeout);
+        body: dados,
+      );
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if ((response.statusCode == 201 || response.statusCode == 200) && body['sucesso'] == true) {
         return body['dados'] as Map<String, dynamic>;
@@ -72,21 +68,19 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao criar conteúdo.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<Map<String, dynamic>> actualizar(int id, Map<String, dynamic> dados) async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/$id');
+    final uri = '${ApiConstants.baseUrl}/api/v1/conteudos/$id';
     try {
-      final response = await http.put(
+      final response = await HttpSeguroService.put(
         uri,
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: jsonEncode(dados),
-      ).timeout(ApiConstants.timeout);
+        body: dados,
+      );
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
         return body['dados'] as Map<String, dynamic>;
@@ -95,20 +89,18 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao actualizar conteúdo.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<void> apagar(int id) async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/$id');
+    final uri = '${ApiConstants.baseUrl}/api/v1/conteudos/$id';
     try {
-      final response = await http.delete(
+      final response = await HttpSeguroService.delete(
         uri,
         headers: {'Accept': 'application/json'},
-      ).timeout(ApiConstants.timeout);
+      );
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
         return;
@@ -117,10 +109,8 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao apagar conteúdo.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -138,7 +128,7 @@ class ConteudoService {
         contentType: mimeType,
       ));
 
-      final streamedResponse = await request.send().timeout(ApiConstants.timeout);
+      final streamedResponse = await HttpSeguroService.send(request).timeout(ApiConstants.timeout);
       final response = await http.Response.fromStream(streamedResponse);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
@@ -148,10 +138,8 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao enviar imagem.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -169,7 +157,7 @@ class ConteudoService {
         contentType: mimeType,
       ));
 
-      final streamedResponse = await request.send().timeout(const Duration(minutes: 5));
+      final streamedResponse = await HttpSeguroService.send(request).timeout(const Duration(minutes: 5));
       final response = await http.Response.fromStream(streamedResponse);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
@@ -179,10 +167,8 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao enviar áudio.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -200,7 +186,7 @@ class ConteudoService {
         contentType: mimeType,
       ));
 
-      final streamedResponse = await request.send().timeout(const Duration(minutes: 30));
+      final streamedResponse = await HttpSeguroService.send(request).timeout(const Duration(minutes: 30));
       final response = await http.Response.fromStream(streamedResponse);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
@@ -210,18 +196,16 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao enviar vídeo.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<Map<String, dynamic>> obterRelatoriosCompressao() async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/uploads/relatorio');
+    final uri = '${ApiConstants.baseUrl}/api/v1/uploads/relatorio';
     try {
       final headers = <String, String>{'Accept': 'application/json'};
-      final response = await http.get(uri, headers: headers).timeout(ApiConstants.timeout);
+      final response = await HttpSeguroService.get(uri, headers: headers);
       final body = jsonDecode(response.body) as Map<String, dynamic>;
       if (response.statusCode == 200 && body['sucesso'] == true) {
         return body;
@@ -230,10 +214,8 @@ class ConteudoService {
         body['mensagem'] as String? ?? 'Erro ao obter relatórios.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 

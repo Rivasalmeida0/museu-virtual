@@ -1,0 +1,587 @@
+{"timestamp":"2026-06-25T23:00:34.993Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:00:35.014Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:00:35.023Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:00:35.027Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:00:35.030Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:00:35.034Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.140Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.145Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.148Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.151Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.153Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:14:30.156Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.481Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.489Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.491Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.494Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.497Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:21:58.499Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:45.807Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:45.810Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:45.811Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:49.119Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:50.246Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:50.942Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:51.135Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:52.038Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:52.250Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:52.473Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:53.326Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:56.835Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:22:59.366Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:23:14.184Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:23:16.129Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:23:28.559Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:23:30.015Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:23:30.580Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:28:45.022Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:28:53.491Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:01.604Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:02.672Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:03.290Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:03.494Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:03.679Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:03.859Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:04.056Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:04.257Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:04.487Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:04.763Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:05.070Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:05.365Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:05.966Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:07.133Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:09.256Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:09.738Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:09.957Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:12.294Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:13.747Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:15.310Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:38.453Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:29:39.929Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:30:34.094Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:30:34.730Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:15.333Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:25.929Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:26.043Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:31.618Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:32.565Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:37:34.805Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:16.809Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.253Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.256Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.258Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.260Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.261Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.265Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.267Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.269Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.270Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.271Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:17.272Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:19.443Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:19.603Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:19.604Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:19.605Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:19.605Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:20.354Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:20.381Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:20.555Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:20.556Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:20.557Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.817Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.957Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.958Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.960Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.960Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.979Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.981Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.984Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.985Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.987Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.992Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:23.993Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.266Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.628Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.643Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.645Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.646Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.647Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.647Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.648Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.648Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.649Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.650Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:29.651Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.657Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.864Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.865Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.865Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.866Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.866Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.867Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.868Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:33.868Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.077Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.079Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.079Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.518Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.917Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.919Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.920Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.921Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.922Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.923Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.923Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.924Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.924Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.925Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:34.926Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:35.424Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.170Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.949Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.951Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.951Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.952Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.953Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.953Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.954Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:36.954Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.162Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.163Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.164Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.592Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.593Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.594Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.595Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.595Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.596Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.596Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.597Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.598Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.598Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.599Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:37.626Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.082Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.084Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.085Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.086Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.086Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.087Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.087Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.088Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.088Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.089Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.089Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.620Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.621Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.621Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.622Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.622Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.623Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.623Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.624Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.624Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.625Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.625Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.652Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.653Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.654Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.655Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.655Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.656Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.656Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.657Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:38.658Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.581Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.582Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.583Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.583Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.584Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.584Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.585Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.585Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.586Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.587Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.587Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:39.796Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.052Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.053Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.054Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.055Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.055Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.056Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.056Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.057Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.057Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.058Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:40.059Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.715Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.717Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.717Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.718Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.718Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.719Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.719Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.720Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.721Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.721Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:41.722Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.535Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.536Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.537Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.537Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.538Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.538Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.539Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.539Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.540Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.540Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.541Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.541Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.681Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.682Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.682Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.683Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.683Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.684Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.684Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.685Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.685Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.686Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-25T23:50:42.686Z","tipo":"BLOQUEADO","mensagem":"Tentativa de acesso sem certificado: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:10:42.298Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:10:49.784Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:02.997Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:05.174Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.087Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.089Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.092Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.101Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.102Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:12.104Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:19.478Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:11:21.439Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:12:28.175Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:12:35.845Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:14:15.092Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:14:15.524Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:14:15.640Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:14:50.390Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:14:52.432Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:15:16.416Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:15:16.417Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:16:09.364Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:20:05.500Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T00:20:07.240Z","tipo":"PERMITIDO","mensagem":"Acesso com certificado: utilizador | IP: ::ffff:192.168.1.192"}
+{"timestamp":"2026-06-26T01:08:36.793Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:37.906Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:38.331Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:38.529Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:38.697Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:38.879Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.044Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.215Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.379Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.546Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.714Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:39.873Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:40.042Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:40.214Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:40.909Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:41.956Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:42.201Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:42.434Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:42.741Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:46.117Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:46.337Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:46.603Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:46.796Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:51.413Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:51.706Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:51.900Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:52.064Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:52.616Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:57.238Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:57.536Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:57.743Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:57.940Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:58.138Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:58.328Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:58.548Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:58.726Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:58.931Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:08:59.114Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:00.534Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:00.722Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:00.910Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:01.092Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:01.271Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:01.439Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:01.849Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:02.027Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:02.208Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:02.393Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:02.560Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:02.817Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:04.294Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:04.446Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:04.618Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:04.808Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:04.996Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:05.198Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:05.416Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:05.600Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:05.820Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:06.030Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:06.318Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:06.564Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:06.702Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:06.882Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:07.084Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:07.298Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:07.483Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T01:09:07.713Z","tipo":"BLOQUEADO","mensagem":"Certificado inválido de: ::ffff:192.168.1.192 | CN: utilizador"}
+{"timestamp":"2026-06-26T07:54:40.905Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:54:41.379Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:54:41.404Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:54:50.297Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:54:50.307Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:08.668Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:13.457Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:13.461Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:14.792Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:18.858Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:18.862Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:47.310Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:55:47.554Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:56:05.668Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:56:20.729Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:56:38.121Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T07:56:38.124Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:20.369Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:43.762Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:44.454Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:44.457Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:44.460Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:07:44.463Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:08:34.896Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:08:35.140Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:08:35.144Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:08:37.821Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:08:55.483Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:09:08.992Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:09:08.995Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T08:11:18.236Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:11.492Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:11.935Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:11.953Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.650Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.654Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.655Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.659Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.661Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:38:16.668Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:39:51.748Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:39:52.016Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:39:52.240Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T09:39:52.245Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:24.317Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:24.806Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:24.835Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:31.284Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:31.287Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:31.291Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:31.293Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:31.297Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:34.930Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:35.683Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:35.829Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:36.053Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:43.632Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:50:46.848Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:02.339Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:15.835Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:23.430Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:26.015Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:26.194Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T10:51:26.418Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:12:19.395Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:12:19.815Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:12:19.827Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:12:27.501Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:12:34.509Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:13:09.816Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T11:13:27.447Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:08:02.659Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:08:03.141Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:08:03.176Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:08:58.468Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:13.431Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:31.451Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:35.966Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:35.971Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:35.973Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:35.975Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:09:35.977Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:10:14.443Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:10:14.691Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:10:14.877Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:20:41.050Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:20:41.277Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:21:03.175Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:21:03.504Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:21:56.825Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:22:10.188Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:22:25.534Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:22:56.933Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:23:08.360Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:23:29.753Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:23:30.174Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:26:02.567Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:26:02.826Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:26:04.681Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:26:45.209Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:27:01.970Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:27:17.212Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:27:56.533Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:28:04.763Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:28:12.505Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:28:36.485Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:29:05.456Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:29:18.935Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:30:41.751Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:30:46.331Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:30:52.426Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:08.116Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:12.146Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:27.052Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:35.133Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:35.168Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:38.521Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:38.548Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:41.778Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:41.808Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:44.382Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:44.410Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:48.404Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:31:48.429Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:32:25.251Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:32:27.874Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:33:28.617Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:33:36.585Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:33:37.834Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:34:44.993Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:34:45.291Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:35:59.641Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:36:18.078Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:36:42.527Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:36:52.391Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:36:59.132Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:37:04.067Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:37:15.843Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:37:33.914Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:37:53.014Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:38:02.919Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:38:32.038Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:38:32.296Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:38:32.444Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:45:35.846Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:45:36.143Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:45:37.982Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-06-26T13:45:41.131Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:40:40.721Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:40:41.168Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:40:41.196Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:40:47.649Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:42:30.370Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:42:37.556Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:07.391Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.016Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.018Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.021Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.175Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.177Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:08.178Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:43:59.361Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:44:20.373Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:44:56.698Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T07:45:08.623Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:19.192Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:19.559Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:19.563Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:27.158Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:33.693Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:22:43.848Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:20.489Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.162Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.165Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.167Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.341Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.342Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:23:21.344Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:29.804Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:40.866Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:40.867Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:40.868Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:40.869Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:24:40.873Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:54.722Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.359Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.362Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.364Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.523Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.525Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:35:55.527Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:04.709Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:05.118Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:05.122Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:10.835Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:21.358Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:30.413Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:56.757Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:36:57.006Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:27.069Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:29.856Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:39.799Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:39.801Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:39.802Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:39.804Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:39.806Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:42.536Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:37:42.568Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:32.287Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:38.603Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:48.226Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:48.228Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:48.229Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:48.230Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:48.233Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:54.041Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:39:54.073Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:40:21.959Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:40:24.284Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:51:59.434Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:51:59.832Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:51:59.836Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:00.760Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.397Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.399Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.401Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.564Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.566Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:01.567Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:22.566Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:27.702Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:38.286Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:54.512Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:54.514Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:54.515Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:54.517Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:52:54.519Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:53:16.726Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:54:21.967Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:55:12.868Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:55:12.870Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:55:12.871Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:55:12.872Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}
+{"timestamp":"2026-07-02T08:55:12.875Z","tipo":"WEB","mensagem":"Acesso via browser sem certificado de cliente: ::1","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"}

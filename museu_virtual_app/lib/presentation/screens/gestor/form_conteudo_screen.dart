@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io' show File;
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -78,9 +77,7 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
     );
     if (ficheiro != null) {
       _imagemSelecionada = ficheiro;
-      if (kIsWeb) {
-        _imagemBytes = await ficheiro.readAsBytes();
-      }
+      _imagemBytes = await ficheiro.readAsBytes();
       setState(() {});
     }
   }
@@ -264,10 +261,10 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
   }
 
   Widget _previewImagemSelecionada() {
-    if (kIsWeb && _imagemBytes != null) {
+    if (_imagemBytes != null) {
       return Image.memory(_imagemBytes!, fit: BoxFit.cover, width: double.infinity, height: 180);
     }
-    return Image.file(File(_imagemSelecionada!.path), fit: BoxFit.cover, width: double.infinity, height: 180);
+    return const SizedBox.shrink();
   }
 
   Widget _placeholderImagem() {

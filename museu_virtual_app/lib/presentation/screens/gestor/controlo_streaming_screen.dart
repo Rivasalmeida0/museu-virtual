@@ -1,18 +1,21 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../services/http_seguro_service.dart';
+import '../../providers/auth_providers.dart';
+import '../streaming_room_page.dart';
 
-class ControloStreamingScreen extends StatefulWidget {
+class ControloStreamingScreen extends ConsumerStatefulWidget {
   const ControloStreamingScreen({super.key});
 
   @override
-  State<ControloStreamingScreen> createState() => _ControloStreamingScreenState();
+  ConsumerState<ControloStreamingScreen> createState() =>
+      _ControloStreamingScreenState();
 }
 
-class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
-  final _videoIdCtrl = TextEditingController();
+class _ControloStreamingScreenState extends ConsumerState<ControloStreamingScreen> {
   final _tituloCtrl = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _loading = false;
@@ -28,72 +31,87 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
 
   @override
   void dispose() {
-    _videoIdCtrl.dispose();
     _tituloCtrl.dispose();
     super.dispose();
   }
 
+  String? get _funcao {
+    final authState = ref.read(authProvider);
+    return (authState.utilizador?['funcao'] as String?)?.toLowerCase();
+  }
+
   Future<void> _verificarEstado() async {
-    setState(() { _erro = null; });
+    setState(() => _erro = null);
     try {
-      final response = await http.get(
-        Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo'),
+      final response = await HttpSeguroService.get(
+        '${ApiConstants.baseUrl}${ApiConstants.streamingAoVivo}/ativo',
         headers: {'Content-Type': 'application/json'},
-      ).timeout(ApiConstants.timeout);
+      );
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
 
-      if (response.statusCode == 200 && body['sucesso'] == true) {
+      if (response.statusCode == 200 && body['ativo'] == true) {
         final dados = body['dados'] as Map<String, dynamic>?;
         if (mounted) {
           setState(() {
             _streamAtivo = true;
             _streamTitulo = dados?['titulo'] as String?;
-            _videoIdCtrl.text = dados?['video_id'] as String? ?? '';
             _tituloCtrl.text = dados?['titulo'] as String? ?? '';
           });
         }
-      } else {
-        if (mounted) setState(() { _streamAtivo = false; _streamTitulo = null; });
+      } else if (mounted) {
+        setState(() {
+          _streamAtivo = false;
+          _streamTitulo = null;
+        });
       }
     } catch (e) {
-      if (mounted) setState(() { _erro = e.toString(); });
+      if (mounted) setState(() => _erro = e.toString());
     }
   }
 
   Future<void> _iniciarStream() async {
     if (!_formKey.currentState!.validate()) return;
 
-    setState(() { _loading = true; _erro = null; });
+    final authState = ref.read(authProvider);
+    final utilizador = authState.utilizador;
+
+    setState(() {
+      _loading = true;
+      _erro = null;
+    });
+
     try {
-      final response = await http.post(
-        Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/iniciar'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'video_id': _videoIdCtrl.text.trim(),
+      final response = await HttpSeguroService.post(
+        '${ApiConstants.baseUrl}${ApiConstants.streamingAoVivo}/iniciar',
+        body: {
           'titulo': _tituloCtrl.text.trim(),
-        }),
-      ).timeout(ApiConstants.timeout);
+          'gestor_nome': utilizador?['nome'],
+          'gestor_id': utilizador?['id'],
+          'funcao': _funcao,
+        },
+      );
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 200 && body['sucesso'] == true) {
+        final titulo = _tituloCtrl.text.trim();
         if (mounted) {
           setState(() {
             _streamAtivo = true;
-            _streamTitulo = _tituloCtrl.text.trim();
+            _streamTitulo = titulo;
             _loading = false;
           });
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Transmissão iniciada com sucesso!')),
-          );
+          await _abrirSalaTransmissao(titulo);
         }
       } else {
         if (mounted) {
-          setState(() { _loading = false; });
+          setState(() => _loading = false);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(body['mensagem'] as String? ?? 'Erro ao iniciar transmissão.'),
+              content: Text(
+                body['mensagem'] as String? ?? 'Erro ao iniciar transmissão.',
+              ),
               backgroundColor: AppColors.angolaRed,
             ),
           );
@@ -101,7 +119,7 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
       }
     } catch (e) {
       if (mounted) {
-        setState(() { _loading = false; });
+        setState(() => _loading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro: $e'), backgroundColor: AppColors.angolaRed),
         );
@@ -133,12 +151,16 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
     );
     if (confirm != true) return;
 
-    setState(() { _loading = true; _erro = null; });
+    setState(() {
+      _loading = true;
+      _erro = null;
+    });
+
     try {
-      final response = await http.post(
-        Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/terminar'),
-        headers: {'Content-Type': 'application/json'},
-      ).timeout(ApiConstants.timeout);
+      final response = await HttpSeguroService.post(
+        '${ApiConstants.baseUrl}${ApiConstants.streamingAoVivo}/terminar',
+        body: {'funcao': _funcao},
+      );
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -147,7 +169,6 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
           setState(() {
             _streamAtivo = false;
             _streamTitulo = null;
-            _videoIdCtrl.clear();
             _tituloCtrl.clear();
             _loading = false;
           });
@@ -155,25 +176,37 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
             const SnackBar(content: Text('Transmissão terminada.')),
           );
         }
-      } else {
-        if (mounted) {
-          setState(() { _loading = false; });
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(body['mensagem'] as String? ?? 'Erro ao terminar transmissão.'),
-              backgroundColor: AppColors.angolaRed,
-            ),
-          );
-        }
+      } else if (mounted) {
+        setState(() => _loading = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(body['mensagem'] as String? ?? 'Erro ao terminar transmissão.'),
+            backgroundColor: AppColors.angolaRed,
+          ),
+        );
       }
     } catch (e) {
       if (mounted) {
-        setState(() { _loading = false; });
+        setState(() => _loading = false);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Erro: $e'), backgroundColor: AppColors.angolaRed),
         );
       }
     }
+  }
+
+  Future<void> _abrirSalaTransmissao(String titulo) async {
+    if (!mounted) return;
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => StreamingRoomPage(
+          salaId: ApiConstants.liveRoomId,
+          salaNome: titulo,
+          papel: 'anfitriao',
+        ),
+      ),
+    );
+    if (mounted) _verificarEstado();
   }
 
   @override
@@ -203,7 +236,8 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
             const SizedBox(height: 24),
             _buildInstrucoesCard(),
             const SizedBox(height: 24),
-            _buildForm(),
+            if (!_streamAtivo) _buildForm(),
+            if (_streamAtivo) _buildControloAtivo(),
             if (_erro != null) ...[
               const SizedBox(height: 16),
               Container(
@@ -311,85 +345,30 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
     return Card(
       color: const Color(0xFF1A1A2E),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: ExpansionTile(
-        leading: Container(
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha: 0.15),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: const Icon(Icons.help_outline, color: AppColors.primary, size: 20),
-        ),
-        title: const Text(
-          'Como obter o ID do YouTube Live?',
-          style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
-        ),
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _passo(1, 'Abre o YouTube Studio (studio.youtube.com).'),
-                _passo(2, 'Clica em "Transmitir ao vivo" no canto superior direito.'),
-                _passo(3, 'Em "Webcam" ou "Codificador", seleciona "Codificador".'),
-                _passo(4, 'Aparecerá um URL e um Nome do Stream (chave de transmissão).'),
-                _passo(5, 'Copia o "ID do vídeo" — é a parte após ?v= no URL de visualização.'),
-                const SizedBox(height: 12),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.06),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.info_outline, color: Colors.white38, size: 16),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Exemplo: se o URL for "youtube.com/watch?v=abc123", o ID é "abc123".',
-                          style: TextStyle(color: Colors.white54, fontSize: 12),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Icon(Icons.info_outline, color: AppColors.primary, size: 20),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _passo(int numero, String texto) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 22,
-            height: 22,
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(6),
-            ),
-            child: Center(
+            const SizedBox(width: 12),
+            const Expanded(
               child: Text(
-                '$numero',
-                style: const TextStyle(color: AppColors.primary, fontSize: 12, fontWeight: FontWeight.w600),
+                'Inicie uma live com título e partilhe a câmera e o microfone. '
+                'Os visitantes entram na tab Streaming e veem apenas a opção de entrar ou sair.',
+                style: TextStyle(color: Colors.white70, fontSize: 13, height: 1.4),
               ),
             ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(texto, style: const TextStyle(color: Colors.white70, fontSize: 13)),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -401,21 +380,14 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Iniciar Nova Transmissão',
+            'Iniciar Nova Live',
             style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 20),
           TextFormField(
-            controller: _videoIdCtrl,
-            style: const TextStyle(color: Colors.white),
-            decoration: _decoration('ID do YouTube Live'),
-            validator: (v) => v == null || v.trim().isEmpty ? 'Campo obrigatório' : null,
-          ),
-          const SizedBox(height: 16),
-          TextFormField(
             controller: _tituloCtrl,
             style: const TextStyle(color: Colors.white),
-            decoration: _decoration('Título da Transmissão'),
+            decoration: _decoration('Título da transmissão'),
             validator: (v) => v == null || v.trim().isEmpty ? 'Campo obrigatório' : null,
           ),
           const SizedBox(height: 24),
@@ -432,36 +404,63 @@ class _ControloStreamingScreenState extends State<ControloStreamingScreen> {
               ),
               child: _loading
                   ? const SizedBox(
-                      width: 22, height: 22,
+                      width: 22,
+                      height: 22,
                       child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                     )
-                  : const Text('Iniciar Transmissão', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                  : const Text(
+                      'Iniciar Live',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
             ),
           ),
-          if (_streamAtivo) ...[
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: _loading ? null : _terminarStream,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.angolaRed,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 0,
-                ),
-                child: _loading
-                    ? const SizedBox(
-                        width: 22, height: 22,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                      )
-                    : const Text('Terminar Transmissão', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-              ),
-            ),
-          ],
         ],
       ),
+    );
+  }
+
+  Widget _buildControloAtivo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SizedBox(
+          height: 50,
+          child: ElevatedButton.icon(
+            onPressed: _loading
+                ? null
+                : () => _abrirSalaTransmissao(_streamTitulo ?? 'Live'),
+            icon: const Icon(Icons.videocam),
+            label: const Text('Continuar transmissão'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 50,
+          child: ElevatedButton(
+            onPressed: _loading ? null : _terminarStream,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.angolaRed,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            child: _loading
+                ? const SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  )
+                : const Text(
+                    'Terminar Live',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+          ),
+        ),
+      ],
     );
   }
 

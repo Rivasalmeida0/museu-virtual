@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../../core/constants/api_constants.dart';
 import '../../core/network/api_client.dart';
+import '../../services/http_seguro_service.dart';
 import '../models/streaming_models.dart';
 
 class StreamingRemoteDatasource {
@@ -16,6 +18,25 @@ class StreamingRemoteDatasource {
     return data
         .map((j) => StreamingSala.fromJson(j as Map<String, dynamic>))
         .toList();
+  }
+
+  Future<LiveAtiva?> obterLiveAtiva() async {
+    final response = await HttpSeguroService.get(
+      '${ApiConstants.baseUrl}${ApiConstants.streamingAoVivo}/ativo',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Erro ao verificar transmissão ao vivo.');
+    }
+
+    final body = jsonDecode(response.body) as Map<String, dynamic>;
+    if (body['ativo'] != true) return null;
+
+    final dados = body['dados'] as Map<String, dynamic>?;
+    if (dados == null) return null;
+
+    return LiveAtiva.fromJson(dados);
   }
 
   IO.Socket get socket {
@@ -64,11 +85,12 @@ class StreamingRemoteDatasource {
     _connected = false;
   }
 
-  void joinRoom(String room, String role, String identity) {
+  void joinRoom(String room, String role, String identity, {String? funcao}) {
     socket.emit('join-room', {
       'room': room,
       'role': role,
       'identity': identity,
+      if (funcao != null) 'funcao': funcao,
     });
   }
 
@@ -88,6 +110,12 @@ class StreamingRemoteDatasource {
     socket.emit('ice-candidate', {
       'targetId': targetId,
       'candidate': candidate,
+    });
+  }
+
+  void requestOffer(String hostSocketId) {
+    socket.emit('request-offer', {
+      'hostSocketId': hostSocketId,
     });
   }
 

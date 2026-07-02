@@ -63,17 +63,17 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
 
   void _retroceder() {
     final pos = _videoController.value.position;
-    _videoController.seek(Duration(seconds: pos.inSeconds - 10));
+    _videoController.seekTo(Duration(seconds: pos.inSeconds - 10));
   }
 
   void _avancar() {
     final pos = _videoController.value.position;
-    _videoController.seek(Duration(seconds: pos.inSeconds + 10));
+    _videoController.seekTo(Duration(seconds: pos.inSeconds + 10));
   }
 
   void _parar() {
     _videoController.pause();
-    _videoController.seek(Duration.zero);
+    _videoController.seekTo(Duration.zero);
   }
 
   @override
@@ -118,10 +118,10 @@ class _PlayerVideoScreenState extends State<PlayerVideoScreen> {
                               onPressed: _retroceder,
                             ),
                             const SizedBox(width: 16),
-                            StreamBuilder<VideoPlayerValue>(
-                              stream: _videoController.valueStream,
-                              builder: (context, snapshot) {
-                                final playing = snapshot.data?.isPlaying ?? false;
+                            ValueListenableBuilder<VideoPlayerValue>(
+                              valueListenable: _videoController,
+                              builder: (context, value, child) {
+                                final playing = value.isPlaying;
                                 return IconButton(
                                   icon: Icon(
                                     playing ? Icons.pause_circle : Icons.play_circle,

@@ -1,23 +1,19 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../core/constants/api_constants.dart';
 import '../core/network/api_exceptions.dart';
+import 'http_seguro_service.dart';
 
 class AuthService {
   static const String _userKey = 'user_data';
 
   Future<Map<String, dynamic>> login(String email, String senha) async {
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/autenticacao/entrar');
+    final uri = '${ApiConstants.baseUrl}/api/v1/autenticacao/entrar';
     try {
-      final response = await http
-          .post(
-            uri,
-            headers: {'Content-Type': 'application/json'},
-            body: jsonEncode({'email': email, 'senha': senha}),
-          )
-          .timeout(ApiConstants.timeout);
+      final response = await HttpSeguroService.post(
+        uri,
+        body: {'email': email, 'senha': senha},
+      );
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -43,25 +39,19 @@ class AuthService {
         body['mensagem'] as String? ?? 'Erro ao fazer login.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
   Future<Map<String, dynamic>> register(
       String nome, String email, String senha) async {
-    final uri =
-        Uri.parse('${ApiConstants.baseUrl}/api/v1/autenticacao/registar');
+    final uri = '${ApiConstants.baseUrl}/api/v1/autenticacao/registar';
     try {
-      final response = await http
-          .post(
-            uri,
-            headers: {'Content-Type': 'application/json'},
-            body: jsonEncode({'nome': nome, 'email': email, 'senha': senha}),
-          )
-          .timeout(ApiConstants.timeout);
+      final response = await HttpSeguroService.post(
+        uri,
+        body: {'nome': nome, 'email': email, 'senha': senha},
+      );
 
       final body = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -87,10 +77,8 @@ class AuthService {
         body['mensagem'] as String? ?? 'Erro ao registar.',
         statusCode: response.statusCode,
       );
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 

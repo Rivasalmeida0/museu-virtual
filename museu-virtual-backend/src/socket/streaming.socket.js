@@ -1,15 +1,21 @@
 'use strict';
 
-const salasDisponiveis = ['visita-guiada', 'apresentacao-peca', 'evento-especial'];
+const {
+  SALA_LIVE,
+  obterLiveAtiva,
+  terminarLive,
+  emitirLiveTerminada,
+} = require('../service/streaming_ao_vivo.servico');
+
+const PAPEIS_GESTOR = new Set(['gestor', 'admin']);
 
 function configurarStreamingSocket(io) {
   io.on('connection', (socket) => {
     let salaAtual = null;
     let identidadeAtual = null;
-    let papelAtual = null;
 
-    socket.on('join-room', ({ room, role, identity }) => {
-      if (!salasDisponiveis.includes(room)) {
+    socket.on('join-room', async ({ room, role, identity, funcao }) => {
+      if (room !== SALA_LIVE) {
         socket.emit('error', { message: 'Sala não encontrada.' });
         return;
       }
@@ -18,9 +24,44 @@ function configurarStreamingSocket(io) {
         return;
       }
 
+      if (role === 'anfitriao') {
+        const funcaoNormalizada = String(funcao || '').toLowerCase();
+        if (!PAPEIS_GESTOR.has(funcaoNormalizada)) {
+          socket.emit('error', {
+            message: 'Apenas gestores podem transmitir ao vivo.',
+          });
+          return;
+        }
+
+        const liveAtiva = await obterLiveAtiva();
+        if (!liveAtiva) {
+          socket.emit('error', {
+            message: 'Não existe transmissão activa. Inicie a live no painel do gestor.',
+          });
+          return;
+        }
+
+        const hostExistente = _findHost(io, room);
+        if (hostExistente) {
+          socket.emit('error', {
+            message: 'Já existe um gestor a transmitir nesta live.',
+          });
+          return;
+        }
+      }
+
+      if (role === 'viewer') {
+        const liveAtiva = await obterLiveAtiva();
+        if (!liveAtiva) {
+          socket.emit('error', {
+            message: 'Não há transmissão ao vivo disponível de momento.',
+          });
+          return;
+        }
+      }
+
       salaAtual = room;
       identidadeAtual = identity;
-      papelAtual = role;
 
       socket._papel = role;
       socket._identidade = identity;
@@ -31,12 +72,12 @@ function configurarStreamingSocket(io) {
 
       const clients = io.sockets.adapter.rooms.get(room);
       const memberCount = clients ? clients.size : 1;
-
-      const host = _findHost(io, room);
+      const hostInfo = _findHost(io, room);
       const viewers = _getViewers(io, room, socket.id);
 
       socket.emit('room-state', {
-        host: host || null,
+        host: hostInfo ? hostInfo.identity : null,
+        hostSocketId: hostInfo ? hostInfo.socketId : null,
         viewers,
         count: memberCount,
       });
@@ -58,6 +99,18 @@ function configurarStreamingSocket(io) {
       });
     });
 
+    socket.on('request-offer', ({ hostSocketId }) => {
+      if (!hostSocketId) return;
+      const hostSock = io.sockets.sockets.get(hostSocketId);
+      if (hostSock && hostSock._papel === 'anfitriao') {
+        hostSock.emit('user-joined', {
+          identity: identidadeAtual,
+          role: 'viewer',
+          socketId: socket.id,
+        });
+      }
+    });
+
     socket.on('ice-candidate', ({ targetId, candidate }) => {
       socket.to(targetId).emit('ice-candidate', {
         identity: identidadeAtual,
@@ -77,7 +130,6 @@ function configurarStreamingSocket(io) {
       }
       salaAtual = null;
       identidadeAtual = null;
-      papelAtual = null;
     });
   });
 }
@@ -88,7 +140,7 @@ function _findHost(io, room) {
   for (const socketId of clients) {
     const sock = io.sockets.sockets.get(socketId);
     if (sock && sock._papel === 'anfitriao') {
-      return sock._identidade;
+      return { identity: sock._identidade, socketId };
     }
   }
   return null;
@@ -108,13 +160,24 @@ function _getViewers(io, room, excludeSocketId) {
   return viewers;
 }
 
-function _notifyLeave(io, socket, room, identity) {
-  if (room && identity) {
-    socket.to(room).emit('user-left', { identity, role: socket._papel, socketId: socket.id });
-    if (socket._papel === 'anfitriao') {
-      socket.to(room).emit('host-disconnected');
+async function _notifyLeave(io, socket, room, identity) {
+  if (!room || !identity) return;
+
+  socket.to(room).emit('user-left', {
+    identity,
+    role: socket._papel,
+    socketId: socket.id,
+  });
+
+  if (socket._papel === 'anfitriao') {
+    socket.to(room).emit('host-disconnected');
+    try {
+      await terminarLive();
+      emitirLiveTerminada(io);
+    } catch (_) {
+      // ignorar falha ao actualizar estado
     }
   }
 }
 
-module.exports = { configurarStreamingSocket };
+module.exports = { configurarStreamingSocket, SALA_LIVE };

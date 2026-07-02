@@ -2,70 +2,117 @@
 
 const express = require('express');
 const roteador = express.Router();
-const { query, queryOne } = require('../config/db');
+const {
+  obterLiveAtiva,
+  iniciarLive,
+  terminarLive,
+  emitirLiveIniciada,
+  emitirLiveTerminada,
+} = require('../service/streaming_ao_vivo.servico');
+
+const PAPEIS_GESTOR = new Set(['gestor', 'admin']);
+
+function _podeGerirLive(req) {
+  const funcaoBody = req.body?.funcao;
+  if (funcaoBody && PAPEIS_GESTOR.has(String(funcaoBody).toLowerCase())) {
+    return true;
+  }
+
+  const cn = req.certificado?.cn;
+  if (cn && PAPEIS_GESTOR.has(String(cn).toLowerCase())) {
+    return true;
+  }
+
+  return false;
+}
 
 roteador.get('/ativo', async (req, res, next) => {
   try {
-    const stream = await queryOne(
-      'SELECT video_id, titulo, iniciado_em FROM streaming WHERE ativo = true LIMIT 1'
-    );
+    const stream = await obterLiveAtiva();
     if (stream) {
       res.json({ sucesso: true, ativo: true, dados: stream });
     } else {
       res.json({ sucesso: true, ativo: false });
     }
-  } catch (erro) { next(erro); }
+  } catch (erro) {
+    next(erro);
+  }
 });
 
 roteador.get('/historico', async (req, res, next) => {
   try {
+    const { query } = require('../config/db');
     const streams = await query(
-      'SELECT * FROM streaming ORDER BY iniciado_em DESC LIMIT 10'
+      'SELECT id, titulo, gestor_nome, gestor_id, ativo, iniciado_em, terminado_em FROM streaming ORDER BY iniciado_em DESC LIMIT 10'
     );
     res.json({ sucesso: true, dados: streams });
-  } catch (erro) { next(erro); }
+  } catch (erro) {
+    next(erro);
+  }
 });
 
-roteador.post('/iniciar',
-  async (req, res, next) => {
-    try {
-      const { video_id, titulo } = req.body;
-      if (!video_id) {
-        return res.status(400).json({ sucesso: false, mensagem: 'video_id é obrigatório.' });
-      }
+roteador.post('/iniciar', async (req, res, next) => {
+  try {
+    if (!_podeGerirLive(req)) {
+      return res.status(403).json({
+        sucesso: false,
+        mensagem: 'Apenas gestores podem iniciar uma transmissão ao vivo.',
+      });
+    }
 
-      await query(
-        'UPDATE streaming SET ativo = false, terminado_em = NOW() WHERE ativo = true'
-      );
+    const { titulo, gestor_nome, gestor_id } = req.body;
+    if (!titulo || !String(titulo).trim()) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: 'O título da transmissão é obrigatório.',
+      });
+    }
 
-      const resultado = await query(
-        'INSERT INTO streaming (video_id, titulo, ativo, iniciado_em) VALUES (?, ?, true, NOW())',
-        [video_id, titulo || 'Visita Guiada ao Vivo']
-      );
+    const liveAtiva = await obterLiveAtiva();
+    if (liveAtiva) {
+      return res.status(409).json({
+        sucesso: false,
+        mensagem: 'Já existe uma transmissão ao vivo em curso.',
+      });
+    }
 
-      const io = req.app.get('io');
-      if (io) {
-        io.emit('stream_iniciado', { video_id, titulo: titulo || 'Visita Guiada ao Vivo' });
-      }
+    const dados = await iniciarLive(
+      String(titulo).trim(),
+      gestor_nome ? String(gestor_nome).trim() : null,
+      gestor_id || null
+    );
 
-      res.json({ sucesso: true, mensagem: 'Transmissão iniciada.', id: resultado.insertId });
-    } catch (erro) { next(erro); }
+    const io = req.app.get('io');
+    emitirLiveIniciada(io, dados);
+
+    res.json({
+      sucesso: true,
+      mensagem: 'Transmissão iniciada.',
+      dados,
+    });
+  } catch (erro) {
+    next(erro);
   }
-);
+});
 
-roteador.post('/terminar',
-  async (req, res, next) => {
-    try {
-      await query(
-        'UPDATE streaming SET ativo = false, terminado_em = NOW() WHERE ativo = true'
-      );
+roteador.post('/terminar', async (req, res, next) => {
+  try {
+    if (!_podeGerirLive(req)) {
+      return res.status(403).json({
+        sucesso: false,
+        mensagem: 'Apenas gestores podem terminar a transmissão ao vivo.',
+      });
+    }
 
-      const io = req.app.get('io');
-      if (io) io.emit('stream_terminado', {});
+    await terminarLive();
 
-      res.json({ sucesso: true, mensagem: 'Transmissão terminada.' });
-    } catch (erro) { next(erro); }
+    const io = req.app.get('io');
+    emitirLiveTerminada(io);
+
+    res.json({ sucesso: true, mensagem: 'Transmissão terminada.' });
+  } catch (erro) {
+    next(erro);
   }
-);
+});
 
 module.exports = roteador;

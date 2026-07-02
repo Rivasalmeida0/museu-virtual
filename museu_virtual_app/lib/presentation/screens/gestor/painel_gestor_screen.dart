@@ -1,3 +1,4 @@
+import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
@@ -8,6 +9,7 @@ import '../../providers/auth_providers.dart';
 import 'form_conteudo_screen.dart';
 import 'relatorio_compressao_screen.dart';
 import 'controlo_streaming_screen.dart';
+import '../home_page.dart';
 
 class PainelGestorScreen extends ConsumerStatefulWidget {
   const PainelGestorScreen({super.key});
@@ -21,6 +23,7 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
   List<dynamic>? _conteudos;
   bool _loading = true;
   String? _erro;
+  int _selectedDrawerIndex = 0;
 
   @override
   void initState() {
@@ -115,50 +118,86 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
     });
   }
 
+  void _navegarPara(int index) {
+    Navigator.pop(context); // fechar drawer
+    if (index == _selectedDrawerIndex) return;
+
+    switch (index) {
+      case 0:
+        // Gestão de Conteúdos (atual)
+        setState(() => _selectedDrawerIndex = 0);
+        break;
+      case 1:
+        // Visitar Museu
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const HomePage()),
+        );
+        break;
+      case 2:
+        // Relatório de Compressão
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const RelatorioCompressaoScreen()),
+        );
+        break;
+      case 3:
+        // Controlo de Streaming
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ControloStreamingScreen()),
+        );
+        break;
+      case 4:
+        // Logout
+        _fazerLogout();
+        break;
+    }
+  }
+
+  Future<void> _fazerLogout() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFF1A1A2E),
+        title: const Text('Sair', style: TextStyle(color: Colors.white)),
+        content: const Text('Tem a certeza que deseja terminar a sessão?', style: TextStyle(color: Colors.white70)),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancelar')),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: const Text('Sair', style: TextStyle(color: AppColors.angolaRed)),
+          ),
+        ],
+      ),
+    );
+    if (confirm != true) return;
+    await ref.read(authProvider.notifier).logout();
+  }
+
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
     final funcao = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase();
     final isGestor = funcao == 'gestor' || funcao == 'admin';
+    final nomeUtilizador = authState.utilizador?['nome'] as String? ?? 'Gestor';
+    final emailUtilizador = authState.utilizador?['email'] as String? ?? '';
 
     return Scaffold(
       backgroundColor: AppColors.angolaBlack,
       appBar: AppBar(
         backgroundColor: const Color(0xFF1A1A2E),
+        foregroundColor: Colors.white,
         title: const Text('Painel de Gestão'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
+            tooltip: 'Recarregar',
             onPressed: _carregar,
-          ),
-          IconButton(
-            icon: const Icon(Icons.compress),
-            tooltip: 'Relatório de Compressão',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => const RelatorioCompressaoScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.live_tv),
-            tooltip: 'Controlo de Streaming Ao Vivo',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => const ControloStreamingScreen()),
-              );
-            },
           ),
         ],
       ),
+      drawer: _buildDrawer(nomeUtilizador, emailUtilizador),
       floatingActionButton: isGestor
           ? FloatingActionButton(
               backgroundColor: AppColors.primary,
@@ -167,6 +206,117 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
             )
           : null,
       body: _buildBody(),
+    );
+  }
+
+  Widget _buildDrawer(String nome, String email) {
+    return Drawer(
+      backgroundColor: const Color(0xFF1A1A2E),
+      child: Column(
+        children: [
+          // Cabeçalho do Drawer
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF0041C8), Color(0xFF1A1A2E)],
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.15),
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.3), width: 2),
+                  ),
+                  child: const Icon(Icons.admin_panel_settings, color: Colors.white, size: 28),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  nome,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  email,
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.7),
+                    fontSize: 13,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: AppColors.accentGold.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    'Gestor',
+                    style: TextStyle(
+                      color: AppColors.accentGold,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          // Itens do menu
+          _DrawerItem(
+            icon: Icons.dashboard,
+            label: 'Gestão de Conteúdos',
+            isSelected: _selectedDrawerIndex == 0,
+            onTap: () => _navegarPara(0),
+          ),
+          _DrawerItem(
+            icon: Icons.museum,
+            label: 'Visitar Museu',
+            isSelected: false,
+            onTap: () => _navegarPara(1),
+          ),
+          _DrawerItem(
+            icon: Icons.compress,
+            label: 'Relatório de Compressão',
+            isSelected: false,
+            onTap: () => _navegarPara(2),
+          ),
+          _DrawerItem(
+            icon: Icons.live_tv,
+            label: 'Controlo de Streaming',
+            isSelected: false,
+            onTap: () => _navegarPara(3),
+          ),
+
+          const Spacer(),
+
+          // Logout
+          const Divider(color: Colors.white12),
+          _DrawerItem(
+            icon: Icons.logout,
+            label: 'Terminar Sessão',
+            isSelected: false,
+            color: AppColors.angolaRed,
+            onTap: () => _navegarPara(4),
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
     );
   }
 
@@ -281,4 +431,39 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
   }
 }
 
+class _DrawerItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final Color? color;
 
+  const _DrawerItem({
+    required this.icon,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final itemColor = color ?? (isSelected ? AppColors.primary : Colors.white70);
+    return ListTile(
+      leading: Icon(icon, color: itemColor, size: 22),
+      title: Text(
+        label,
+        style: TextStyle(
+          color: itemColor,
+          fontSize: 14,
+          fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+        ),
+      ),
+      selected: isSelected,
+      selectedTileColor: AppColors.primary.withValues(alpha: 0.1),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+      onTap: onTap,
+    );
+  }
+}

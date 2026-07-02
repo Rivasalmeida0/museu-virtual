@@ -1,23 +1,22 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import '../constants/api_constants.dart';
 import 'api_exceptions.dart';
+import '../../services/http_seguro_service.dart';
 
 class ApiClient {
-  final http.Client _client;
+  http.Client get _client => HttpSeguroService.client;
   final String baseUrl;
 
   ApiClient({
-    http.Client? client,
     String? baseUrl,
-  })  : _client = client ?? http.Client(),
-        baseUrl = baseUrl ?? ApiConstants.baseUrl;
+  }) : baseUrl = baseUrl ?? ApiConstants.baseUrl;
 
   Future<Map<String, String>> get _headers async {
     return <String, String>{
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'X-Client-Type': 'web',
     };
   }
 
@@ -30,10 +29,8 @@ class ApiClient {
           .get(uri, headers: await _headers)
           .timeout(ApiConstants.timeout);
       return _processResponse(response);
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -44,10 +41,8 @@ class ApiClient {
           .post(uri, headers: await _headers, body: jsonEncode(body))
           .timeout(ApiConstants.timeout);
       return _processResponse(response);
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -58,10 +53,8 @@ class ApiClient {
           .put(uri, headers: await _headers, body: jsonEncode(body))
           .timeout(ApiConstants.timeout);
       return _processResponse(response);
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -72,10 +65,8 @@ class ApiClient {
           .delete(uri, headers: await _headers)
           .timeout(ApiConstants.timeout);
       return _processResponse(response);
-    } on SocketException {
-      throw const NetworkException();
-    } on http.ClientException {
-      throw const NetworkException();
+    } on Exception catch (e) {
+      throw NetworkException('${e.runtimeType}: ${e.toString().replaceFirst("Exception: ", "")}');
     }
   }
 
@@ -100,5 +91,5 @@ class ApiClient {
     );
   }
 
-  void dispose() => _client.close();
+  void dispose() {}
 }

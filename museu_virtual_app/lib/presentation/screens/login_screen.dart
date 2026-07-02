@@ -43,18 +43,31 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     }
   }
 
+  void _navegarPorRole(BuildContext context, String role) {
+    switch (role.toLowerCase()) {
+      case 'admin':
+        Navigator.pushReplacementNamed(context, '/admin');
+        break;
+      case 'gestor':
+        Navigator.pushReplacementNamed(context, '/gestor');
+        break;
+      case 'user':
+      default:
+        Navigator.pushReplacementNamed(context, '/home');
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
 
     ref.listen<AuthState>(authProvider, (prev, next) {
       if (next.status == AuthStatus.authenticated) {
-        final funcao = (next.utilizador?['funcao'] as String? ?? '').toLowerCase();
-        if (funcao == 'gestor' || funcao == 'admin') {
-          Navigator.of(context).pushReplacementNamed('/gestor');
-        } else {
-          Navigator.of(context).pushReplacementNamed('/home');
-        }
+        final role = (next.utilizador?['funcao'] as String? ?? '').trim();
+        debugPrint('[LOGIN] Role recebido: "$role"');
+        debugPrint('[LOGIN] Role tipo: ${role.runtimeType}');
+        _navegarPorRole(context, role);
       }
     });
 

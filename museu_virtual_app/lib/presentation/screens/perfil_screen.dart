@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_colors.dart';
 import '../../services/auth_service.dart';
-import 'gestor/painel_gestor_screen.dart';
 
 class PerfilScreen extends StatefulWidget {
   const PerfilScreen({super.key});
@@ -226,10 +225,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const PainelGestorScreen()),
-          );
+          Navigator.pushNamed(context, '/gestor');
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(

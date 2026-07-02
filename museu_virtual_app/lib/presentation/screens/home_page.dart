@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/constants/app_colors.dart';
@@ -14,11 +13,11 @@ import '../providers/piece_providers.dart';
 import 'gallery_page.dart';
 import 'piece_detail_page.dart';
 import 'streaming_page.dart';
-import 'streaming_ao_vivo_screen.dart';
 import 'perfil_screen.dart';
 import 'gestor/painel_gestor_screen.dart';
 import '../providers/auth_providers.dart';
 import '../../services/socket_service.dart';
+import '../../services/http_seguro_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,8 +37,7 @@ class _HomePageState extends State<HomePage> {
     _pages = [
       _MuseumHomeContent(onNavigate: _onNavigate),
       GalleryPage(initialTab: 0),
-      StreamingPage(),
-      const StreamingAoVivoScreen(),
+      const StreamingPage(),
     ];
   }
 
@@ -793,12 +791,6 @@ class _BottomNavBar extends StatelessWidget {
                     isSelected: selectedIndex == 2,
                     onTap: () => onTap(2),
                   ),
-                  _NavItem(
-                    icon: Icons.live_tv,
-                    label: 'Ao Vivo',
-                    isSelected: selectedIndex == 3,
-                    onTap: () => onTap(3),
-                  ),
                 ],
               ),
             ),
@@ -905,9 +897,9 @@ class _LiveStreamBannerState extends State<_LiveStreamBanner> {
 
   Future<void> _verificar() async {
     try {
-      final resp = await http.get(
-        Uri.parse('${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo'),
-      ).timeout(ApiConstants.timeout);
+      final resp = await HttpSeguroService.get(
+        '${ApiConstants.baseUrl}/api/v1/streaming-ao-vivo/ativo',
+      );
       if (resp.statusCode != 200) return;
       final body = jsonDecode(resp.body) as Map<String, dynamic>;
       if (body['ativo'] == true && mounted) {
@@ -922,7 +914,7 @@ class _LiveStreamBannerState extends State<_LiveStreamBanner> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.onNavigate(3),
+      onTap: () => widget.onNavigate(2),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(20),
@@ -1117,7 +1109,7 @@ class _PesquisaDelegate extends SearchDelegate<MuseumPiece?> {
   Future<List<MuseumPiece>> _pesquisar(String q) async {
     final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/conteudos/pesquisar')
         .replace(queryParameters: {'q': q});
-    final resp = await http.get(uri);
+    final resp = await HttpSeguroService.get(uri.toString());
     if (resp.statusCode != 200) return [];
     final json = jsonDecode(resp.body) as Map<String, dynamic>;
     final lista = json['dados'] as List? ?? [];

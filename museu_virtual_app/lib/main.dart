@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/theme/app_theme.dart';
@@ -5,15 +6,30 @@ import 'presentation/providers/auth_providers.dart';
 import 'presentation/screens/home_page.dart';
 import 'presentation/screens/login_screen.dart';
 import 'presentation/screens/gestor/painel_gestor_screen.dart';
+import 'presentation/screens/admin/painel_admin_screen.dart';
+import 'services/http_seguro_service.dart';
 
-void main() {
+// Conditional import para o setup nativo (HttpOverrides, SecurityContext)
+// Na web, importa um stub vazio que não usa dart:io.
+import 'core/app_setup_nativo.dart'
+    if (dart.library.html) 'core/app_setup_web.dart'
+    as app_setup;
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Configurar overrides HTTP (apenas no nativo — na web é no-op)
+  await app_setup.configurarPlataforma();
+
+  await HttpSeguroService.inicializar();
+
   runApp(
     const ProviderScope(
       child: AngoTechMuseuApp(),
     ),
   );
 }
+
 
 class AngoTechMuseuApp extends StatelessWidget {
   const AngoTechMuseuApp({super.key});
@@ -37,7 +53,17 @@ class AngoTechMuseuApp extends StatelessWidget {
             );
           case '/gestor':
             return MaterialPageRoute(
-              builder: (_) => const PainelGestorScreen(),
+              builder: (_) => const RotaProtegida(
+                tela: PainelGestorScreen(),
+                rolesPermitidos: ['gestor'],
+              ),
+            );
+          case '/admin':
+            return MaterialPageRoute(
+              builder: (_) => const RotaProtegida(
+                tela: PainelAdminScreen(),
+                rolesPermitidos: ['admin'],
+              ),
             );
           default:
             return MaterialPageRoute(
@@ -45,6 +71,37 @@ class AngoTechMuseuApp extends StatelessWidget {
             );
         }
       },
+    );
+  }
+}
+
+class RotaProtegida extends ConsumerWidget {
+  final Widget tela;
+  final List<String> rolesPermitidos;
+
+  const RotaProtegida({
+    required this.tela,
+    required this.rolesPermitidos,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authProvider);
+    final roleActual = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase().trim();
+
+    debugPrint('[ROTA_PROTEGIDA] Role actual: "$roleActual" | Permitidos: $rolesPermitidos');
+
+    if (rolesPermitidos.contains(roleActual)) {
+      return tela;
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.pushReplacementNamed(context, '/home');
+    });
+
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }
@@ -78,7 +135,10 @@ class _AuthGateState extends ConsumerState<AuthGate> {
     }
 
     final funcao = (authState.utilizador?['funcao'] as String? ?? '').toLowerCase();
-    if (funcao == 'gestor' || funcao == 'admin') {
+    if (funcao == 'admin') {
+      return const PainelAdminScreen();
+    }
+    if (funcao == 'gestor') {
       return const PainelGestorScreen();
     }
 

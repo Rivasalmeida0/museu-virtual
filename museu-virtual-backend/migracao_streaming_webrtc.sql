@@ -1,0 +1,6 @@
+-- Migração: remover YouTube e adicionar campos de gestor WebRTC
+-- Executar apenas se a tabela streaming já existir com video_id:
+--
+-- ALTER TABLE streaming DROP COLUMN video_id;
+-- ALTER TABLE streaming ADD COLUMN gestor_nome VARCHAR(200) NULL AFTER titulo;
+-- ALTER TABLE streaming ADD COLUMN gestor_id INT UNSIGNED NULL AFTER gestor_nome;

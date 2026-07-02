@@ -1,9 +1,47 @@
-2026-06-24 13:45:23 [INFO] Servidor a correr em http://localhost:3000
-2026-06-24 13:47:32 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
+2026-06-26 14:04:37 [INFO] Servidor HTTPS com mTLS iniciado na porta 3000
+2026-06-26 14:04:37 [INFO] Servidor HTTP (dev/web) iniciado na porta 3001
+2026-06-26 14:08:02 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:08:03 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:08:03 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:08:58 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:13 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:31 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:09:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:10:14 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:10:14 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:10:14 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:20:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:20:41 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:27:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-06-26 14:20:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:21:03 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:21:03 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:21:56 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:22:10 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:22:25 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:22:56 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:23:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:23:29 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:23:30 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:26:02 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:26:02 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:26:04 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:26:45 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:27:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:27:17 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:27:56 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:27:56 [ERROR] Erro não tratado: Out of range value for column 'ano' at row 1
+Error: Out of range value for column 'ano' at row 1
     at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
+    at Object.criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\repository\conteudo.repositorio.js:46:27)
+    at criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\conteudo.controlador.js:48:46)
     at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
     at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
@@ -11,11 +49,12 @@ Error: Table 'museuvirtual.streaming' doesn't exist
     at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
     at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:47:32 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
+2026-06-26 14:28:04 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:28:04 [ERROR] Erro não tratado: Out of range value for column 'ano' at row 1
+Error: Out of range value for column 'ano' at row 1
     at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
+    at Object.criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\repository\conteudo.repositorio.js:46:27)
+    at criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\conteudo.controlador.js:48:46)
     at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
     at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
@@ -23,11 +62,12 @@ Error: Table 'museuvirtual.streaming' doesn't exist
     at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
     at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:47:32 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
+2026-06-26 14:28:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:28:12 [ERROR] Erro não tratado: Out of range value for column 'ano' at row 1
+Error: Out of range value for column 'ano' at row 1
     at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
+    at Object.criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\repository\conteudo.repositorio.js:46:27)
+    at criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\conteudo.controlador.js:48:46)
     at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
     at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
@@ -35,11 +75,12 @@ Error: Table 'museuvirtual.streaming' doesn't exist
     at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
     at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:47:32 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
+2026-06-26 14:28:36 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:28:36 [ERROR] Erro não tratado: Out of range value for column 'ano' at row 1
+Error: Out of range value for column 'ano' at row 1
     at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
+    at Object.criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\repository\conteudo.repositorio.js:46:27)
+    at criar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\conteudo.controlador.js:48:46)
     at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
     at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
@@ -47,426 +88,166 @@ Error: Table 'museuvirtual.streaming' doesn't exist
     at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
     at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:48:13 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:48:13 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:48:13 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:48:13 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:50:12 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 13:50:12 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 14:13:46 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 14:13:46 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 14:13:46 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 14:13:46 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 14:34:42 [INFO] Servidor a correr em http://localhost:3000
-2026-06-24 14:39:21 [INFO] Servidor a correr em http://localhost:3000
-2026-06-24 16:21:38 [INFO] Servidor a correr em http://localhost:3000
-2026-06-24 17:48:51 [INFO] Servidor a correr em http://localhost:3000
-2026-06-24 18:17:43 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:17:43 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:17:43 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:17:44 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:17:44 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:17:44 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:18:17 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:18:17 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:18:17 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:18:17 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:21:50 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:21:50 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:23:03 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:23:03 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:11:26
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at router.process_params (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Projectos\Museu_Virtual\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-24 18:26:00 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 02:24:38 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 02:44:39 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:06:45 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:06:53 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:00 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:06 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:13 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:18 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:26 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:31 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:37 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:43 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:07:54 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:08:01 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:08:21 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:08:28 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:08:35 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:12:43 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 04:25:10 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 19:13:07 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 19:25:15 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 19:25:15 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 19:27:00 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 19:27:00 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 19:41:23 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 19:53:09 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 20:32:02 [INFO] Servidor a correr em http://localhost:3000
-2026-06-25 20:32:22 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 20:32:22 [ERROR] Erro não tratado: Table 'museuvirtual.streaming' doesn't exist
-Error: Table 'museuvirtual.streaming' doesn't exist
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at queryOne (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:71:22)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\routes\streaming_ao_vivo.rotas.js:9:26
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 20:34:54 [ERROR] Erro não tratado: Unknown column 'c.audio_url' in 'field list'
-Error: Unknown column 'c.audio_url' in 'field list'
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at Object.listarTodos (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\repository\conteudo.repositorio.js:35:12)
-    at pesquisar (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\controller\conteudo.controlador.js:26:45)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
-2026-06-25 20:34:56 [ERROR] Erro não tratado: Unknown column 'c.audio_url' in 'field list'
-Error: Unknown column 'c.audio_url' in 'field list'
-    at query (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\config\db.js:58:29)
-    at Object.listarTodos (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\repository\conteudo.repositorio.js:35:12)
-    at pesquisar (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\src\controller\conteudo.controlador.js:26:45)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:149:13)
-    at Route.dispatch (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\route.js:119:3)
-    at Layer.handle [as handle_request] (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\layer.js:95:5)
-    at C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (C:\Users\Mario\Documents\Projecto_De_Multimedia\museu-virtual-backend\node_modules\express\lib\router\index.js:280:10)
+2026-06-26 14:29:05 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:29:18 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:30:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:30:46 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:30:52 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:27 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:38 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:38 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:44 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:44 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:31:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:32:25 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:32:27 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:33:28 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:33:28 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:27:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-06-26 14:33:36 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:33:36 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:27:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-06-26 14:33:37 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:33:37 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:27:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-06-26 14:34:44 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:34:45 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:35:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:36:18 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:36:42 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:36:52 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:36:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:37:04 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:37:15 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:37:33 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:37:53 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:38:02 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:38:32 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:38:32 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:38:32 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:45:35 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:45:36 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:45:37 [INFO] Acesso Web (browser) permitido: ::1
+2026-06-26 14:45:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:28:54 [INFO] Servidor HTTPS com mTLS iniciado na porta 3000
+2026-07-02 08:28:54 [INFO] Servidor HTTP (dev/web) iniciado na porta 3001
+2026-07-02 08:40:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:40:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:40:41 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:40:47 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:42:30 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:42:30 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:40:18)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-07-02 08:42:37 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:42:37 [ERROR] Erro não tratado: Email ou senha incorretos.
+Error: Email ou senha incorretos.
+    at Object.entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\service\autenticacao.servico.js:40:18)
+    at async entrar (C:\Projectos\Museu_Virtual\museu-virtual-backend\src\controller\autenticacao.controlador.js:22:23)
+2026-07-02 08:43:07 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:43:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:44:20 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:44:56 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 08:45:08 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:19 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:19 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:19 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:27 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:33 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:22:43 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:20 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:23:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:29 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:24:40 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:35:55 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:04 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:05 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:05 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:10 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:30 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:56 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:36:57 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:27 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:29 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:39 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:39 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:39 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:39 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:39 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:42 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:37:42 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:32 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:38 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:48 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:39:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:40:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:40:24 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:51:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:51:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:51:59 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:00 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:01 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:22 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:27 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:38 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:52:54 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:53:16 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:54:21 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:55:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:55:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:55:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:55:12 [INFO] Acesso Web (browser) permitido: ::1
+2026-07-02 09:55:12 [INFO] Acesso Web (browser) permitido: ::1

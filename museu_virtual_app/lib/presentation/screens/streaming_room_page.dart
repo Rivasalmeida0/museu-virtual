@@ -5,6 +5,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/datasources/streaming_datasource.dart';
+import '../providers/auth_providers.dart';
 import '../providers/streaming_providers.dart';
 
 class StreamingRoomPage extends ConsumerStatefulWidget {
@@ -41,6 +42,8 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
 
   int _participantCount = 1;
 
+  late Future<void> _renderersReady;
+
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
 
@@ -56,7 +59,7 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
     _pulseAnimation =
         Tween<double>(begin: 0.4, end: 1.0).animate(_pulseController);
 
-    _initRenderers();
+    _renderersReady = _initRenderers();
     WidgetsBinding.instance.addPostFrameCallback((_) => _connect());
   }
 
@@ -73,6 +76,9 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
   }
 
   Future<void> _connect() async {
+    // Garantir que os renderers estão inicializados
+    await _renderersReady;
+
     setState(() => _pageState = _PageState.connecting);
 
     try {
@@ -102,7 +108,10 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
 
       await ds.connectAsync();
 
-      final identity = '${_isHost ? "anfitriao" : "viewer"}_${DateTime.now().millisecondsSinceEpoch}';
+      final authState = ref.read(authProvider);
+      final funcao = (authState.utilizador?['funcao'] as String?)?.toLowerCase();
+      final identity =
+          '${_isHost ? "anfitriao" : "viewer"}_${DateTime.now().millisecondsSinceEpoch}';
 
       if (_isHost) {
         await _setupHost(ds, identity);
@@ -110,7 +119,7 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
         await _setupViewer(ds, identity);
       }
 
-      ds.joinRoom(widget.salaId, widget.papel, identity);
+      ds.joinRoom(widget.salaId, widget.papel, identity, funcao: funcao);
 
       setState(() => _pageState = _PageState.connected);
     } catch (e) {
@@ -151,6 +160,9 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
     ds.onUserJoined((data) {
       final viewerIdentity = data['identity'] as String;
       final viewerSocketId = data['socketId'] as String;
+
+      // Evitar duplicatas — já existe uma conexão para este viewer
+      if (_peerConnections.containsKey(viewerSocketId)) return;
 
       _createPCForViewer(ds, viewerIdentity, viewerSocketId, stream);
 
@@ -194,6 +206,15 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
     ds.onRoomState((state) {
       if (mounted) {
         setState(() => _participantCount = state.count);
+      }
+      // Fallback: se o host está na sala mas nenhuma conexão foi criada,
+      // pedir que envie offer após um pequeno delay (cobre race conditions)
+      if (state.hostSocketId != null && _peerConnections.isEmpty) {
+        Future.delayed(const Duration(seconds: 2), () {
+          if (mounted && _peerConnections.isEmpty) {
+            ds.requestOffer(state.hostSocketId!);
+          }
+        });
       }
     });
 
@@ -270,6 +291,13 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
   void _onOffer(Map<String, dynamic> data, StreamingRemoteDatasource ds) async {
     try {
       final socketId = data['socketId'] as String;
+
+      // Fechar PC existente para este host (evitar duplicatas)
+      if (_peerConnections.containsKey(socketId)) {
+        await _peerConnections[socketId]?.close();
+        _peerConnections.remove(socketId);
+      }
+
       final pc = await _createPeerConnection();
       _peerConnections[socketId] = pc;
 
@@ -282,9 +310,16 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
       };
 
       pc.onTrack = (event) {
-        if (event.track.kind == 'video') {
+        if (event.streams.isNotEmpty) {
           _remoteRenderer.srcObject = event.streams[0];
+          if (mounted) setState(() {});
         }
+      };
+
+      // Fallback para onAddStream (compatibilidade web)
+      pc.onAddStream = (stream) {
+        _remoteRenderer.srcObject = stream;
+        if (mounted) setState(() {});
       };
 
       final sdp = data['sdp'] as Map<String, dynamic>;
@@ -653,7 +688,7 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
               size: 48, color: Colors.white.withValues(alpha: 0.5)),
           const SizedBox(height: 16),
           Text(
-            'Desconectado',
+            'Live terminada',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
@@ -662,17 +697,18 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
           ),
           const SizedBox(height: 8),
           Text(
-            _errorMessage ?? 'A ligação à sala foi terminada.',
+            _errorMessage ?? 'O gestor terminou a transmissão.',
             style: TextStyle(
               fontSize: 14,
               color: Colors.white.withValues(alpha: 0.5),
             ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
-            onPressed: _connect,
-            icon: const Icon(Icons.refresh, size: 18),
-            label: const Text('Reconectar'),
+            onPressed: _leaveRoom,
+            icon: const Icon(Icons.arrow_back, size: 18),
+            label: const Text('Sair'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
@@ -820,9 +856,7 @@ class _StreamingRoomPageState extends ConsumerState<StreamingRoomPage>
         children: [
           if (_isHost) ...[
             _ControlButton(
-              icon: _cameraEnabled
-                  ? Icons.videocam
-                  : Icons.videocam_off,
+              icon: _cameraEnabled ? Icons.videocam : Icons.videocam_off,
               label: 'Câmera',
               isActive: _cameraEnabled,
               activeColor: AppColors.primary,
