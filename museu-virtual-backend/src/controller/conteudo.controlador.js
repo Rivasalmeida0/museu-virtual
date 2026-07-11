@@ -88,8 +88,7 @@ async function uploadImagem(req, res, next) {
     const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
     const relatorio = await comprimirImagem(req.file.path, nomeBase);
 
-    const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-    const imagemUrl = `${baseUrl}/uploads/imagens_comp/${relatorio.ficheiro_final}`;
+    const imagemUrl = `/uploads/imagens_comp/${relatorio.ficheiro_final}`;
 
     const relatorioJson = JSON.stringify(relatorio);
     await ConteudoRepositorio.actualizarImagemComRelatorio(

@@ -363,7 +363,7 @@ function registarLog(relatorio) {
     ...relatorio,
   }) + '\n';
 
-  const logPath = path.join('logs', 'compressao.log');
+  const logPath = path.join(__dirname, '..', '..', 'logs', 'compressao.log');
   const logDir  = path.dirname(logPath);
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
@@ -387,4 +387,5 @@ module.exports = {
   comprimirVideoHevc,
   comprimirVideoVp9,
   comprimirAudioOgg,
+  registarLog,
 };

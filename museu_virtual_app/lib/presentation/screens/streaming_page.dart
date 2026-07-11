@@ -6,13 +6,22 @@ import '../../core/constants/app_strings.dart';
 import '../../core/constants/api_constants.dart';
 import '../../data/models/streaming_models.dart';
 import '../providers/streaming_providers.dart';
+import '../providers/auth_providers.dart';
 import 'streaming_room_page.dart';
+import 'login_screen.dart';
 
 class StreamingPage extends ConsumerWidget {
   const StreamingPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authProvider);
+
+    // Utilizadores não autenticados vêem ecrã de acesso restrito
+    if (authState.status != AuthStatus.authenticated) {
+      return _buildAcessoRestrito(context);
+    }
+
     ref.watch(liveAtivaSocketListenerProvider);
     final liveAsync = ref.watch(liveAtivaProvider);
 
@@ -20,6 +29,67 @@ class StreamingPage extends ConsumerWidget {
       loading: () => _buildLoading(),
       error: (err, _) => _buildError(ref, err),
       data: (live) => _buildContent(context, live),
+    );
+  }
+
+  Widget _buildAcessoRestrito(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Icon(
+                Icons.lock_outline_rounded,
+                size: 36,
+                color: AppColors.primary,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Acesso Restrito',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Apenas utilizadores registados podem assistir às transmissões ao vivo.',
+              style: TextStyle(
+                fontSize: 14,
+                color: AppColors.textSecondary,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 28),
+            FilledButton.icon(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const LoginScreen()),
+              ),
+              icon: const Icon(Icons.login_rounded, size: 18),
+              label: const Text('Iniciar Sessão'),
+              style: FilledButton.styleFrom(
+                backgroundColor: AppColors.primary,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

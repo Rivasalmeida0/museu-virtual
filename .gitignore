@@ -13,3 +13,6 @@ npm-debug.log
 *.iml
 .idea/
 **/.idea/
+
+# Uploads
+museu-virtual-backend/uploads/videos_comp/

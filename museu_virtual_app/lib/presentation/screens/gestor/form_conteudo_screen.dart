@@ -3,10 +3,12 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/api_constants.dart';
 import '../../../services/conteudo_service.dart';
 import '../../widgets/upload_multimidia_widget.dart';
+import 'processamento_multimidia_screen.dart';
 
 class FormConteudoScreen extends StatefulWidget {
   final Map<String, dynamic>? conteudoExistente;
@@ -31,6 +33,11 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
   String _categoria = 'historico';
   XFile? _imagemSelecionada;
   Uint8List? _imagemBytes;
+  // Áudio e Vídeo
+  Uint8List? _audioBytes;
+  String? _audioFilename;
+  Uint8List? _videoBytes;
+  String? _videoFilename;
   bool _submitting = false;
   bool _isEditing = false;
   int? _conteudoId;
@@ -82,6 +89,32 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
     }
   }
 
+  Future<void> _escolherAudio() async {
+    final resultado = await FilePicker.platform.pickFiles(
+      type: FileType.audio,
+      allowMultiple: false,
+    );
+    if (resultado != null && resultado.files.first.bytes != null) {
+      setState(() {
+        _audioBytes = resultado.files.first.bytes;
+        _audioFilename = resultado.files.first.name;
+      });
+    }
+  }
+
+  Future<void> _escolherVideo() async {
+    final resultado = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+      allowMultiple: false,
+    );
+    if (resultado != null && resultado.files.first.bytes != null) {
+      setState(() {
+        _videoBytes = resultado.files.first.bytes;
+        _videoFilename = resultado.files.first.name;
+      });
+    }
+  }
+
   Future<void> _submeter() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -107,15 +140,31 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
         _conteudoId = resultado['id'] as int?;
       }
 
-      if (mounted) {
-        setState(() {});
-        if (!_isEditing) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Conteúdo criado! Faça upload da multimédia abaixo.'),
+      if (!mounted) return;
+
+      // Se é novo conteúdo e temos multimédia, navegar para processamento
+      if (!_isEditing && _conteudoId != null && (_imagemBytes != null || _audioBytes != null || _videoBytes != null)) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ProcessamentoMultimidiaScreen(
+              conteudoId: _conteudoId!,
+              nomeConteudo: _nomeCtrl.text.trim(),
+              imagemBytes: _imagemBytes,
+              imagemFilename: _imagemSelecionada?.name,
+              audioBytes: _audioBytes,
+              audioFilename: _audioFilename,
+              videoBytes: _videoBytes,
+              videoFilename: _videoFilename,
             ),
-          );
-        }
+          ),
+        );
+      } else {
+        setState(() {});
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(_isEditing ? 'Alterações guardadas.' : 'Conteúdo criado.'),
+          ),
+        );
       }
     } catch (e) {
       if (mounted) {
@@ -162,10 +211,24 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
               _buildCampo('URL Wikipedia', _wikipediaCtrl, keyboardType: TextInputType.url),
               const SizedBox(height: 24),
               _buildImagemPicker(),
+              const SizedBox(height: 20),
+              _buildMediaPicker(
+                label: 'Áudio-Guia (opcional)',
+                icon: Icons.audiotrack_rounded,
+                filename: _audioFilename,
+                onTap: _escolherAudio,
+              ),
+              const SizedBox(height: 20),
+              _buildMediaPicker(
+                label: 'Vídeo Documentário (opcional)',
+                icon: Icons.videocam_rounded,
+                filename: _videoFilename,
+                onTap: _escolherVideo,
+              ),
               const SizedBox(height: 32),
               _buildSubmitButton(),
 
-              if (_conteudoId != null) ...[
+              if (_isEditing && _conteudoId != null) ...[
                 const SizedBox(height: 32),
                 const Divider(color: Colors.white12),
                 const SizedBox(height: 16),
@@ -281,21 +344,88 @@ class _FormConteudoScreenState extends State<FormConteudoScreen> {
     );
   }
 
+  Widget _buildMediaPicker({
+    required String label,
+    required IconData icon,
+    required String? filename,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.06),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: filename != null ? AppColors.primary.withValues(alpha: 0.4) : Colors.white12,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: filename != null ? AppColors.primary : Colors.white24,
+              size: 28,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: const TextStyle(color: Colors.white54, fontSize: 13),
+                  ),
+                  if (filename != null) ...[                    
+                    const SizedBox(height: 4),
+                    Text(
+                      filename,
+                      style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w500),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            Icon(
+              filename != null ? Icons.check_circle : Icons.add_circle_outline,
+              color: filename != null ? Colors.green : Colors.white24,
+              size: 22,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildSubmitButton() {
+    final temMultimidia = _imagemBytes != null || _audioBytes != null || _videoBytes != null;
+    final textoBtn = _isEditing
+        ? 'Guardar Alterações'
+        : temMultimidia
+            ? 'Preparar e Publicar'
+            : 'Publicar';
+    final iconBtn = _isEditing ? null : (temMultimidia ? Icons.auto_fix_high_rounded : null);
+
     return SizedBox(
       width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
+      height: 52,
+      child: ElevatedButton.icon(
         onPressed: _submitting ? null : _submeter,
+        icon: _submitting
+            ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+            : iconBtn != null
+                ? Icon(iconBtn, size: 20)
+                : const SizedBox.shrink(),
+        label: Text(textoBtn, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: temMultimidia && !_isEditing ? Colors.green : AppColors.primary,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           elevation: 0,
         ),
-        child: _submitting
-            ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-            : Text(_isEditing ? 'Guardar Alterações' : 'Publicar', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
       ),
     );
   }

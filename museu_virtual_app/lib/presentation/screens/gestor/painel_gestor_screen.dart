@@ -10,6 +10,7 @@ import 'form_conteudo_screen.dart';
 import 'relatorio_compressao_screen.dart';
 import 'controlo_streaming_screen.dart';
 import '../home_page.dart';
+import '../login_screen.dart';
 
 class PainelGestorScreen extends ConsumerStatefulWidget {
   const PainelGestorScreen({super.key});
@@ -173,6 +174,12 @@ class _PainelGestorScreenState extends ConsumerState<PainelGestorScreen> {
     );
     if (confirm != true) return;
     await ref.read(authProvider.notifier).logout();
+    if (mounted) {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+        (route) => false,
+      );
+    }
   }
 
   @override

@@ -49,6 +49,7 @@ class _PerfilScreenState extends State<PerfilScreen> {
       backgroundColor: AppColors.angolaBlack,
       appBar: AppBar(
         backgroundColor: const Color(0xFF1A1A2E),
+        foregroundColor: Colors.white,
         title: const Text('Meu Perfil'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

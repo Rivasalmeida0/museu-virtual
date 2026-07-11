@@ -1,16 +1,13 @@
-import '../../core/constants/api_constants.dart';
+import 'dart:typed_data';
+import 'download_service_nativo.dart'
+    if (dart.library.html) 'download_service_web.dart'
+    as platform;
 
+/// Serviço de download de ficheiros unificado para Web e Nativo (Mobile/Desktop).
 class DownloadService {
+  DownloadService._();
 
-  Future<String> getUrlVideo(String filename) async {
-    return '${ApiConstants.baseUrl}/api/v1/download/video/$filename';
-  }
-
-  Future<String> getUrlAudio(String filename) async {
-    return '${ApiConstants.baseUrl}/api/v1/download/audio/$filename';
-  }
-
-  Future<String> getUrlImagem(String filename) async {
-    return '${ApiConstants.baseUrl}/api/v1/download/imagem/$filename';
-  }
+  /// Salva os bytes recebidos num ficheiro local com o nome especificado.
+  static Future<void> salvarFicheiro(Uint8List bytes, String nomeFicheiro) =>
+      platform.DownloadServicePlatform.salvarFicheiro(bytes, nomeFicheiro);
 }

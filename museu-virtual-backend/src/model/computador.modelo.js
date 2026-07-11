@@ -5,6 +5,9 @@ const TABELA = 'computadores';
 const CAMPOS_PUBLICOS = `c.id, c.nome, c.ano, c.fabricante, c.categoria,
                          c.descricao, c.curiosidade,
                          c.imagem_url AS imagemUrl,
+                         c.audio_url AS audioUrl,
+                         c.video_url AS videoUrl,
+                         c.relatorio_compressao AS relatorioCompressao,
                          c.wikipedia_url AS wikipediaUrl,
                          c.especificacoes,
                          c.criado_em AS criadoEm`;

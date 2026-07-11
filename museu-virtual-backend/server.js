@@ -39,6 +39,12 @@ const streamVodRoutes  = require('./src/routes/stream_vod.rotas');
 const streamingAoVivoRoutes  = require('./src/routes/streaming_ao_vivo.rotas');
 const downloadRoutes  = require('./src/routes/download.rotas');
 
+// ── Rotas VOD ────────────────────────────────────────────────
+const favoritoRoutes   = require('./src/routes/favorito.rotas');
+const historicoRoutes  = require('./src/routes/historico.rotas');
+const progressoRoutes  = require('./src/routes/progresso.rotas');
+const categoriaRoutes  = require('./src/routes/categoria.rotas');
+
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
@@ -99,8 +105,24 @@ function verificarCertificado(req, res, next) {
     return next();
   }
 
+  // Verifica se é um cliente nativo (mobile) a aceder via HTTP (sem TLS).
+  // No servidor HTTP de desenvolvimento (porta 3001), não há mTLS,
+  // portanto clientes nativos são permitidos sem certificado.
+  const isEncrypted = req.socket.encrypted || req.connection?.encrypted;
+  if (tipoCliente === 'native' && !isEncrypted) {
+    logger.info(`Acesso nativo (mobile) via HTTP permitido: ${clienteIp}`);
+    registarLog('NATIVO', `Acesso via app mobile sem certificado (HTTP dev): ${clienteIp}`, {
+      userAgent: req.headers['user-agent'],
+    });
+    req.certificado = null;
+    req.acessoSemCertificado = true;
+    return next();
+  }
+
   // Verifica se o cliente apresentou certificado
-  const cert = req.socket.getPeerCertificate();
+  const cert = typeof req.socket.getPeerCertificate === 'function'
+    ? req.socket.getPeerCertificate()
+    : null;
 
   if (!cert || Object.keys(cert).length === 0) {
     registarLog('BLOQUEADO', `Tentativa de acesso sem certificado: ${clienteIp}`);
@@ -327,6 +349,12 @@ app.use(`${API}/uploads`,      uploadRoutes);
 app.use(`${API}/stream`,      streamVodRoutes);
 app.use(`${API}/streaming-ao-vivo`, streamingAoVivoRoutes);
 app.use(`${API}/download`,    downloadRoutes);
+
+// ── Rotas VOD ────────────────────────────────────────────────
+app.use(`${API}/favoritos`,   favoritoRoutes);
+app.use(`${API}/historico`,   historicoRoutes);
+app.use(`${API}/continuar`,   progressoRoutes);
+app.use(`${API}/categorias`,  categoriaRoutes);
 
 // =============================================================
 //  ROTA NÃO ENCONTRADA (404)

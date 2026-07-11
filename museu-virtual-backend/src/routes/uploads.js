@@ -24,14 +24,19 @@ const {
   comprimirAudioOgg,
 } = require('../middleware/compressao.middleware');
 
+const {
+  processarTudo,
+} = require('../middleware/compressao.completa.middleware');
+
 const ConteudoRepositorio = require('../repository/conteudo.repositorio');
+const { gerarThumbnail } = require('../service/thumbnail.servico');
 
 // ── Configuração do multer ──────────────────────────────────
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const tipo = file.mimetype.startsWith('image/') ? 'uploads\\imagens' :
-                 file.mimetype.startsWith('audio/') ? 'uploads\\audios' :
-                 'uploads\\videos';
+    const tipo = file.mimetype.startsWith('image/') ? path.join('uploads', 'imagens') :
+                 file.mimetype.startsWith('audio/') ? path.join('uploads', 'audios') :
+                 path.join('uploads', 'videos');
     const pasta = path.join(__dirname, '../..', tipo);
     if (!fs.existsSync(pasta)) fs.mkdirSync(pasta, { recursive: true });
     cb(null, pasta);
@@ -79,8 +84,7 @@ roteador.post('/imagem/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirImagem(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const imagemUrl = `${baseUrl}/uploads/imagens_comp/${relatorio.ficheiro_final}`;
+      const imagemUrl = `/uploads/imagens_comp/${relatorio.ficheiro_final}`;
 
       const relatorioJson = JSON.stringify(relatorio);
       await ConteudoRepositorio.actualizarImagemComRelatorio(
@@ -119,8 +123,7 @@ roteador.post('/audio/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirAudio(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const audioUrl = `${baseUrl}/uploads/audios_comp/${relatorio.ficheiro_final}`;
+      const audioUrl = `/uploads/audios_comp/${relatorio.ficheiro_final}`;
 
       const relatorioJson = JSON.stringify(relatorio);
       await ConteudoRepositorio.actualizarAudioComRelatorio(
@@ -159,13 +162,22 @@ roteador.post('/video/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirVideo(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const videoUrl = `${baseUrl}/uploads/videos_comp/${relatorio.ficheiro_final}`;
+      const videoUrl = `/uploads/videos_comp/${relatorio.ficheiro_final}`;
 
       const relatorioJson = JSON.stringify(relatorio);
       await ConteudoRepositorio.actualizarVideoComRelatorio(
         req.params.conteudo_id, videoUrl, relatorioJson
       );
+
+      // Gerar Thumbnail
+      try {
+        const videoPathAbs = path.join(__dirname, '../..', relatorio.caminho_final);
+        const thumbnailName = `thumb_${nomeBase}.jpg`;
+        const thumbnailUrl = await gerarThumbnail(videoPathAbs, thumbnailName);
+        await ConteudoRepositorio.actualizarImagem(req.params.conteudo_id, thumbnailUrl);
+      } catch (errThumb) {
+        console.error('Erro ao gerar thumbnail automático:', errThumb);
+      }
 
       const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
 
@@ -174,7 +186,7 @@ roteador.post('/video/:conteudo_id',
 
       res.json({
         sucesso: true,
-        mensagem: 'Vídeo enviado e comprimido.',
+        mensagem: 'Vídeo enviado, comprimido e thumbnail gerado.',
         dados: actualizado,
         relatorio_compressao: relatorio,
       });
@@ -195,12 +207,21 @@ roteador.post('/video/hevc/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirVideoHevc(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const videoUrl = `${baseUrl}/uploads/videos_comp/${relatorio.ficheiro_final}`;
+      const videoUrl = `/uploads/videos_comp/${relatorio.ficheiro_final}`;
 
       await ConteudoRepositorio.actualizarVideoComRelatorio(
         req.params.conteudo_id, videoUrl, JSON.stringify(relatorio)
       );
+
+      // Gerar Thumbnail
+      try {
+        const videoPathAbs = path.join(__dirname, '../..', relatorio.caminho_final);
+        const thumbnailName = `thumb_${nomeBase}.jpg`;
+        const thumbnailUrl = await gerarThumbnail(videoPathAbs, thumbnailName);
+        await ConteudoRepositorio.actualizarImagem(req.params.conteudo_id, thumbnailUrl);
+      } catch (errThumb) {
+        console.error('Erro ao gerar thumbnail automático (HEVC):', errThumb);
+      }
 
       const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
 
@@ -209,7 +230,7 @@ roteador.post('/video/hevc/:conteudo_id',
 
       res.json({
         sucesso: true,
-        mensagem: 'Vídeo enviado e comprimido (H.265/HEVC).',
+        mensagem: 'Vídeo enviado, comprimido (H.265/HEVC) e thumbnail gerado.',
         dados: actualizado,
         relatorio_compressao: relatorio,
       });
@@ -230,12 +251,21 @@ roteador.post('/video/vp9/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirVideoVp9(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const videoUrl = `${baseUrl}/uploads/videos_comp/${relatorio.ficheiro_final}`;
+      const videoUrl = `/uploads/videos_comp/${relatorio.ficheiro_final}`;
 
       await ConteudoRepositorio.actualizarVideoComRelatorio(
         req.params.conteudo_id, videoUrl, JSON.stringify(relatorio)
       );
+
+      // Gerar Thumbnail
+      try {
+        const videoPathAbs = path.join(__dirname, '../..', relatorio.caminho_final);
+        const thumbnailName = `thumb_${nomeBase}.jpg`;
+        const thumbnailUrl = await gerarThumbnail(videoPathAbs, thumbnailName);
+        await ConteudoRepositorio.actualizarImagem(req.params.conteudo_id, thumbnailUrl);
+      } catch (errThumb) {
+        console.error('Erro ao gerar thumbnail automático (VP9):', errThumb);
+      }
 
       const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
 
@@ -244,7 +274,7 @@ roteador.post('/video/vp9/:conteudo_id',
 
       res.json({
         sucesso: true,
-        mensagem: 'Vídeo enviado e comprimido (VP9/WebM).',
+        mensagem: 'Vídeo enviado, comprimido (VP9/WebM) e thumbnail gerado.',
         dados: actualizado,
         relatorio_compressao: relatorio,
       });
@@ -265,8 +295,7 @@ roteador.post('/audio/ogg/:conteudo_id',
       const nomeBase = path.basename(req.file.filename, path.extname(req.file.filename));
       const relatorio = await comprimirAudioOgg(req.file.path, nomeBase);
 
-      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
-      const audioUrl = `${baseUrl}/uploads/audios_comp/${relatorio.ficheiro_final}`;
+      const audioUrl = `/uploads/audios_comp/${relatorio.ficheiro_final}`;
 
       await ConteudoRepositorio.actualizarAudioComRelatorio(
         req.params.conteudo_id, audioUrl, JSON.stringify(relatorio)
@@ -307,6 +336,109 @@ roteador.get('/relatorio',
         sucesso: true,
         total: linhas.length,
         compressoes: linhas.reverse(),
+      });
+    } catch (erro) { next(erro); }
+  }
+);
+
+
+
+// ─── POST /uploads/processar/:conteudo_id ───────────────────
+// Processamento multimédia unificado — todos os codecs
+roteador.post('/processar/:conteudo_id',
+  upload.fields([
+    { name: 'imagem', maxCount: 1 },
+    { name: 'audio',  maxCount: 1 },
+    { name: 'video',  maxCount: 1 },
+  ]),
+  async (req, res, next) => {
+    try {
+      const conteudo = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+      if (!conteudo) {
+        return res.status(404).json({ sucesso: false, mensagem: 'Conteúdo não encontrado.' });
+      }
+
+      const ficheiros = {};
+
+      if (req.files && req.files['imagem'] && req.files['imagem'][0]) {
+        const f = req.files['imagem'][0];
+        ficheiros.imagem = {
+          path: f.path,
+          nomeBase: path.basename(f.filename, path.extname(f.filename)),
+        };
+      }
+      if (req.files && req.files['audio'] && req.files['audio'][0]) {
+        const f = req.files['audio'][0];
+        ficheiros.audio = {
+          path: f.path,
+          nomeBase: path.basename(f.filename, path.extname(f.filename)),
+        };
+      }
+      if (req.files && req.files['video'] && req.files['video'][0]) {
+        const f = req.files['video'][0];
+        ficheiros.video = {
+          path: f.path,
+          nomeBase: path.basename(f.filename, path.extname(f.filename)),
+        };
+      }
+
+      if (Object.keys(ficheiros).length === 0) {
+        return res.status(400).json({ sucesso: false, mensagem: 'Nenhum ficheiro enviado.' });
+      }
+
+      const resultado = await processarTudo(ficheiros);
+
+      res.json({
+        sucesso: true,
+        mensagem: 'Processamento multimédia concluído.',
+        conteudo_id: parseInt(req.params.conteudo_id),
+        resultado,
+      });
+    } catch (erro) { next(erro); }
+  }
+);
+
+// ─── POST /uploads/publicar/:conteudo_id ────────────────────
+// Publica as versões selecionadas pelo administrador
+roteador.post('/publicar/:conteudo_id',
+  async (req, res, next) => {
+    try {
+      const conteudo = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+      if (!conteudo) {
+        return res.status(404).json({ sucesso: false, mensagem: 'Conteúdo não encontrado.' });
+      }
+
+      const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+      const { imagem_ficheiro, audio_ficheiro, video_ficheiro, relatorio } = req.body;
+
+      if (imagem_ficheiro) {
+        const imagemUrl = `/uploads/imagens_comp/${imagem_ficheiro}`;
+        await ConteudoRepositorio.actualizarImagemComRelatorio(
+          req.params.conteudo_id, imagemUrl, JSON.stringify(relatorio || {})
+        );
+      }
+      if (audio_ficheiro) {
+        const audioUrl = `/uploads/audios_comp/${audio_ficheiro}`;
+        await ConteudoRepositorio.actualizarAudioComRelatorio(
+          req.params.conteudo_id, audioUrl, JSON.stringify(relatorio || {})
+        );
+      }
+      if (video_ficheiro) {
+        const videoUrl = `/uploads/videos_comp/${video_ficheiro}`;
+        await ConteudoRepositorio.actualizarVideoComRelatorio(
+          req.params.conteudo_id, videoUrl, JSON.stringify(relatorio || {})
+        );
+      }
+
+      const actualizado = await ConteudoRepositorio.buscarPorId(req.params.conteudo_id);
+
+      const io = req.app.get('io');
+      if (io) io.emit('conteudo_atualizado', actualizado);
+
+      res.json({
+        sucesso: true,
+        mensagem: 'Conteúdo publicado com as versões selecionadas.',
+        dados: actualizado,
       });
     } catch (erro) { next(erro); }
   }

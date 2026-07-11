@@ -1,28 +1,66 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/api_constants.dart';
 import '../../domain/entities/museum_piece.dart';
+import '../providers/vod_providers.dart';
 import 'player_video_screen.dart';
 import 'player_audio_screen.dart';
+import '../../services/http_seguro_service.dart';
+import '../../services/download_service.dart';
 
-class PieceDetailPage extends StatelessWidget {
+class PieceDetailPage extends ConsumerWidget {
   final MuseumPiece piece;
 
   const PieceDetailPage({super.key, required this.piece});
 
-  Future<void> _descarregar(String filename, String nomeFicheiro) async {
-    final tipo = filename.endsWith('.mp4') ? 'video' : 'audio';
-    final uri = Uri.parse('${ApiConstants.baseUrl}/api/v1/download/$tipo/$filename');
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+  Future<void> _descarregar(BuildContext context, String url, String nomeFicheiro) async {
+    try {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('A descarregar $nomeFicheiro...'),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+
+      final fileOnly = url.split('/').last;
+      final tipo = fileOnly.endsWith('.mp4') ? 'video' : 'audio';
+      final downloadUrl = '${ApiConstants.baseUrl}/api/v1/download/$tipo/$fileOnly';
+
+      final response = await HttpSeguroService.get(downloadUrl);
+
+      if (response.statusCode == 200) {
+        final bytes = response.bodyBytes;
+        await DownloadService.salvarFicheiro(bytes, nomeFicheiro);
+
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Download concluído: $nomeFicheiro'),
+              backgroundColor: Colors.green,
+            ),
+          );
+        }
+      } else {
+        throw Exception('Erro de resposta do servidor: ${response.statusCode}');
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao descarregar: $e'),
+            backgroundColor: AppColors.angolaRed,
+          ),
+        );
+      }
     }
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -40,6 +78,9 @@ class PieceDetailPage extends StatelessWidget {
             color: AppColors.textPrimary,
           ),
         ),
+        actions: [
+          _FavoriteButton(pieceId: piece.id),
+        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -71,6 +112,7 @@ class PieceDetailPage extends StatelessWidget {
                           builder: (_) => PlayerVideoScreen(
                             videoUrl: piece.videoUrl,
                             titulo: piece.nome,
+                            idConteudo: piece.id,
                           ),
                         ),
                       ),
@@ -99,7 +141,7 @@ class PieceDetailPage extends StatelessWidget {
                       icon: Icons.download,
                       label: 'Descarregar Vídeo',
                       color: Colors.teal,
-                      onPressed: () => _descarregar(piece.videoUrl, '${piece.nome}.mp4'),
+                      onPressed: () => _descarregar(context, piece.videoUrl, '${piece.nome}.mp4'),
                     ),
                   ],
                   if (piece.audioUrl.isNotEmpty) ...[
@@ -108,7 +150,7 @@ class PieceDetailPage extends StatelessWidget {
                       icon: Icons.download,
                       label: 'Descarregar Áudio',
                       color: Colors.teal,
-                      onPressed: () => _descarregar(piece.audioUrl, '${piece.nome}.mp3'),
+                      onPressed: () => _descarregar(context, piece.audioUrl, '${piece.nome}.mp3'),
                     ),
                   ],
                 ],
@@ -117,6 +159,56 @@ class PieceDetailPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _FavoriteButton extends ConsumerStatefulWidget {
+  final int pieceId;
+  const _FavoriteButton({required this.pieceId});
+
+  @override
+  ConsumerState<_FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends ConsumerState<_FavoriteButton> {
+  bool? _isFav;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _check();
+  }
+
+  Future<void> _check() async {
+    final res = await ref.read(favoritosProvider.notifier).isFavorito(widget.pieceId);
+    if (mounted) {
+      setState(() {
+        _isFav = res;
+        _loading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_loading) {
+      return const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)),
+      );
+    }
+    return IconButton(
+      icon: Icon(
+        _isFav == true ? Icons.favorite : Icons.favorite_border,
+        color: _isFav == true ? Colors.red : AppColors.textPrimary,
+      ),
+      onPressed: () async {
+        setState(() => _loading = true);
+        await ref.read(favoritosProvider.notifier).toggleFavorito(widget.pieceId);
+        await _check();
+      },
     );
   }
 }

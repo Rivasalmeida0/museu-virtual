@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Implementação HTTP para plataformas nativas (Android/iOS/Desktop).
 /// Usa dart:io com SecurityContext para mTLS (certificado de cliente).
@@ -55,12 +56,28 @@ class HttpSeguroServicePlatform {
     }
   }
 
+  static Future<Map<String, String>> _prepararHeaders(Map<String, String>? headers) async {
+    final hdrs = Map<String, String>.from(headers ?? {});
+    hdrs.putIfAbsent('X-Client-Type', () => 'native');
+    
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('access_token');
+      if (token != null) {
+        hdrs.putIfAbsent('Authorization', () => 'Bearer $token');
+      }
+    } catch (e) {
+      debugPrint('[HttpSeguroService] Erro ao obter token: $e');
+    }
+    
+    return hdrs;
+  }
+
   static Future<http.Response> get(
     String url, {
     Map<String, String>? headers,
   }) async {
-    final hdrs = Map<String, String>.from(headers ?? {});
-    hdrs.putIfAbsent('X-Client-Type', () => 'web');
+    final hdrs = await _prepararHeaders(headers);
     return client.get(Uri.parse(url), headers: hdrs);
   }
 
@@ -69,9 +86,8 @@ class HttpSeguroServicePlatform {
     Map<String, String>? headers,
     Object? body,
   }) async {
-    final hdrs = Map<String, String>.from(headers ?? {});
+    final hdrs = await _prepararHeaders(headers);
     hdrs.putIfAbsent('Content-Type', () => 'application/json');
-    hdrs.putIfAbsent('X-Client-Type', () => 'web');
     return client.post(
       Uri.parse(url),
       headers: hdrs,
@@ -84,9 +100,8 @@ class HttpSeguroServicePlatform {
     Map<String, String>? headers,
     Object? body,
   }) async {
-    final hdrs = Map<String, String>.from(headers ?? {});
+    final hdrs = await _prepararHeaders(headers);
     hdrs.putIfAbsent('Content-Type', () => 'application/json');
-    hdrs.putIfAbsent('X-Client-Type', () => 'web');
     return client.put(
       Uri.parse(url),
       headers: hdrs,
@@ -98,12 +113,21 @@ class HttpSeguroServicePlatform {
     String url, {
     Map<String, String>? headers,
   }) async {
-    final hdrs = Map<String, String>.from(headers ?? {});
-    hdrs.putIfAbsent('X-Client-Type', () => 'web');
+    final hdrs = await _prepararHeaders(headers);
     return client.delete(Uri.parse(url), headers: hdrs);
   }
 
   static Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('access_token');
+      if (token != null) {
+        request.headers.putIfAbsent('Authorization', () => 'Bearer $token');
+      }
+    } catch (e) {
+      debugPrint('[HttpSeguroService] Erro ao obter token no send: $e');
+    }
+    request.headers.putIfAbsent('X-Client-Type', () => 'native');
     return client.send(request);
   }
 }

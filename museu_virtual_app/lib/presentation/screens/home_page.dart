@@ -18,6 +18,11 @@ import 'gestor/painel_gestor_screen.dart';
 import '../providers/auth_providers.dart';
 import '../../services/socket_service.dart';
 import '../../services/http_seguro_service.dart';
+import 'vod/favorites_screen.dart';
+import 'vod/history_screen.dart';
+import 'vod/category_screen.dart';
+import '../providers/vod_providers.dart';
+import 'player_video_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -99,6 +104,30 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     _TopIcon(
+                      icon: Icons.category_outlined,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    _TopIcon(
+                      icon: Icons.favorite_border,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FavoritesScreen()),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    _TopIcon(
+                      icon: Icons.history,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const HistoryScreen()),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    _TopIcon(
                       icon: Icons.search,
                       onTap: () {
                         showSearch(context: context, delegate: _PesquisaDelegate());
@@ -161,13 +190,26 @@ class _TopIcon extends StatelessWidget {
   }
 }
 
-class _MuseumHomeContent extends ConsumerWidget {
+class _MuseumHomeContent extends ConsumerStatefulWidget {
   final void Function(int index) onNavigate;
 
   const _MuseumHomeContent({required this.onNavigate});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_MuseumHomeContent> createState() => _MuseumHomeContentState();
+}
+
+class _MuseumHomeContentState extends ConsumerState<_MuseumHomeContent> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      ref.read(progressoProvider.notifier).carregar();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final piecesAsync = ref.watch(allPiecesProvider);
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -181,13 +223,15 @@ class _MuseumHomeContent extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _HeroSection(),
+                _HeroSection(onNavigate: widget.onNavigate),
+                const SizedBox(height: 32),
+                const _ContinuarAssistirSection(),
                 const SizedBox(height: 48),
-                _FeaturedSection(piecesAsync: piecesAsync),
+                _FeaturedSection(piecesAsync: piecesAsync, onNavigate: widget.onNavigate),
                 const SizedBox(height: 48),
-                _CategoryRow(isWide: isWide, onNavigate: onNavigate),
+                _CategoryRow(isWide: isWide, onNavigate: widget.onNavigate),
                 const SizedBox(height: 48),
-                _LiveStreamBanner(onNavigate: onNavigate),
+                _LiveStreamBanner(onNavigate: widget.onNavigate),
                 const SizedBox(height: 48),
                 _AboutSection(),
               ],
@@ -199,65 +243,270 @@ class _MuseumHomeContent extends ConsumerWidget {
   }
 }
 
-class _HeroSection extends StatelessWidget {
+class _ContinuarAssistirSection extends ConsumerWidget {
+  const _ContinuarAssistirSection();
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(progressoProvider);
+
+    if (state.isLoading) {
+      return const SizedBox.shrink();
+    }
+
+    if (state.itens.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'MUSEU VIRTUAL DE COMPUTADORES',
+        const Text(
+          'Continuar a Assistir',
           style: TextStyle(
-            fontFamily: 'monospace',
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 0.05 * 13,
-            color: AppColors.primary,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          'A História da Computação\nem Angola e no Mundo',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.w700,
-            letterSpacing: -0.02 * 32,
-            height: 1.1,
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
         ),
         const SizedBox(height: 16),
         SizedBox(
-          width: double.infinity,
-          child: Text(
-            'Dos primeiros gigantes de válvulas aos supercomputadores exascale. '
-            'Uma coleção curada das máquinas que definiram a era digital.',
-            style: const TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: AppColors.textSecondary,
+          height: 160,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: state.itens.length,
+            separatorBuilder: (_, __) => const SizedBox(width: 12),
+            itemBuilder: (context, index) {
+              final item = state.itens[index];
+              
+              // Resolver caminhos de imagens locais/relativos
+              String rawImg = item['imagemUrl'] as String? ?? '';
+              final imageUrl = rawImg.startsWith('/')
+                  ? '${ApiConstants.baseUrl}$rawImg'
+                  : rawImg;
+
+              String rawVid = item['videoUrl'] as String? ?? '';
+              final videoUrl = rawVid.startsWith('/')
+                  ? '${ApiConstants.baseUrl}$rawVid'
+                  : rawVid;
+
+              final percent = (item['percentagem'] as num? ?? 0.0) / 100.0;
+
+              return GestureDetector(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => PlayerVideoScreen(
+                        videoUrl: videoUrl,
+                        titulo: item['nome'] as String? ?? '',
+                        idConteudo: item['idConteudo'] as int?,
+                      ),
+                    ),
+                  );
+                  ref.read(progressoProvider.notifier).carregar();
+                },
+                child: Container(
+                  width: 220,
+                  decoration: BoxDecoration(
+                    color: AppColors.cardBg,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: imageUrl,
+                              fit: BoxFit.cover,
+                              errorWidget: (_, __, ___) => Container(
+                                color: AppColors.surface,
+                                child: const Icon(Icons.movie, color: AppColors.textSecondary),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: LinearProgressIndicator(
+                                value: percent,
+                                backgroundColor: Colors.black26,
+                                color: AppColors.primary,
+                                minHeight: 4,
+                              ),
+                            ),
+                            const Center(
+                              child: Icon(
+                                Icons.play_circle_outline,
+                                color: Colors.white,
+                                size: 36,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+                        child: Text(
+                          item['nome'] as String? ?? '',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textPrimary,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HeroSection extends StatelessWidget {
+  final void Function(int index)? onNavigate;
+  const _HeroSection({this.onNavigate});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Ilustração discreta no lado direito
+        Positioned(
+          right: -20,
+          top: -10,
+          child: Opacity(
+            opacity: 0.04,
+            child: Icon(
+              Icons.developer_board,
+              size: 260,
+              color: AppColors.primary,
             ),
           ),
         ),
-        const SizedBox(height: 24),
-        Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _StatBadge(
-              icon: Icons.computer,
-              value: '16+',
-              label: 'Peças',
+            const SizedBox(height: 4),
+            // Título principal com gradiente (sem label repetida)
+            ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [
+                  AppColors.textPrimary,
+                  AppColors.textPrimary,
+                  AppColors.primary.withValues(alpha: 0.85),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ).createShader(bounds),
+              child: const Text(
+                'A História da Computação\nem Angola e no Mundo',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.5,
+                  height: 1.18,
+                  color: Colors.white,
+                ),
+              ),
             ),
-            const SizedBox(width: 16),
-            _StatBadge(
-              icon: Icons.history,
-              value: '1945',
-              label: 'Ano mais antigo',
+            const SizedBox(height: 14),
+            // Subtítulo
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: Text(
+                'Dos primeiros gigantes de válvulas aos supercomputadores exascale — '
+                'explore uma coleção curada das máquinas que definiram a era digital.',
+                style: TextStyle(
+                  fontSize: 14,
+                  height: 1.6,
+                  color: AppColors.textSecondary,
+                ),
+              ),
             ),
-            const SizedBox(width: 16),
-            _StatBadge(
-              icon: Icons.speed,
-              value: '2+',
-              label: 'Exaflops',
+            const SizedBox(height: 20),
+            // Botões CTA
+            Row(
+              children: [
+                FilledButton.icon(
+                  onPressed: onNavigate != null ? () => onNavigate!(1) : null,
+                  icon: const Icon(Icons.explore_outlined, size: 18),
+                  label: const Text('Explorar Coleção'),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            // Divisor subtil
+            Row(
+              children: [
+                Container(
+                  width: 28,
+                  height: 1,
+                  color: AppColors.primary.withValues(alpha: 0.35),
+                ),
+                const SizedBox(width: 6),
+                Container(
+                  width: 8,
+                  height: 1,
+                  color: AppColors.primary.withValues(alpha: 0.15),
+                ),
+              ],
+            ),
+            const SizedBox(height: 18),
+            // Stat badges
+            Row(
+              children: [
+                _StatBadge(
+                  icon: Icons.computer_outlined,
+                  value: '16+',
+                  label: 'Peças',
+                  accent: AppColors.primary,
+                ),
+                const SizedBox(width: 10),
+                _StatBadge(
+                  icon: Icons.history_edu_outlined,
+                  value: '1945',
+                  label: 'Mais antigo',
+                  accent: AppColors.angolaGold,
+                ),
+                const SizedBox(width: 10),
+                _StatBadge(
+                  icon: Icons.bolt_outlined,
+                  value: '2+',
+                  label: 'Exaflops',
+                  accent: AppColors.angolaRed,
+                ),
+              ],
             ),
           ],
         ),
@@ -266,65 +515,101 @@ class _HeroSection extends StatelessWidget {
   }
 }
 
-class _StatBadge extends StatelessWidget {
+class _StatBadge extends StatefulWidget {
   final IconData icon;
   final String value;
   final String label;
+  final Color accent;
 
   const _StatBadge({
     required this.icon,
     required this.value,
     required this.label,
+    required this.accent,
   });
 
   @override
+  State<_StatBadge> createState() => _StatBadgeState();
+}
+
+class _StatBadgeState extends State<_StatBadge> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppColors.cardBg,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+        decoration: BoxDecoration(
+          color: AppColors.cardBg,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: widget.accent.withValues(alpha: _hovered ? 0.35 : 0.18),
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 16, color: AppColors.primary),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: const TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
+          boxShadow: [
+            BoxShadow(
+              color: widget.accent.withValues(alpha: _hovered ? 0.14 : 0.06),
+              blurRadius: _hovered ? 16 : 10,
+              offset: const Offset(0, 4),
             ),
-          ),
-          Text(
-            label,
-            style: const TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 10,
-              color: AppColors.textSecondary,
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: widget.accent.withValues(alpha: _hovered ? 0.18 : 0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(widget.icon, size: 15, color: widget.accent),
             ),
-          ),
-        ],
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  widget.value,
+                  style: TextStyle(
+                    fontFamily: 'monospace',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                Text(
+                  widget.label,
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.textSecondary,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
+
 class _FeaturedSection extends StatelessWidget {
   final AsyncValue<List<MuseumPiece>> piecesAsync;
+  final void Function(int index) onNavigate;
 
-  const _FeaturedSection({required this.piecesAsync});
+  const _FeaturedSection({
+    required this.piecesAsync,
+    required this.onNavigate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -348,7 +633,7 @@ class _FeaturedSection extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => onNavigate(1),
                   child: const Text(
                     'Ver todos',
                     style: TextStyle(
@@ -362,7 +647,7 @@ class _FeaturedSection extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             SizedBox(
-              height: 220,
+              height: 250,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: featured.length,
@@ -396,7 +681,7 @@ class _FeaturedLoading extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: 220,
+          height: 250,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 4,
@@ -419,34 +704,44 @@ class _FeaturedLoading extends StatelessWidget {
   }
 }
 
-class _FeaturedCard extends StatelessWidget {
+class _FeaturedCard extends StatefulWidget {
   final MuseumPiece piece;
 
   const _FeaturedCard({required this.piece});
 
   @override
+  State<_FeaturedCard> createState() => _FeaturedCardState();
+}
+
+class _FeaturedCardState extends State<_FeaturedCard> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => PieceDetailPage(piece: piece),
+              builder: (_) => PieceDetailPage(piece: widget.piece),
             ),
           );
         },
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
           width: 180,
+          transform: Matrix4.translationValues(0, _hovered ? -4 : 0, 0),
           decoration: BoxDecoration(
             color: AppColors.cardBg,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withValues(alpha: 0.05),
-                blurRadius: 20,
-                offset: const Offset(0, 5),
+                color: AppColors.primary.withValues(alpha: _hovered ? 0.12 : 0.05),
+                blurRadius: _hovered ? 28 : 16,
+                offset: Offset(0, _hovered ? 8 : 4),
               ),
             ],
           ),
@@ -454,10 +749,11 @@ class _FeaturedCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Imagem com aspect ratio maior
               AspectRatio(
-                aspectRatio: 16 / 10,
+                aspectRatio: 16 / 11,
                 child: CachedNetworkImage(
-                  imageUrl: piece.imagemUrl,
+                  imageUrl: widget.piece.imagemUrl,
                   fit: BoxFit.cover,
                   placeholder: (_, __) => Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
@@ -477,7 +773,7 @@ class _FeaturedCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      piece.nome,
+                      widget.piece.nome,
                       style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -488,7 +784,7 @@ class _FeaturedCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      '${piece.ano} · ${piece.fabricante}',
+                      '${widget.piece.ano} · ${widget.piece.fabricante}',
                       style: const TextStyle(
                         fontFamily: 'monospace',
                         fontSize: 10,
@@ -1078,17 +1374,19 @@ class _PesquisaDelegate extends SearchDelegate<MuseumPiece?> {
           itemBuilder: (context, index) {
             final peca = itens[index];
             return ListTile(
-              leading: peca.imagemUrl != null
+              leading: peca.imagemUrl.isNotEmpty
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        '${ApiConstants.baseUrl}/uploads/${peca.imagemUrl}',
+                        peca.imagemUrl.startsWith('http')
+                            ? peca.imagemUrl
+                            : '${ApiConstants.baseUrl}/uploads/${peca.imagemUrl}',
                         width: 48, height: 48, fit: BoxFit.cover,
                       ),
                     )
                   : const Icon(Icons.image, color: AppColors.primary),
               title: Text(peca.nome, style: const TextStyle(color: Colors.white)),
-              subtitle: Text(peca.fabricante ?? '',
+              subtitle: Text(peca.fabricante,
                   style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
               onTap: () {
                 close(context, null);
